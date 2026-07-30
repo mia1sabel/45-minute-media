@@ -1,20 +1,33 @@
 ---
 import { Image } from 'astro:assets';
 import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
-import faviconImg from '../assets/Circle Logo SVG non-transparent.svg';
+import faviconImg from '../assets/Circle Logo SVG transparent.svg';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={faviconImg.src} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Work | 45-Minute Media</title>
     <style>
-      :root { --bg-color: #FAFAFA; --text-main: #111827; --text-muted: #6B7280; }
+      :root {
+        --bg-color: #FAFAFA;
+        --text-main: #111827;
+        --text-muted: #6B7280;
+        --accent: #2563EB;
+      }
       * { box-sizing: border-box; margin: 0; padding: 0; }
-      body { font-family: 'Inter', system-ui, sans-serif; background-color: var(--bg-color); color: var(--text-main); -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100vh; }
-      
+      body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        -webkit-font-smoothing: antialiased;
+        display: flex; flex-direction: column; min-height: 100vh;
+      }
+
       header {
         display: flex; justify-content: space-between; align-items: center;
         padding: 2.5rem 5%; width: 100%; max-width: 1400px; margin: 0 auto;
@@ -22,24 +35,27 @@ import faviconImg from '../assets/Circle Logo SVG non-transparent.svg';
       }
       .logo { display: flex; align-items: center; text-decoration: none; }
       .logo img { height: 160px; width: auto; object-fit: contain; }
-      
+
       nav { display: flex; gap: 2.5rem; align-items: center; }
-      nav a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 1.1rem; transition: color 0.2s ease; }
+      nav a {
+        text-decoration: none; color: var(--text-muted); font-weight: 600;
+        font-size: 1.1rem; transition: color 0.2s ease;
+      }
       nav a:hover, nav a.active { color: var(--text-main); }
 
-      main { flex: 1; padding: 4rem 5%; max-width: 1000px; margin: 0 auto; width: 100%; }
+      main { flex: 1; padding: 4rem 5%; max-width: 1400px; margin: 0 auto; width: 100%; }
       .page-header { margin-bottom: 3.5rem; text-align: center; }
       h1 { font-size: 2.75rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
       .page-subtitle { color: var(--text-muted); font-size: 1.2rem; font-weight: 500; }
 
       .grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
       @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-      
+
       .project-card { display: flex; flex-direction: column; gap: 1rem; }
-      .vertical-video-wrapper { 
-        width: 100%; aspect-ratio: 9/16; background-color: #111827; 
+      .vertical-video-wrapper {
+        width: 100%; aspect-ratio: 9/16; background-color: #111827;
         border-radius: 16px; overflow: hidden;
-        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         display: flex; align-items: center; justify-content: center;
       }
       .vertical-video-wrapper video {
@@ -70,11 +86,11 @@ import faviconImg from '../assets/Circle Logo SVG non-transparent.svg';
   </head>
   <body>
     <header>
-      <a href="/" class="logo"><Image src={mainLogo} alt="45-Minute Media" /></a>
+      <a href={`${base}/`} class="logo"><Image src={mainLogo} alt="45-Minute Media" /></a>
       <nav>
-        <a href="/">Home</a>
-        <a href="/work" class="active">Work</a>
-        <a href="/contact">Get Started</a>
+        <a href={`${base}/`}>Home</a>
+        <a href={`${base}/work`} class="active">Work</a>
+        <a href={`${base}/contact`}>Get Started</a>
       </nav>
     </header>
 
@@ -87,27 +103,16 @@ import faviconImg from '../assets/Circle Logo SVG non-transparent.svg';
       <div class="grid">
         <div class="project-card">
           <div class="vertical-video-wrapper">
-            <video controls poster="/real-estate-thumb.jpg">
-              <source src="/real-estate.mp4" type="video/mp4" />
-              Real Estate Showcase
+            <video autoplay loop muted playsinline>
+              <source src={`${base}/promo.mp4`} type="video/mp4" />
             </video>
-          </div>
-          <div class="project-info">
-            <h3>Real Estate Showcase</h3>
-            <p>Property walkthrough created for social feed retention.</p>
           </div>
         </div>
-        
         <div class="project-card">
           <div class="vertical-video-wrapper">
-            <video controls poster="/wip-thumb.jpg">
-              <source src="/wip-project.mp4" type="video/mp4" />
-              Work In Progress
+            <video autoplay loop muted playsinline>
+              <source src={`${base}/promo.mp4`} type="video/mp4" />
             </video>
-          </div>
-          <div class="project-info">
-            <h3>Work in Progress</h3>
-            <p>Behind the scenes client highlight coming soon.</p>
           </div>
         </div>
       </div>
@@ -116,15 +121,15 @@ import faviconImg from '../assets/Circle Logo SVG non-transparent.svg';
     <footer>
       <div class="footer-inner">
         <div class="footer-brand">
-          <a href="/" class="footer-logo"><Image src={mainLogo} alt="45-Minute Media" /></a>
+          <a href={`${base}/`} class="footer-logo"><Image src={mainLogo} alt="45-Minute Media" /></a>
           <p class="footer-tagline">Video content for social media, made simple.</p>
         </div>
         <div class="footer-divider"></div>
         <div class="footer-bottom">
           <div class="footer-nav">
-            <a href="/">Home</a>
-            <a href="/work">Work</a>
-            <a href="/contact">Get Started</a>
+            <a href={`${base}/`}>Home</a>
+            <a href={`${base}/work`}>Work</a>
+            <a href={`${base}/contact`}>Get Started</a>
           </div>
           <p class="copyright">&copy; 2026 45-Minute Media. All rights reserved.</p>
         </div>
