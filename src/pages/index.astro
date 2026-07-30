@@ -25,7 +25,7 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
         display: flex; flex-direction: column; min-height: 100vh;
       }
       
-      /* Global Uniform Header */
+      /* Header */
       header {
         display: flex; justify-content: space-between; align-items: center;
         padding: 2.5rem 5%; width: 100%; max-width: 1400px; margin: 0 auto;
@@ -48,21 +48,15 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
       }
       .hero-content { max-width: 1300px; width: 100%; }
       
-      /* Strictly 2-Line Headline */
       h1 {
         font-size: clamp(2rem, 3.6vw, 3.2rem);
         font-weight: 800; line-height: 1.25;
         letter-spacing: -0.03em; margin-bottom: 1.25rem; color: #000;
       }
       
-      .line-1, .line-2 {
-        display: inline-block;
-      }
-      
+      .line-1, .line-2 { display: inline-block; }
       @media (min-width: 1024px) {
-        .line-1, .line-2 {
-          white-space: nowrap;
-        }
+        .line-1, .line-2 { white-space: nowrap; }
       }
 
       p.subtitle {
@@ -81,20 +75,20 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
 
       /* Section Separator */
       .cta-divider {
-        width: 100%; max-width: 1200px; height: 1px;
+        width: 100%; max-width: 1300px; height: 1px;
         background-color: #E5E7EB; margin: 2rem auto 4rem;
       }
 
-      /* How It Works Layout */
+      /* How It Works Layout - Expanded Left Side */
       .how-it-works-section {
-        width: 100%; max-width: 1200px; margin: 0 auto 6rem;
+        width: 100%; max-width: 1300px; margin: 0 auto 6rem;
         padding: 0 5%;
       }
       .how-it-works-grid {
         display: grid; grid-template-columns: 1fr; gap: 3.5rem; align-items: center;
       }
       @media (min-width: 900px) {
-        .how-it-works-grid { grid-template-columns: 1.2fr 0.8fr; }
+        .how-it-works-grid { grid-template-columns: 1.8fr 0.8fr; }
       }
 
       .section-tag {
@@ -106,16 +100,24 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
       }
       
       .step-item {
-        display: flex; gap: 2rem; align-items: flex-start;
+        display: flex; gap: 2.5rem; align-items: center;
         padding-top: 1.75rem; padding-bottom: 1.75rem;
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid #E5E7EB; width: 100%;
       }
       .step-number {
         font-size: 1.25rem; font-weight: 800; color: var(--accent);
         min-width: 2rem;
       }
-      .step-content h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.35rem; color: #111827; }
-      .step-content p { color: var(--text-muted); font-size: 1rem; line-height: 1.5; }
+      .step-content { flex: 1; }
+      .step-content h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem; color: #111827; }
+      .step-content p {
+        color: var(--text-muted); font-size: 1rem; line-height: 1.4;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 1100px) {
+        .step-content p { white-space: normal; }
+      }
 
       /* Video Frame */
       .video-wrapper {
@@ -162,7 +164,7 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
       <section class="hero">
         <div class="hero-content">
           <h1>
-            <span class="line-1">Your Entire Month of Social Media Content.</span><br />
+            <span class="line-1">Your Entire Month of Social Media Videos.</span><br />
             <span class="line-2">Only 45 Minutes of Your Time.</span>
           </h1>
           <p class="subtitle">
@@ -192,7 +194,7 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
               <span class="step-number">02</span>
               <div class="step-content">
                 <h3>You approve the plan</h3>
-                <p>We send over a simple plan. You review the monthly outline, give us the green light, and done.</p>
+                <p>We send over a simple plan. You review the outline, give us the green light, and done.</p>
               </div>
             </div>
 
@@ -200,7 +202,7 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
               <span class="step-number">03</span>
               <div class="step-content">
                 <h3>We handle the rest</h3>
-                <p>Shooting, editing, and final delivery—completely off your plate until the next month.</p>
+                <p>Shooting, editing, and final delivery—completely off your plate until next month.</p>
               </div>
             </div>
           </div>
