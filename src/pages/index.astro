@@ -59,6 +59,12 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
         .line-1, .line-2 { white-space: nowrap; }
       }
 
+      /* Reusable Blue Bold Class */
+      .highlight-blue {
+        color: var(--accent);
+        font-weight: 800;
+      }
+
       p.subtitle {
         font-size: clamp(1.1rem, 1.8vw, 1.35rem);
         color: var(--text-muted); margin-bottom: 2.5rem;
@@ -115,12 +121,6 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
         white-space: nowrap;
       }
 
-      /* Highlight styling for 45 Minute */
-      .highlight-blue {
-        color: var(--accent);
-        font-weight: 800;
-      }
-
       @media (max-width: 1100px) {
         .step-content p { white-space: normal; }
       }
@@ -171,7 +171,7 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
         <div class="hero-content">
           <h1>
             <span class="line-1">Your Entire Month of Social Media Videos.</span><br />
-            <span class="line-2">Only 45 Minutes of Your Time.</span>
+            <span class="line-2">Only <span class="highlight-blue">45 Minutes</span> of Your Time.</span>
           </h1>
           <p class="subtitle">
             Video production for brands who'd rather be running their business.
@@ -213,15 +213,15 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
             </div>
           </div>
 
-          <div class="video-column">
-            <div class="video-wrapper">
-              <video autoplay loop muted playsinline>
-                <source src="/promo.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </div>
-        </div>
+         <div class="video-column">
+  <div class="video-wrapper">
+    <video autoplay loop muted playsinline>
+      <source src="/Short AD for 45 Minute Media.mov" type="video/quicktime" />
+      <source src="/Short AD for 45 Minute Media.mov" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
       </section>
     </main>
 
