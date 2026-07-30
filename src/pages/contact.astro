@@ -1,21 +1,34 @@
 ---
 import { Image } from 'astro:assets';
 import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
-import faviconImg from '../assets/Circle Logo SVG non-transparent.svg';
+import faviconImg from '../assets/Circle Logo SVG transparent.svg';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={faviconImg.src} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Get Started | 45-Minute Media</title>
     <style>
-      :root { --bg-color: #FAFAFA; --text-main: #111827; --text-muted: #6B7280; --accent: #2563EB; }
+      :root {
+        --bg-color: #FAFAFA;
+        --text-main: #111827;
+        --text-muted: #6B7280;
+        --accent: #2563EB;
+      }
       * { box-sizing: border-box; margin: 0; padding: 0; }
-      body { font-family: 'Inter', system-ui, sans-serif; background-color: var(--bg-color); color: var(--text-main); -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100vh; }
-      
-      /* Matching Header Styling Exactly */
+      body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        -webkit-font-smoothing: antialiased;
+        display: flex; flex-direction: column; min-height: 100vh;
+      }
+
+      /* Header Styling */
       header {
         display: flex; justify-content: space-between; align-items: center;
         padding: 2.5rem 5%; width: 100%; max-width: 1400px; margin: 0 auto;
@@ -23,24 +36,27 @@ import faviconImg from '../assets/Circle Logo SVG non-transparent.svg';
       }
       .logo { display: flex; align-items: center; text-decoration: none; }
       .logo img { height: 160px; width: auto; object-fit: contain; }
-      
+
       nav { display: flex; gap: 2.5rem; align-items: center; }
-      nav a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 1.1rem; transition: color 0.2s ease; }
+      nav a {
+        text-decoration: none; color: var(--text-muted); font-weight: 600;
+        font-size: 1.1rem; transition: color 0.2s ease;
+      }
       nav a:hover, nav a.active { color: var(--text-main); }
 
-      main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 5% 6rem; }
-      
-      /* Expanded Container Size */
+      main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 5%; }
+
+      /* Container */
       .container { max-width: 900px; width: 100%; }
 
-      /* Punchy Modern Banner Card */
+      /* Banner Card */
       .offer-banner {
         background-color: #0F172A; color: #FFF; border-radius: 16px;
         padding: 2.5rem 3rem; margin-bottom: 2rem; text-align: left;
         box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.15);
       }
       .offer-badge {
-        display: inline-block; background: #2563EB; color: #FFF;
+        display: inline-block; background-color: #2563EB; color: #FFF;
         font-size: 0.8rem; font-weight: 700; padding: 0.35rem 0.75rem;
         border-radius: 6px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;
       }
@@ -53,7 +69,7 @@ import faviconImg from '../assets/Circle Logo SVG non-transparent.svg';
         padding: 3.5rem 3rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
       }
       .form-card h1 { font-size: 2.25rem; font-weight: 800; margin-bottom: 2.25rem; letter-spacing: -0.02em; color: #111827; }
-      
+
       .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; text-align: left; }
       .form-group label { font-size: 0.95rem; font-weight: 600; color: #374151; }
       .form-group input {
@@ -62,7 +78,7 @@ import faviconImg from '../assets/Circle Logo SVG non-transparent.svg';
         outline: none; background-color: #FAFAFA;
       }
       .form-group input:focus { border-color: var(--accent); background-color: #FFF; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
-      
+
       .submit-btn {
         width: 100%; background-color: #0F172A; color: #FFF; border: none;
         padding: 1.15rem; border-radius: 8px; font-weight: 600; font-size: 1.05rem;
@@ -70,6 +86,7 @@ import faviconImg from '../assets/Circle Logo SVG non-transparent.svg';
       }
       .submit-btn:hover { background-color: #1E293B; transform: translateY(-1px); }
 
+      /* Footer */
       footer {
         background-color: #050505; color: #9CA3AF; padding: 4rem 5% 3rem;
         width: 100%; margin-top: auto;
@@ -92,25 +109,26 @@ import faviconImg from '../assets/Circle Logo SVG non-transparent.svg';
   </head>
   <body>
     <header>
-      <a href="/" class="logo"><Image src={mainLogo} alt="45-Minute Media" /></a>
+      <a href={`${base}/`} class="logo"><Image src={mainLogo} alt="45-Minute Media" /></a>
       <nav>
-        <a href="/">Home</a>
-        <a href="/work">Work</a>
-        <a href="/contact" class="active">Get Started</a>
+        <a href={`${base}/`}>Home</a>
+        <a href={`${base}/work`}>Work</a>
+        <a href={`${base}/contact`} class="active">Get Started</a>
       </nav>
     </header>
 
     <main>
       <div class="container">
-        <!-- Direct & Concise Offer Card -->
+        <!-- Offer Banner -->
         <div class="offer-banner">
           <span class="offer-badge">LIMITED AVAILABILITY</span>
           <h2 class="offer-title">Get Your First Video for Free</h2>
           <p class="offer-text">
-            To give every brand our full attention, we only work with 3 clients at a time. Fill out the form below to lock in your spot. We’ll script and edit your first video at zero cost.
+            To give every brand our full attention, we only work with 3 clients at a time. Fill out the form below to lock in your spot.
           </p>
         </div>
 
+        <!-- Form Card -->
         <div class="form-card">
           <h1>Get Started</h1>
           <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted!');">
@@ -143,15 +161,15 @@ import faviconImg from '../assets/Circle Logo SVG non-transparent.svg';
     <footer>
       <div class="footer-inner">
         <div class="footer-brand">
-          <a href="/" class="footer-logo"><Image src={mainLogo} alt="45-Minute Media" /></a>
+          <a href={`${base}/`} class="footer-logo"><Image src={mainLogo} alt="45-Minute Media" /></a>
           <p class="footer-tagline">Video content for social media, made simple.</p>
         </div>
         <div class="footer-divider"></div>
         <div class="footer-bottom">
           <div class="footer-nav">
-            <a href="/">Home</a>
-            <a href="/work">Work</a>
-            <a href="/contact">Get Started</a>
+            <a href={`${base}/`}>Home</a>
+            <a href={`${base}/work`}>Work</a>
+            <a href={`${base}/contact`}>Get Started</a>
           </div>
           <p class="copyright">&copy; 2026 45-Minute Media. All rights reserved.</p>
         </div>
