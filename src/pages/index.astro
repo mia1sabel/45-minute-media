@@ -31,8 +31,8 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
         padding: 1.5rem 5%; max-width: 1400px; margin: 0 auto; width: 100%;
       }
       .logo { display: flex; align-items: center; }
-      .logo img { height: 36px; width: auto; max-height: 36px; object-fit: contain; }
-      nav { display: flex; gap: 2.5rem; }
+      .logo img { height: 60px; width: auto; max-height: 60px; object-fit: contain; }
+      nav { display: flex; gap: 2.5rem; align-items: center; }
       nav a {
         text-decoration: none; color: var(--text-muted); font-weight: 500;
         font-size: 0.95rem; transition: color 0.2s ease;
@@ -40,37 +40,64 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
       nav a:hover, nav a.active { color: var(--text-main); }
 
       /* Hero Section */
-      main {
-        flex: 1; display: flex; flex-direction: column;
-        align-items: center; justify-content: center;
-        padding: 4rem 5%; text-align: center;
+      .hero {
+        padding: 5rem 5% 4rem; text-align: center;
+        display: flex; flex-direction: column; align-items: center;
       }
-      .hero-content { max-width: 850px; }
+      .hero-content { max-width: 750px; }
       h1 {
-        font-size: clamp(2rem, 4vw, 3.25rem);
-        font-weight: 700; line-height: 1.15;
-        letter-spacing: -0.03em; margin-bottom: 1.25rem; color: #000;
+        font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+        font-weight: 700; line-height: 1.25;
+        letter-spacing: -0.02em; margin-bottom: 1rem; color: #000;
       }
       p.subtitle {
-        font-size: clamp(1rem, 1.8vw, 1.2rem);
-        color: var(--text-muted); margin-bottom: 2.5rem;
-        line-height: 1.6; max-width: 700px; margin-inline: auto;
+        font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+        color: var(--text-muted); margin-bottom: 2rem;
+        line-height: 1.5; max-width: 600px; margin-inline: auto;
       }
       
-      /* CTA Button */
+      /* Smaller CTA Button */
       .cta-btn {
         display: inline-block; background-color: var(--text-main); color: #FFF;
-        padding: 0.85rem 2.25rem; border-radius: 50px; text-decoration: none;
-        font-weight: 600; font-size: 1rem;
+        padding: 0.65rem 1.5rem; border-radius: 50px; text-decoration: none;
+        font-weight: 500; font-size: 0.875rem;
         transition: transform 0.2s ease, background-color 0.2s ease;
       }
-      .cta-btn:hover { background-color: #000; transform: translateY(-2px); }
+      .cta-btn:hover { background-color: #000; transform: translateY(-1px); }
+
+      /* How It Works Section */
+      .how-it-works {
+        width: 100%; max-width: 900px; margin: 2rem auto 5rem;
+        padding: 0 5%; border-top: 1px solid #E5E7EB; pt-12; padding-top: 3rem;
+      }
+      .section-tag {
+        font-size: 0.75rem; font-weight: 700; color: var(--accent);
+        letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem;
+      }
+      .section-title {
+        font-size: 1.85rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 2.5rem;
+      }
+      .steps-list { display: flex; flex-direction: column; gap: 2rem; }
+      .step-item {
+        display: flex; gap: 2rem; align-items: flex-start;
+        border-bottom: 1px solid #F3F4F6; padding-bottom: 1.75rem;
+      }
+      .step-item:last-child { border-bottom: none; }
+      .step-number {
+        font-size: 1.25rem; font-weight: 700; color: var(--accent);
+        font-family: monospace; min-width: 2.5rem;
+      }
+      .step-content h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.35rem; }
+      .step-content p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
 
       /* Black Footer */
       footer {
-        background-color: #000000; text-align: center; padding: 2.5rem 5%;
+        background-color: #000000; text-align: center; padding: 3rem 5%;
         font-size: 0.875rem; color: #9CA3AF; width: 100%; margin-top: auto;
+        display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
       }
+      footer a { color: #FFFFFF; text-decoration: none; font-weight: 500; }
+      footer a:hover { text-decoration: underline; }
     </style>
   </head>
   <body>
@@ -84,16 +111,50 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
     </header>
 
     <main>
-      <div class="hero-content">
-        <h1>Your Entire Month of Social Media Videos.<br />Only 45 Minutes of Your Time.</h1>
-        <p class="subtitle">
-          Video production for brands who'd rather be running their business.
-        </p>
-        <a href="/contact" class="cta-btn">Start a Project</a>
-      </div>
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Your Entire Month of Social Media Videos.<br />Only 45 Minutes of Your Time.</h1>
+          <p class="subtitle">
+            Video production for brands who'd rather be running their business.
+          </p>
+          <a href="/contact" class="cta-btn">Start a Project</a>
+        </div>
+      </section>
+
+      <section class="how-it-works">
+        <p class="section-tag">HOW IT WORKS</p>
+        <h2 class="section-title">Three steps, start to finish.</h2>
+        
+        <div class="steps-list">
+          <div class="step-item">
+            <span class="step-number">01</span>
+            <div class="step-content">
+              <h3>One short call</h3>
+              <p>We talk through your business and what you need for the month.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <span class="step-number">02</span>
+            <div class="step-content">
+              <h3>You approve the plan</h3>
+              <p>A simple plan for the month. You approve it once.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <span class="step-number">03</span>
+            <div class="step-content">
+              <h3>We handle the rest</h3>
+              <p>Filming, editing, delivery. Nothing else needed until next month.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
+      <p>Contact: <a href="mailto:45minutemedia@gmail.com">45minutemedia@gmail.com</a></p>
       <p>&copy; 2026 45-Minute Media. All rights reserved.</p>
     </footer>
   </body>
