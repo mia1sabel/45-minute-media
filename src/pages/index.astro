@@ -28,9 +28,10 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
       /* Header & Nav */
       header {
         display: flex; justify-content: space-between; align-items: center;
-        padding: 2rem 5%; max-width: 1400px; margin: 0 auto; width: 100%;
+        padding: 1.5rem 5%; max-width: 1400px; margin: 0 auto; width: 100%;
       }
-      .logo img { height: 42px; width: auto; }
+      .logo { display: flex; align-items: center; }
+      .logo img { height: 36px; width: auto; max-height: 36px; object-fit: contain; }
       nav { display: flex; gap: 2.5rem; }
       nav a {
         text-decoration: none; color: var(--text-muted); font-weight: 500;
@@ -44,30 +45,31 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
         align-items: center; justify-content: center;
         padding: 4rem 5%; text-align: center;
       }
-      .hero-content { max-width: 900px; }
+      .hero-content { max-width: 850px; }
       h1 {
-        font-size: clamp(2.5rem, 5vw, 4.5rem);
-        font-weight: 700; line-height: 1.1;
-        letter-spacing: -0.03em; margin-bottom: 1.5rem; color: #000;
+        font-size: clamp(2rem, 4vw, 3.25rem);
+        font-weight: 700; line-height: 1.15;
+        letter-spacing: -0.03em; margin-bottom: 1.25rem; color: #000;
       }
       p.subtitle {
-        font-size: clamp(1.1rem, 2vw, 1.35rem);
-        color: var(--text-muted); margin-bottom: 3rem;
+        font-size: clamp(1rem, 1.8vw, 1.2rem);
+        color: var(--text-muted); margin-bottom: 2.5rem;
         line-height: 1.6; max-width: 700px; margin-inline: auto;
       }
       
       /* CTA Button */
       .cta-btn {
         display: inline-block; background-color: var(--text-main); color: #FFF;
-        padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none;
-        font-weight: 600; font-size: 1.05rem;
+        padding: 0.85rem 2.25rem; border-radius: 50px; text-decoration: none;
+        font-weight: 600; font-size: 1rem;
         transition: transform 0.2s ease, background-color 0.2s ease;
       }
       .cta-btn:hover { background-color: #000; transform: translateY(-2px); }
 
+      /* Black Footer */
       footer {
-        text-align: center; padding: 3rem 5%; font-size: 0.875rem;
-        color: var(--text-muted);
+        background-color: #000000; text-align: center; padding: 2.5rem 5%;
+        font-size: 0.875rem; color: #9CA3AF; width: 100%; margin-top: auto;
       }
     </style>
   </head>
@@ -83,9 +85,9 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
 
     <main>
       <div class="hero-content">
-        <h1>Video production for brands who'd rather be running their business.</h1>
+        <h1>Your Entire Month of Social Media Videos.<br />Only 45 Minutes of Your Time.</h1>
         <p class="subtitle">
-          We've streamlined the entire production process. You give us the vision; we handle the logistics, lighting, sound, and editing to deliver premium corporate messaging and brand storytelling.
+          Video production for brands who'd rather be running their business.
         </p>
         <a href="/contact" class="cta-btn">Start a Project</a>
       </div>
