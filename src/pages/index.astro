@@ -28,68 +28,86 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
       /* Header & Nav */
       header {
         display: flex; justify-content: space-between; align-items: center;
-        padding: 1.5rem 5%; max-width: 1200px; margin: 0 auto; width: 100%;
+        padding: 2rem 5%; max-width: 1280px; margin: 0 auto; width: 100%;
       }
       .logo { display: flex; align-items: center; text-decoration: none; }
-      .logo img { height: 48px; width: auto; max-height: 48px; object-fit: contain; }
+      .logo img { height: 72px; width: auto; object-fit: contain; }
+      
       nav { display: flex; gap: 2rem; align-items: center; }
       nav a {
         text-decoration: none; color: var(--text-muted); font-weight: 500;
-        font-size: 0.95rem; transition: color 0.2s ease;
+        font-size: 1rem; transition: color 0.2s ease;
       }
       nav a:hover, nav a.active { color: var(--text-main); }
 
       /* Hero Section */
       .hero {
-        padding: 5rem 5% 4rem; text-align: center;
+        padding: 4rem 5% 3rem; text-align: center;
         display: flex; flex-direction: column; align-items: center;
       }
-      .hero-content { max-width: 750px; }
+      .hero-content { max-width: 800px; }
       h1 {
-        font-size: clamp(1.85rem, 3.5vw, 2.75rem);
-        font-weight: 700; line-height: 1.2;
-        letter-spacing: -0.025em; margin-bottom: 1rem; color: #000;
+        font-size: clamp(2.1rem, 4vw, 3.25rem);
+        font-weight: 800; line-height: 1.15;
+        letter-spacing: -0.03em; margin-bottom: 1rem; color: #000;
       }
       p.subtitle {
-        font-size: clamp(0.95rem, 1.4vw, 1.1rem);
-        color: var(--text-muted); margin-bottom: 1.75rem;
+        font-size: clamp(1rem, 1.5vw, 1.2rem);
+        color: var(--text-muted); margin-bottom: 2rem;
         line-height: 1.5; max-width: 600px; margin-inline: auto;
       }
       
       .cta-btn {
         display: inline-block; background-color: #0F172A; color: #FFF;
-        padding: 0.6rem 1.25rem; border-radius: 6px; text-decoration: none;
-        font-weight: 500; font-size: 0.85rem;
-        transition: background-color 0.2s ease;
+        padding: 0.8rem 1.75rem; border-radius: 8px; text-decoration: none;
+        font-weight: 600; font-size: 0.95rem;
+        transition: background-color 0.2s ease, transform 0.1s ease;
       }
-      .cta-btn:hover { background-color: #1E293B; }
+      .cta-btn:hover { background-color: #1E293B; transform: translateY(-1px); }
 
-      /* How It Works Section */
-      .how-it-works {
-        width: 100%; max-width: 900px; margin: 3rem auto 6rem;
-        padding: 0 5%; text-align: left;
+      /* How It Works Layout with Video on Right */
+      .how-it-works-section {
+        width: 100%; max-width: 1200px; margin: 4rem auto 6rem;
+        padding: 0 5%;
       }
+      .how-it-works-grid {
+        display: grid; grid-template-columns: 1fr; gap: 3.5rem; align-items: center;
+      }
+      @media (min-width: 900px) {
+        .how-it-works-grid { grid-template-columns: 1.2fr 0.8fr; }
+      }
+
       .section-tag {
-        font-size: 0.75rem; font-weight: 700; color: var(--accent);
+        font-size: 0.8rem; font-weight: 700; color: var(--accent);
         letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem;
       }
       .section-title {
-        font-size: 1.85rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 3rem;
+        font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 2.5rem;
       }
       
       .step-item {
-        display: flex; gap: 3rem; align-items: flex-start;
-        padding-top: 2rem; padding-bottom: 2rem;
+        display: flex; gap: 2rem; align-items: flex-start;
+        padding-top: 1.75rem; padding-bottom: 1.75rem;
         border-top: 1px solid #E5E7EB;
       }
       .step-number {
-        font-size: 1.15rem; font-weight: 700; color: var(--accent);
-        min-width: 2.5rem;
+        font-size: 1.25rem; font-weight: 800; color: var(--accent);
+        min-width: 2rem;
       }
-      .step-content h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.35rem; color: #111827; }
+      .step-content h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; color: #111827; }
       .step-content p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
 
-      /* Footer Matching Reference */
+      /* Video Embed Frame */
+      .video-wrapper {
+        width: 100%; max-width: 360px; margin: 0 auto;
+        aspect-ratio: 9/16; background: #000; border-radius: 16px;
+        overflow: hidden; box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.15);
+      }
+      .video-wrapper video {
+        width: 100%; height: 100%; object-fit: cover; display: block;
+      }
+
+      /* Unified Dark Footer */
       footer {
         background-color: #050505; color: #9CA3AF; padding: 4rem 5% 3rem;
         width: 100%; margin-top: auto;
@@ -97,17 +115,15 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
       .footer-inner {
         max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem;
       }
-      .footer-brand .footer-logo img { height: 32px; filter: brightness(0) invert(1); margin-bottom: 1rem; }
-      .footer-tagline { font-size: 0.9rem; color: #9CA3AF; }
-      
+      .footer-brand .footer-logo img { height: 56px; width: auto; display: block; margin-bottom: 1rem; }
+      .footer-tagline { font-size: 0.95rem; color: #9CA3AF; }
       .footer-divider { height: 1px; background-color: #1F2937; width: 100%; }
-      
       .footer-bottom {
         display: flex; justify-content: space-between; align-items: center;
-        flex-wrap: wrap; gap: 1rem; font-size: 0.85rem;
+        flex-wrap: wrap; gap: 1rem; font-size: 0.875rem;
       }
-      .footer-nav { display: flex; gap: 1.75rem; }
-      .footer-nav a { color: #D1D5DB; text-decoration: none; transition: color 0.2s; }
+      .footer-nav { display: flex; gap: 2rem; }
+      .footer-nav a { color: #D1D5DB; text-decoration: none; font-weight: 500; transition: color 0.2s; }
       .footer-nav a:hover { color: #FFF; }
       .copyright { color: #6B7280; }
     </style>
@@ -133,32 +149,45 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
         </div>
       </section>
 
-      <section class="how-it-works">
-        <p class="section-tag">HOW IT WORKS</p>
-        <h2 class="section-title">Three steps, start to finish.</h2>
-        
-        <div class="steps-container">
-          <div class="step-item">
-            <span class="step-number">01</span>
-            <div class="step-content">
-              <h3>One short call</h3>
-              <p>We talk through your business and what you need for the month.</p>
+      <section class="how-it-works-section">
+        <div class="how-it-works-grid">
+          <!-- Left Content -->
+          <div class="steps-column">
+            <p class="section-tag">HOW IT WORKS</p>
+            <h2 class="section-title">Three steps, start to finish.</h2>
+            
+            <div class="step-item">
+              <span class="step-number">01</span>
+              <div class="step-content">
+                <h3>One short call</h3>
+                <p>We talk through your business and what you need for the month.</p>
+              </div>
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">02</span>
+              <div class="step-content">
+                <h3>You approve the plan</h3>
+                <p>A simple plan for the month. You approve it once.</p>
+              </div>
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">03</span>
+              <div class="step-content">
+                <h3>We handle the rest</h3>
+                <p>Filming, editing, delivery. Nothing else needed until next month.</p>
+              </div>
             </div>
           </div>
 
-          <div class="step-item">
-            <span class="step-number">02</span>
-            <div class="step-content">
-              <h3>You approve the plan</h3>
-              <p>A simple plan for the month. You approve it once.</p>
-            </div>
-          </div>
-
-          <div class="step-item">
-            <span class="step-number">03</span>
-            <div class="step-content">
-              <h3>We handle the rest</h3>
-              <p>Filming, editing, delivery. Nothing else needed until next month.</p>
+          <!-- Right Side Video -->
+          <div class="video-column">
+            <div class="video-wrapper">
+              <video autoplay loop muted playsinline>
+                <source src="/promo.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>
