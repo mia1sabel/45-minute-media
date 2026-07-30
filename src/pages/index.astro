@@ -79,7 +79,7 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
         background-color: #E5E7EB; margin: 2rem auto 4rem;
       }
 
-      /* How It Works Layout - Expanded Left Side */
+      /* How It Works Layout */
       .how-it-works-section {
         width: 100%; max-width: 1300px; margin: 0 auto 6rem;
         padding: 0 5%;
@@ -113,6 +113,12 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
       .step-content p {
         color: var(--text-muted); font-size: 1rem; line-height: 1.4;
         white-space: nowrap;
+      }
+
+      /* Highlight styling for 45 Minute */
+      .highlight-blue {
+        color: var(--accent);
+        font-weight: 800;
       }
 
       @media (max-width: 1100px) {
@@ -185,7 +191,7 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
             <div class="step-item">
               <span class="step-number">01</span>
               <div class="step-content">
-                <h3>One 45 Minute call</h3>
+                <h3>One <span class="highlight-blue">45 Minute</span> call</h3>
                 <p>We talk through your goals and map out your video plan for the month.</p>
               </div>
             </div>
