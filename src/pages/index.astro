@@ -8,81 +8,72 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>45-Minute Media</title>
+    <title>45-Minute Media | Video Production</title>
     <style>
       :root {
-        --bg-color: #FFFFFF;
-        --text-color: #1A1A1A;
-        --border-color: #E5E7EB;
-        --accent-blue: #0056b3;
+        --bg-color: #FAFAFA;
+        --text-main: #111827;
+        --text-muted: #6B7280;
+        --accent: #2563EB;
       }
       * { box-sizing: border-box; margin: 0; padding: 0; }
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
         background-color: var(--bg-color);
-        color: var(--text-color);
-        line-height: 1.6;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
+        color: var(--text-main);
+        -webkit-font-smoothing: antialiased;
+        display: flex; flex-direction: column; min-height: 100vh;
       }
       
       /* Header & Nav */
       header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.5rem 2rem;
-        border-bottom: 1px solid var(--border-color);
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 2rem 5%; max-width: 1400px; margin: 0 auto; width: 100%;
       }
-      .logo-container img { height: 35px; width: auto; }
-      nav { display: flex; gap: 2rem; }
-      nav a { text-decoration: none; color: #6B7280; font-size: 0.95rem; transition: color 0.2s; }
-      nav a:hover, nav a.active { color: var(--text-color); font-weight: 500; }
+      .logo img { height: 42px; width: auto; }
+      nav { display: flex; gap: 2.5rem; }
+      nav a {
+        text-decoration: none; color: var(--text-muted); font-weight: 500;
+        font-size: 0.95rem; transition: color 0.2s ease;
+      }
+      nav a:hover, nav a.active { color: var(--text-main); }
 
-      /* Main Content (Documentation Style) */
-      main { flex: 1; width: 100%; max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
-      h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: 1rem; letter-spacing: -0.02em; }
-      h2 { font-size: 1.25rem; font-weight: 500; margin: 2.5rem 0 1rem 0; }
-      p { font-size: 1.05rem; color: #374151; margin-bottom: 1.5rem; }
+      /* Hero Section */
+      main {
+        flex: 1; display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        padding: 4rem 5%; text-align: center;
+      }
+      .hero-content { max-width: 900px; }
+      h1 {
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        font-weight: 700; line-height: 1.1;
+        letter-spacing: -0.03em; margin-bottom: 1.5rem; color: #000;
+      }
+      p.subtitle {
+        font-size: clamp(1.1rem, 2vw, 1.35rem);
+        color: var(--text-muted); margin-bottom: 3rem;
+        line-height: 1.6; max-width: 700px; margin-inline: auto;
+      }
       
-      /* Ordered Lists like the Setup Guide */
-      ol { margin-left: 1.5rem; margin-bottom: 2rem; color: #374151; }
-      ol li { margin-bottom: 0.75rem; padding-left: 0.5rem; }
-
-      /* Terminal Block */
-      .terminal-block {
-        background-color: #111827;
-        border-radius: 12px;
-        overflow: hidden;
-        margin: 2rem 0;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      /* CTA Button */
+      .cta-btn {
+        display: inline-block; background-color: var(--text-main); color: #FFF;
+        padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none;
+        font-weight: 600; font-size: 1.05rem;
+        transition: transform 0.2s ease, background-color 0.2s ease;
       }
-      .terminal-header {
-        background-color: #1F2937;
-        padding: 0.75rem 1rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 0.8rem;
-        color: #9CA3AF;
-        font-family: monospace;
-      }
-      .terminal-body { padding: 1.5rem; color: #E5E7EB; font-family: monospace; font-size: 0.9rem; }
-      .terminal-prompt { color: #10B981; margin-right: 0.5rem; }
+      .cta-btn:hover { background-color: #000; transform: translateY(-2px); }
 
       footer {
-        text-align: center; padding: 2rem; font-size: 0.85rem;
-        color: #9CA3AF; border-top: 1px solid var(--border-color);
+        text-align: center; padding: 3rem 5%; font-size: 0.875rem;
+        color: var(--text-muted);
       }
     </style>
   </head>
   <body>
-    
     <header>
-      <div class="logo-container">
-        <a href="/"><Image src={mainLogo} alt="45-Minute Media Logo" /></a>
-      </div>
+      <a href="/" class="logo"><Image src={mainLogo} alt="45-Minute Media" /></a>
       <nav>
         <a href="/" class="active">Home</a>
         <a href="/work">Work</a>
@@ -91,36 +82,17 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
     </header>
 
     <main>
-      <h1>Video production for brands who'd rather be running their business.</h1>
-      <p>We've engineered a streamlined process that removes the friction from creating professional video content. No endless pre-production meetings, no confusing revisions.</p>
-
-      <h2>Step 1: Navigate the Setup Prompts</h2>
-      <p>When the setup wizard starts, pay close attention to the very first prompt:</p>
-      
-      <ol>
-        <li><strong>What is your objective?</strong> If it suggests something complicated, press the backspace key to delete that text, and define your core message.</li>
-        <li><strong>Select your format:</strong> Choose between Brand Storytelling, Executive Messaging, or Social Campaigns.</li>
-        <li><strong>Install dependencies?</strong> Yes. We handle lighting, audio, and logistics.</li>
-      </ol>
-
-      <div class="terminal-block">
-        <div class="terminal-header">
-          <span>Bash</span>
-          <span>&#9660; &#9744;</span>
-        </div>
-        <div class="terminal-body">
-          <span class="terminal-prompt">$</span> npm install 45-minute-media@latest<br><br>
-          <span style="color: #60A5FA;">Launch sequence initiated.</span><br>
-          > Compiling story assets...<br>
-          > Optimizing for audience engagement...<br>
-          > Production ready.
-        </div>
+      <div class="hero-content">
+        <h1>Video production for brands who'd rather be running their business.</h1>
+        <p class="subtitle">
+          We've streamlined the entire production process. You give us the vision; we handle the logistics, lighting, sound, and editing to deliver premium corporate messaging and brand storytelling.
+        </p>
+        <a href="/contact" class="cta-btn">Start a Project</a>
       </div>
     </main>
 
     <footer>
       <p>&copy; 2026 45-Minute Media. All rights reserved.</p>
     </footer>
-
   </body>
 </html>
