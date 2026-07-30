@@ -105,6 +105,42 @@ const base = import.meta.env.BASE_URL;
       .footer-nav a { color: #D1D5DB; text-decoration: none; font-weight: 500; transition: color 0.2s; }
       .footer-nav a:hover { color: #FFF; }
       .copyright { color: #6B7280; }
+
+      /* Mobile Fixes */
+      @media (max-width: 640px) {
+        header {
+          flex-direction: column;
+          gap: 1.25rem;
+          padding: 1.25rem 5%;
+        }
+        .logo img {
+          height: 65px;
+        }
+        nav {
+          gap: 1.25rem;
+        }
+        nav a {
+          font-size: 0.95rem;
+        }
+        main {
+          padding: 2.5rem 5%;
+        }
+        .offer-banner {
+          padding: 1.75rem 1.5rem;
+        }
+        .form-card {
+          padding: 2rem 1.5rem;
+        }
+        .form-card h1 {
+          font-size: 1.75rem;
+          margin-bottom: 1.5rem;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1.5rem;
+        }
+      }
     </style>
   </head>
   <body>
