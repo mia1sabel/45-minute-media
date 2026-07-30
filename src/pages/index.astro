@@ -25,7 +25,7 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
         display: flex; flex-direction: column; min-height: 100vh;
       }
       
-      /* Global Header - Unified Spacing & Separation */
+      /* Global Uniform Header */
       header {
         display: flex; justify-content: space-between; align-items: center;
         padding: 2.5rem 5%; width: 100%; max-width: 1400px; margin: 0 auto;
@@ -46,16 +46,25 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
         padding: 5rem 5% 3.5rem; text-align: center;
         display: flex; flex-direction: column; align-items: center;
       }
-      .hero-content { max-width: 1200px; width: 100%; }
+      .hero-content { max-width: 1300px; width: 100%; }
       
-      /* Headline forced to 2 lines */
+      /* Strictly 2-Line Headline */
       h1 {
-        font-size: clamp(2.2rem, 4vw, 3.5rem);
+        font-size: clamp(2rem, 3.6vw, 3.2rem);
         font-weight: 800; line-height: 1.25;
         letter-spacing: -0.03em; margin-bottom: 1.25rem; color: #000;
-        white-space: normal;
       }
       
+      .line-1, .line-2 {
+        display: inline-block;
+      }
+      
+      @media (min-width: 1024px) {
+        .line-1, .line-2 {
+          white-space: nowrap;
+        }
+      }
+
       p.subtitle {
         font-size: clamp(1.1rem, 1.8vw, 1.35rem);
         color: var(--text-muted); margin-bottom: 2.5rem;
@@ -152,7 +161,10 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
     <main>
       <section class="hero">
         <div class="hero-content">
-          <h1>Your Entire Month of Social Media Videos.<br />Only 45 Minutes of Your Time.</h1>
+          <h1>
+            <span class="line-1">Your Entire Month of Social Media Videos.</span><br />
+            <span class="line-2">Only 45 Minutes of Your Time.</span>
+          </h1>
           <p class="subtitle">
             Video production for brands who'd rather be running their business.
           </p>
