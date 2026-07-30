@@ -1,6 +1,5 @@
 ---
 import { Image } from 'astro:assets';
-// Importing your logo from the assets folder we rescued!
 import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
 ---
 
@@ -8,135 +7,89 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <title>45 Minute Media | Professional Video Production</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>45-Minute Media | Video Production</title>
     <style>
+      /* Base Styles */
       :root {
         --color-bg: #FFFFFF;
         --color-text: #1A1A1A;
         --color-accent: #0056b3;
+        --color-light-gray: #f9f9f9;
       }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
+      * { box-sizing: border-box; margin: 0; padding: 0; }
       body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         background-color: var(--color-bg);
         color: var(--color-text);
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
+        display: flex; flex-direction: column; min-height: 100vh;
       }
-
-      /* --- Navigation Header --- */
+      
+      /* Header */
       header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.5rem 5%;
-        border-bottom: 1px solid #f0f0f0;
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 1.5rem 5%; background-color: white; border-bottom: 1px solid #eaeaea;
       }
-
-      .logo-container img {
-        height: 40px; /* Adjust this to make your logo bigger/smaller */
-        width: auto;
-      }
-
+      .logo-container img { width: 280px; height: auto; }
       nav a {
-        text-decoration: none;
-        color: var(--color-text);
-        margin-left: 2rem;
-        font-weight: 400;
-        transition: color 0.2s ease;
+        text-decoration: none; color: var(--color-text);
+        margin-left: 2.5rem; font-weight: 500; transition: color 0.2s ease;
       }
+      nav a:hover, nav a.active { color: var(--color-accent); }
 
-      nav a:hover {
-        color: var(--color-accent);
+      /* Hero Content */
+      main { flex: 1; }
+      .hero {
+        text-align: center; padding: 8rem 2rem; background-color: var(--color-light-gray);
       }
-
-      /* --- Main Hero Section --- */
-      main {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 4rem 2rem;
-      }
-
-      h1 {
-        font-size: 4rem;
-        font-weight: 200;
-        letter-spacing: -0.05em;
-        margin-bottom: 1rem;
-        line-height: 1.1;
-      }
-
-      .accent {
-        color: var(--color-accent);
-        font-weight: 500;
-      }
-
-      .subtitle {
-        font-size: 1.2rem;
-        color: #666666;
-        font-weight: 300;
-        max-width: 600px;
-        margin-bottom: 2.5rem;
-        line-height: 1.6;
-      }
-
+      h1 { font-size: 4.5rem; font-weight: 200; letter-spacing: -0.05em; margin-bottom: 1.5rem; }
+      .accent { color: var(--color-accent); font-weight: 600; }
+      .subtitle { font-size: 1.5rem; color: #555555; font-weight: 300; max-width: 700px; margin: 0 auto 3rem auto; line-height: 1.6; }
       .cta-button {
-        background-color: var(--color-text);
-        color: var(--color-bg);
-        padding: 1rem 2.5rem;
-        text-decoration: none;
-        border-radius: 4px;
-        font-weight: 500;
+        background-color: var(--color-accent); color: white; padding: 1.2rem 3rem;
+        text-decoration: none; border-radius: 4px; font-size: 1.1rem; font-weight: 500;
         transition: background-color 0.2s ease;
       }
+      .cta-button:hover { background-color: #004494; }
 
-      .cta-button:hover {
-        background-color: var(--color-accent);
-      }
+      /* Info Section */
+      .info-section { max-width: 800px; margin: 5rem auto; text-align: center; padding: 0 2rem; }
+      .info-section h2 { font-size: 2.5rem; font-weight: 300; margin-bottom: 1.5rem; }
+      .info-section p { font-size: 1.1rem; color: #666; line-height: 1.8; margin-bottom: 1rem; }
 
-      /* --- Footer --- */
-      footer {
-        text-align: center;
-        padding: 2rem;
-        font-size: 0.9rem;
-        color: #999;
-        border-top: 1px solid #f0f0f0;
-      }
+      /* Footer */
+      footer { text-align: center; padding: 2.5rem; font-size: 0.9rem; color: #888; border-top: 1px solid #eaeaea; }
     </style>
   </head>
   <body>
     
     <header>
       <div class="logo-container">
-        <!-- Astro Image Component renders your logo efficiently -->
-        <Image src={mainLogo} alt="45 Minute Media Logo" />
+        <a href="/"><Image src={mainLogo} alt="45-Minute Media Logo" /></a>
       </div>
       <nav>
-        <a href="#services">Services</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
+        <a href="/" class="active">Home</a>
+        <a href="/work">Work</a>
+        <a href="/contact">Get Started</a>
       </nav>
     </header>
 
     <main>
-      <h1>45 Minute <span class="accent">Media</span></h1>
-      <p class="subtitle">We streamline professional video production so you can focus on your message, not the mechanics.</p>
-      <a href="#contact" class="cta-button">Start a Project</a>
+      <section class="hero">
+        <h1>45-Minute <span class="accent">Media</span></h1>
+        <p class="subtitle">Video production for brands who'd rather be running their business.</p>
+        <a href="/contact" class="cta-button">Start a Project</a>
+      </section>
+
+      <section class="info-section">
+        <h2>What We Do</h2>
+        <p>At 45-Minute Media, we believe that creating professional, high-impact video content shouldn't completely disrupt your workday. We've streamlined the entire production process to deliver premium corporate messaging, social content, and brand storytelling with maximum efficiency.</p>
+        <p>You give us the vision; we handle the logistics, lighting, sound, and editing.</p>
+      </section>
     </main>
 
     <footer>
-      <p>&copy; 2026 45 Minute Media. All rights reserved.</p>
+      <p>&copy; 2026 45-Minute Media. All rights reserved.</p>
     </footer>
 
   </body>

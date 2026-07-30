@@ -1,0 +1,86 @@
+---
+import { Image } from 'astro:assets';
+import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Work | 45-Minute Media</title>
+    <style>
+      /* Keeping the base styles and header/footer identical for a seamless experience */
+      :root { --color-bg: #FFFFFF; --color-text: #1A1A1A; --color-accent: #0056b3; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: 'Inter', sans-serif; background-color: var(--color-bg); color: var(--color-text); display: flex; flex-direction: column; min-height: 100vh; }
+      
+      header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; border-bottom: 1px solid #eaeaea; }
+      .logo-container img { width: 280px; height: auto; }
+      nav a { text-decoration: none; color: var(--color-text); margin-left: 2.5rem; font-weight: 500; transition: color 0.2s ease; }
+      nav a:hover, nav a.active { color: var(--color-accent); }
+      
+      main { flex: 1; padding: 5rem 5%; max-width: 1200px; margin: 0 auto; width: 100%; }
+      h1 { font-size: 3rem; font-weight: 200; text-align: center; margin-bottom: 4rem; }
+      
+      /* Video Grid */
+      .video-container { display: grid; grid-template-columns: 1fr; gap: 4rem; }
+      .video-wrapper { background: #000; border-radius: 8px; overflow: hidden; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; color: white; font-weight: 300; }
+      .video-info { padding-top: 1rem; text-align: left; }
+      .video-info h3 { font-size: 1.5rem; font-weight: 500; margin-bottom: 0.5rem; }
+      .video-info p { color: #666; }
+
+      @media (min-width: 768px) {
+        .video-container { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      }
+
+      footer { text-align: center; padding: 2.5rem; color: #888; border-top: 1px solid #eaeaea; }
+    </style>
+  </head>
+  <body>
+    
+    <header>
+      <div class="logo-container">
+        <a href="/"><Image src={mainLogo} alt="45-Minute Media Logo" /></a>
+      </div>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/work" class="active">Work</a>
+        <a href="/contact">Get Started</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Featured Projects</h1>
+      <div class="video-container">
+        <!-- Video 1 -->
+        <div>
+          <div class="video-wrapper">
+             <p>[ Example Video 1 Placeholder ]</p>
+             <!-- When ready, you will drop your <iframe> embed code from YouTube/Vimeo right here -->
+          </div>
+          <div class="video-info">
+            <h3>Brand Documentary</h3>
+            <p>Showcasing company culture and values.</p>
+          </div>
+        </div>
+        
+        <!-- Video 2 -->
+        <div>
+          <div class="video-wrapper">
+             <p>[ Example Video 2 Placeholder ]</p>
+             <!-- When ready, you will drop your <iframe> embed code from YouTube/Vimeo right here -->
+          </div>
+          <div class="video-info">
+            <h3>Social Campaign</h3>
+            <p>Fast-paced, optimized for engagement.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 45-Minute Media. All rights reserved.</p>
+    </footer>
+
+  </body>
+</html>
