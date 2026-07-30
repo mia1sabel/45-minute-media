@@ -28,46 +28,52 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
       /* Header & Nav */
       header {
         display: flex; justify-content: space-between; align-items: center;
-        padding: 2rem 5%; max-width: 1280px; margin: 0 auto; width: 100%;
+        padding: 2.5rem 5%; max-width: 1280px; margin: 0 auto; width: 100%;
       }
       .logo { display: flex; align-items: center; text-decoration: none; }
-      .logo img { height: 72px; width: auto; object-fit: contain; }
+      .logo img { height: 110px; width: auto; object-fit: contain; }
       
-      nav { display: flex; gap: 2rem; align-items: center; }
+      nav { display: flex; gap: 2.5rem; align-items: center; }
       nav a {
-        text-decoration: none; color: var(--text-muted); font-weight: 500;
-        font-size: 1rem; transition: color 0.2s ease;
+        text-decoration: none; color: var(--text-muted); font-weight: 600;
+        font-size: 1.05rem; transition: color 0.2s ease;
       }
       nav a:hover, nav a.active { color: var(--text-main); }
 
       /* Hero Section */
       .hero {
-        padding: 4rem 5% 3rem; text-align: center;
+        padding: 5rem 5% 4rem; text-align: center;
         display: flex; flex-direction: column; align-items: center;
       }
-      .hero-content { max-width: 800px; }
+      .hero-content { max-width: 1050px; }
       h1 {
-        font-size: clamp(2.1rem, 4vw, 3.25rem);
-        font-weight: 800; line-height: 1.15;
-        letter-spacing: -0.03em; margin-bottom: 1rem; color: #000;
+        font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+        font-weight: 800; line-height: 1.2;
+        letter-spacing: -0.03em; margin-bottom: 1.25rem; color: #000;
       }
       p.subtitle {
-        font-size: clamp(1rem, 1.5vw, 1.2rem);
-        color: var(--text-muted); margin-bottom: 2rem;
-        line-height: 1.5; max-width: 600px; margin-inline: auto;
+        font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+        color: var(--text-muted); margin-bottom: 2.5rem;
+        line-height: 1.5; max-width: 650px; margin-inline: auto;
       }
       
       .cta-btn {
         display: inline-block; background-color: #0F172A; color: #FFF;
-        padding: 0.8rem 1.75rem; border-radius: 8px; text-decoration: none;
-        font-weight: 600; font-size: 0.95rem;
+        padding: 1rem 2.25rem; border-radius: 8px; text-decoration: none;
+        font-weight: 600; font-size: 1.05rem;
         transition: background-color 0.2s ease, transform 0.1s ease;
       }
       .cta-btn:hover { background-color: #1E293B; transform: translateY(-1px); }
 
-      /* How It Works Layout with Video on Right */
+      /* Divider Line */
+      .cta-divider {
+        width: 100%; max-width: 1200px; height: 1px;
+        background-color: #E5E7EB; margin: 2rem auto 4rem;
+      }
+
+      /* How It Works Layout */
       .how-it-works-section {
-        width: 100%; max-width: 1200px; margin: 4rem auto 6rem;
+        width: 100%; max-width: 1200px; margin: 0 auto 6rem;
         padding: 0 5%;
       }
       .how-it-works-grid {
@@ -78,11 +84,11 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
       }
 
       .section-tag {
-        font-size: 0.8rem; font-weight: 700; color: var(--accent);
+        font-size: 0.85rem; font-weight: 700; color: var(--accent);
         letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem;
       }
       .section-title {
-        font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 2.5rem;
+        font-size: 2.25rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 2.5rem;
       }
       
       .step-item {
@@ -94,12 +100,12 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
         font-size: 1.25rem; font-weight: 800; color: var(--accent);
         min-width: 2rem;
       }
-      .step-content h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; color: #111827; }
-      .step-content p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
+      .step-content h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.35rem; color: #111827; }
+      .step-content p { color: var(--text-muted); font-size: 1rem; line-height: 1.5; }
 
-      /* Video Embed Frame */
+      /* Video Frame */
       .video-wrapper {
-        width: 100%; max-width: 360px; margin: 0 auto;
+        width: 100%; max-width: 380px; margin: 0 auto;
         aspect-ratio: 9/16; background: #000; border-radius: 16px;
         overflow: hidden; box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.15);
       }
@@ -107,7 +113,7 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
         width: 100%; height: 100%; object-fit: cover; display: block;
       }
 
-      /* Unified Dark Footer */
+      /* Dark Footer */
       footer {
         background-color: #050505; color: #9CA3AF; padding: 4rem 5% 3rem;
         width: 100%; margin-top: auto;
@@ -115,12 +121,12 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
       .footer-inner {
         max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem;
       }
-      .footer-brand .footer-logo img { height: 56px; width: auto; display: block; margin-bottom: 1rem; }
-      .footer-tagline { font-size: 0.95rem; color: #9CA3AF; }
+      .footer-brand .footer-logo img { height: 90px; width: auto; display: block; margin-bottom: 1rem; }
+      .footer-tagline { font-size: 1rem; color: #9CA3AF; }
       .footer-divider { height: 1px; background-color: #1F2937; width: 100%; }
       .footer-bottom {
         display: flex; justify-content: space-between; align-items: center;
-        flex-wrap: wrap; gap: 1rem; font-size: 0.875rem;
+        flex-wrap: wrap; gap: 1rem; font-size: 0.95rem;
       }
       .footer-nav { display: flex; gap: 2rem; }
       .footer-nav a { color: #D1D5DB; text-decoration: none; font-weight: 500; transition: color 0.2s; }
@@ -149,9 +155,11 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
         </div>
       </section>
 
+      <!-- Section Separator Line -->
+      <div class="cta-divider"></div>
+
       <section class="how-it-works-section">
         <div class="how-it-works-grid">
-          <!-- Left Content -->
           <div class="steps-column">
             <p class="section-tag">HOW IT WORKS</p>
             <h2 class="section-title">Three steps, start to finish.</h2>
@@ -181,7 +189,6 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
             </div>
           </div>
 
-          <!-- Right Side Video -->
           <div class="video-column">
             <div class="video-wrapper">
               <video autoplay loop muted playsinline>

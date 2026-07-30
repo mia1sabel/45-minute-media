@@ -14,19 +14,19 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
       * { box-sizing: border-box; margin: 0; padding: 0; }
       body { font-family: 'Inter', system-ui, sans-serif; background-color: var(--bg-color); color: var(--text-main); -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100vh; }
       
-      header { display: flex; justify-content: space-between; align-items: center; padding: 2rem 5%; max-width: 1280px; margin: 0 auto; width: 100%; }
+      header { display: flex; justify-content: space-between; align-items: center; padding: 2.5rem 5%; max-width: 1280px; margin: 0 auto; width: 100%; }
       .logo { display: flex; align-items: center; text-decoration: none; }
-      .logo img { height: 72px; width: auto; object-fit: contain; }
-      nav { display: flex; gap: 2rem; align-items: center; }
-      nav a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 1rem; transition: color 0.2s ease; }
+      .logo img { height: 110px; width: auto; object-fit: contain; }
+      
+      nav { display: flex; gap: 2.5rem; align-items: center; }
+      nav a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 1.05rem; transition: color 0.2s ease; }
       nav a:hover, nav a.active { color: var(--text-main); }
 
       main { flex: 1; padding: 4rem 5%; max-width: 960px; margin: 0 auto; width: 100%; }
       .page-header { margin-bottom: 3.5rem; text-align: center; }
-      h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-      .page-subtitle { color: var(--text-muted); font-size: 1.1rem; }
+      h1 { font-size: 2.75rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+      .page-subtitle { color: var(--text-muted); font-size: 1.2rem; font-weight: 500; }
 
-      /* 2-Column Vertical Grid for Real Estate & WIP */
       .grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
       @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
       
@@ -36,15 +36,14 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
         border-radius: 16px; overflow: hidden;
         box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
         display: flex; align-items: center; justify-content: center;
-        color: #9CA3AF; font-size: 0.95rem; font-weight: 500;
       }
       .vertical-video-wrapper video {
         width: 100%; height: 100%; object-fit: cover; display: block;
       }
-      .project-info h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem; }
-      .project-info p { color: var(--text-muted); font-size: 0.925rem; line-height: 1.4; }
+      .project-info h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.25rem; }
+      .project-info p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.4; }
 
-      /* Unified Dark Footer */
+      /* Dark Footer */
       footer {
         background-color: #050505; color: #9CA3AF; padding: 4rem 5% 3rem;
         width: 100%; margin-top: auto;
@@ -52,12 +51,12 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
       .footer-inner {
         max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem;
       }
-      .footer-brand .footer-logo img { height: 56px; width: auto; display: block; margin-bottom: 1rem; }
-      .footer-tagline { font-size: 0.95rem; color: #9CA3AF; }
+      .footer-brand .footer-logo img { height: 90px; width: auto; display: block; margin-bottom: 1rem; }
+      .footer-tagline { font-size: 1rem; color: #9CA3AF; }
       .footer-divider { height: 1px; background-color: #1F2937; width: 100%; }
       .footer-bottom {
         display: flex; justify-content: space-between; align-items: center;
-        flex-wrap: wrap; gap: 1rem; font-size: 0.875rem;
+        flex-wrap: wrap; gap: 1rem; font-size: 0.95rem;
       }
       .footer-nav { display: flex; gap: 2rem; }
       .footer-nav a { color: #D1D5DB; text-decoration: none; font-weight: 500; transition: color 0.2s; }
@@ -78,11 +77,11 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
     <main>
       <div class="page-header">
         <h1>Featured Work</h1>
-        <p class="page-subtitle">Short-form videos engineered for maximum audience engagement.</p>
+        <!-- Updated Subtitle -->
+        <p class="page-subtitle">Built for Instagram Reels, TikTok, and YouTube Shorts.</p>
       </div>
 
       <div class="grid">
-        <!-- Real Estate Video -->
         <div class="project-card">
           <div class="vertical-video-wrapper">
             <video controls poster="/real-estate-thumb.jpg">
@@ -96,7 +95,6 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
           </div>
         </div>
         
-        <!-- Work In Progress Video -->
         <div class="project-card">
           <div class="vertical-video-wrapper">
             <video controls poster="/wip-thumb.jpg">
