@@ -1,12 +1,13 @@
 ---
 import { Image } from 'astro:assets';
 import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
+import faviconImg from '../assets/Circle Logo SVG transparent.svg';
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={faviconImg.src} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>45-Minute Media | Video Production</title>
     <style>
