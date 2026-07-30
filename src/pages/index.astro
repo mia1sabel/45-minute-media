@@ -1,5 +1,7 @@
 ---
-// We will import your logos here in the next step!
+import { Image } from 'astro:assets';
+// Importing your logo from the assets folder we rescued!
+import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
 ---
 
 <html lang="en">
@@ -7,43 +9,72 @@
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <title>45 Minute Media</title>
+    <title>45 Minute Media | Professional Video Production</title>
     <style>
       :root {
-        /* Your Professional Minimalist Palette */
-        --color-bg: #FFFFFF;      /* Pure White */
-        --color-text: #1A1A1A;    /* Soft Black */
-        --color-accent: #0056b3;  /* Professional Sharp Blue */
+        --color-bg: #FFFFFF;
+        --color-text: #1A1A1A;
+        --color-accent: #0056b3;
       }
 
       * {
         box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
 
       body {
-        margin: 0;
-        padding: 0;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         background-color: var(--color-bg);
         color: var(--color-text);
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
         min-height: 100vh;
       }
 
-      .container {
+      /* --- Navigation Header --- */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 5%;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .logo-container img {
+        height: 40px; /* Adjust this to make your logo bigger/smaller */
+        width: auto;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--color-text);
+        margin-left: 2rem;
+        font-weight: 400;
+        transition: color 0.2s ease;
+      }
+
+      nav a:hover {
+        color: var(--color-accent);
+      }
+
+      /* --- Main Hero Section --- */
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         text-align: center;
-        max-width: 800px;
-        padding: 2rem;
+        padding: 4rem 2rem;
       }
 
       h1 {
-        font-size: 3.5rem;
-        font-weight: 200; 
+        font-size: 4rem;
+        font-weight: 200;
         letter-spacing: -0.05em;
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.1;
       }
 
       .accent {
@@ -51,18 +82,62 @@
         font-weight: 500;
       }
 
-      p {
+      .subtitle {
         font-size: 1.2rem;
-        color: #666666; 
+        color: #666666;
         font-weight: 300;
+        max-width: 600px;
+        margin-bottom: 2.5rem;
+        line-height: 1.6;
+      }
+
+      .cta-button {
+        background-color: var(--color-text);
+        color: var(--color-bg);
+        padding: 1rem 2.5rem;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 500;
+        transition: background-color 0.2s ease;
+      }
+
+      .cta-button:hover {
+        background-color: var(--color-accent);
+      }
+
+      /* --- Footer --- */
+      footer {
+        text-align: center;
+        padding: 2rem;
+        font-size: 0.9rem;
+        color: #999;
+        border-top: 1px solid #f0f0f0;
       }
     </style>
   </head>
   <body>
-    <main class="container">
-      <!-- Logo placeholder -->
+    
+    <header>
+      <div class="logo-container">
+        <!-- Astro Image Component renders your logo efficiently -->
+        <Image src={mainLogo} alt="45 Minute Media Logo" />
+      </div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
       <h1>45 Minute <span class="accent">Media</span></h1>
-      <p>Professional video production, streamlined.</p>
+      <p class="subtitle">We streamline professional video production so you can focus on your message, not the mechanics.</p>
+      <a href="#contact" class="cta-button">Start a Project</a>
     </main>
+
+    <footer>
+      <p>&copy; 2026 45 Minute Media. All rights reserved.</p>
+    </footer>
+
   </body>
 </html>
