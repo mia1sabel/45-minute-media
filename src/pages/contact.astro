@@ -14,45 +14,49 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
       * { box-sizing: border-box; margin: 0; padding: 0; }
       body { font-family: 'Inter', system-ui, sans-serif; background-color: var(--bg-color); color: var(--text-main); -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100vh; }
       
-      header { display: flex; justify-content: space-between; align-items: center; padding: 2.5rem 5%; max-width: 1280px; margin: 0 auto; width: 100%; }
+      /* Matching Header Styling Exactly */
+      header {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 2.5rem 5%; width: 100%; max-width: 1400px; margin: 0 auto;
+        border-bottom: 1px solid #E5E7EB;
+      }
       .logo { display: flex; align-items: center; text-decoration: none; }
-      .logo img { height: 110px; width: auto; object-fit: contain; }
+      .logo img { height: 160px; width: auto; object-fit: contain; }
       
       nav { display: flex; gap: 2.5rem; align-items: center; }
-      nav a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 1.05rem; transition: color 0.2s ease; }
+      nav a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 1.1rem; transition: color 0.2s ease; }
       nav a:hover, nav a.active { color: var(--text-main); }
 
       main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 5% 6rem; }
       
-      /* Container Expanded to Take Up More Space */
-      .container { max-width: 720px; width: 100%; }
+      /* Expanded Container Size */
+      .container { max-width: 900px; width: 100%; }
 
-      /* Visual Callout Box */
+      /* Punchy Modern Banner Card */
       .offer-banner {
         background-color: #0F172A; color: #FFF; border-radius: 16px;
-        padding: 2rem 2.25rem; margin-bottom: 2rem; text-align: left;
-        box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.12);
+        padding: 2.5rem 3rem; margin-bottom: 2rem; text-align: left;
+        box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.15);
       }
       .offer-badge {
         display: inline-block; background: #2563EB; color: #FFF;
-        font-size: 0.75rem; font-weight: 700; padding: 0.3rem 0.65rem;
-        border-radius: 6px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.85rem;
+        font-size: 0.8rem; font-weight: 700; padding: 0.35rem 0.75rem;
+        border-radius: 6px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;
       }
-      .offer-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: #FFF; }
-      .offer-text { font-size: 1.05rem; color: #94A3B8; line-height: 1.55; }
-      .offer-text strong { color: #F8FAFC; font-weight: 600; }
+      .offer-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.6rem; color: #FFF; letter-spacing: -0.01em; }
+      .offer-text { font-size: 1.1rem; color: #94A3B8; line-height: 1.6; }
 
       /* Form Card */
       .form-card {
         background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 16px;
-        padding: 3rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        padding: 3.5rem 3rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
       }
-      .form-card h1 { font-size: 2rem; font-weight: 800; margin-bottom: 2rem; letter-spacing: -0.02em; color: #111827; }
+      .form-card h1 { font-size: 2.25rem; font-weight: 800; margin-bottom: 2.25rem; letter-spacing: -0.02em; color: #111827; }
       
       .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; text-align: left; }
       .form-group label { font-size: 0.95rem; font-weight: 600; color: #374151; }
       .form-group input {
-        padding: 0.95rem 1.15rem; border: 1px solid #D1D5DB; border-radius: 8px;
+        padding: 1rem 1.25rem; border: 1px solid #D1D5DB; border-radius: 8px;
         font-size: 1rem; font-family: inherit; transition: border-color 0.2s, box-shadow 0.2s;
         outline: none; background-color: #FAFAFA;
       }
@@ -60,12 +64,11 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
       
       .submit-btn {
         width: 100%; background-color: #0F172A; color: #FFF; border: none;
-        padding: 1.1rem; border-radius: 8px; font-weight: 600; font-size: 1.05rem;
+        padding: 1.15rem; border-radius: 8px; font-weight: 600; font-size: 1.05rem;
         cursor: pointer; transition: background-color 0.2s ease, transform 0.1s ease; margin-top: 0.5rem;
       }
       .submit-btn:hover { background-color: #1E293B; transform: translateY(-1px); }
 
-      /* Standardized Dark Footer */
       footer {
         background-color: #050505; color: #9CA3AF; padding: 4rem 5% 3rem;
         width: 100%; margin-top: auto;
@@ -73,7 +76,7 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
       .footer-inner {
         max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem;
       }
-      .footer-brand .footer-logo img { height: 90px; width: auto; display: block; margin-bottom: 1rem; }
+      .footer-brand .footer-logo img { height: 110px; width: auto; display: block; margin-bottom: 1rem; }
       .footer-tagline { font-size: 1rem; color: #9CA3AF; }
       .footer-divider { height: 1px; background-color: #1F2937; width: 100%; }
       .footer-bottom {
@@ -98,12 +101,12 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
 
     <main>
       <div class="container">
-        <!-- Upgraded Callout Card -->
+        <!-- Direct & Concise Offer Card -->
         <div class="offer-banner">
-          <span class="offer-badge">Limited Client Roster</span>
-          <h2 class="offer-title">Currently accepting 1 new brand this month</h2>
+          <span class="offer-badge">1 Open Spot Remaining</span>
+          <h2 class="offer-title">Guaranteed Quality Production</h2>
           <p class="offer-text">
-            To ensure maximum production quality and fast turnarounds, we cap our active roster at 3 client brands. Fill out the short form below to schedule a quick strategy session and claim your complimentary initial video script and edit.
+            We cap our roster at 3 clients to guarantee quality — we currently have 1 open spot. Fill out the form below for a quick call, and we’ll script and edit your first video for free.
           </p>
         </div>
 
@@ -130,7 +133,7 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
               <input type="url" id="website" name="website" placeholder="https://example.com" />
             </div>
 
-            <button type="submit" class="submit-btn">Claim Your Free Strategy Session</button>
+            <button type="submit" class="submit-btn">Claim Your Free Video</button>
           </form>
         </div>
       </div>

@@ -25,32 +25,37 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
         display: flex; flex-direction: column; min-height: 100vh;
       }
       
-      /* Header & Nav */
+      /* Global Header - Unified Spacing & Separation */
       header {
         display: flex; justify-content: space-between; align-items: center;
-        padding: 2.5rem 5%; max-width: 1280px; margin: 0 auto; width: 100%;
+        padding: 2.5rem 5%; width: 100%; max-width: 1400px; margin: 0 auto;
+        border-bottom: 1px solid #E5E7EB;
       }
       .logo { display: flex; align-items: center; text-decoration: none; }
-      .logo img { height: 110px; width: auto; object-fit: contain; }
+      .logo img { height: 160px; width: auto; object-fit: contain; }
       
       nav { display: flex; gap: 2.5rem; align-items: center; }
       nav a {
         text-decoration: none; color: var(--text-muted); font-weight: 600;
-        font-size: 1.05rem; transition: color 0.2s ease;
+        font-size: 1.1rem; transition: color 0.2s ease;
       }
       nav a:hover, nav a.active { color: var(--text-main); }
 
       /* Hero Section */
       .hero {
-        padding: 5rem 5% 4rem; text-align: center;
+        padding: 5rem 5% 3.5rem; text-align: center;
         display: flex; flex-direction: column; align-items: center;
       }
-      .hero-content { max-width: 1050px; }
+      .hero-content { max-width: 1200px; width: 100%; }
+      
+      /* Headline forced to 2 lines */
       h1 {
-        font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-        font-weight: 800; line-height: 1.2;
+        font-size: clamp(2.2rem, 4vw, 3.5rem);
+        font-weight: 800; line-height: 1.25;
         letter-spacing: -0.03em; margin-bottom: 1.25rem; color: #000;
+        white-space: normal;
       }
+      
       p.subtitle {
         font-size: clamp(1.1rem, 1.8vw, 1.35rem);
         color: var(--text-muted); margin-bottom: 2.5rem;
@@ -65,7 +70,7 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
       }
       .cta-btn:hover { background-color: #1E293B; transform: translateY(-1px); }
 
-      /* Divider Line */
+      /* Section Separator */
       .cta-divider {
         width: 100%; max-width: 1200px; height: 1px;
         background-color: #E5E7EB; margin: 2rem auto 4rem;
@@ -113,7 +118,7 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
         width: 100%; height: 100%; object-fit: cover; display: block;
       }
 
-      /* Dark Footer */
+      /* Footer */
       footer {
         background-color: #050505; color: #9CA3AF; padding: 4rem 5% 3rem;
         width: 100%; margin-top: auto;
@@ -121,7 +126,7 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
       .footer-inner {
         max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem;
       }
-      .footer-brand .footer-logo img { height: 90px; width: auto; display: block; margin-bottom: 1rem; }
+      .footer-brand .footer-logo img { height: 110px; width: auto; display: block; margin-bottom: 1rem; }
       .footer-tagline { font-size: 1rem; color: #9CA3AF; }
       .footer-divider { height: 1px; background-color: #1F2937; width: 100%; }
       .footer-bottom {
@@ -155,7 +160,6 @@ import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
         </div>
       </section>
 
-      <!-- Section Separator Line -->
       <div class="cta-divider"></div>
 
       <section class="how-it-works-section">
