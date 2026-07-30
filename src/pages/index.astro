@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
-import faviconImg from '../assets/Circle Logo SVG transparent.svg';
+import faviconImg from '../assets/Circle Logo transparent.svg';
 
 const base = import.meta.env.BASE_URL;
 ---
@@ -11,7 +11,7 @@ const base = import.meta.env.BASE_URL;
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href={faviconImg.src} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>45-Minute Media</title>
+    <title>45-Minute Media | Video Production</title>
     <style>
       :root {
         --bg-color: #FAFAFA;
@@ -27,41 +27,115 @@ const base = import.meta.env.BASE_URL;
         -webkit-font-smoothing: antialiased;
         display: flex; flex-direction: column; min-height: 100vh;
       }
-
-      /* Header Styling */
+      
+      /* Header */
       header {
         display: flex; justify-content: space-between; align-items: center;
-        padding: 1.25rem 5%; width: 100%; max-width: 1400px; margin: 0 auto;
+        padding: 2.5rem 5%; width: 100%; max-width: 1400px; margin: 0 auto;
         border-bottom: 1px solid #E5E7EB;
       }
       .logo { display: flex; align-items: center; text-decoration: none; }
-      .logo img { height: 90px; width: auto; object-fit: contain; }
-
-      nav { display: flex; gap: 1.25rem; align-items: center; }
+      .logo img { height: 160px; width: auto; object-fit: contain; }
+      
+      nav { display: flex; gap: 2.5rem; align-items: center; }
       nav a {
         text-decoration: none; color: var(--text-muted); font-weight: 600;
-        font-size: 0.95rem; transition: color 0.2s ease; white-space: nowrap;
+        font-size: 1.1rem; transition: color 0.2s ease;
       }
       nav a:hover, nav a.active { color: var(--text-main); }
 
-      /* Mobile Header Fix */
-      @media (max-width: 640px) {
-        header { flex-direction: column; gap: 1rem; padding: 1rem 5%; }
-        .logo img { height: 65px; }
-        nav { gap: 1.5rem; }
+      /* Hero Section */
+      .hero {
+        padding: 5rem 5% 3.5rem; text-align: center;
+        display: flex; flex-direction: column; align-items: center;
+      }
+      .hero-content { max-width: 1300px; width: 100%; }
+      
+      h1 {
+        font-size: clamp(2rem, 3.6vw, 3.2rem);
+        font-weight: 800; line-height: 1.25;
+        letter-spacing: -0.03em; margin-bottom: 1.25rem; color: #000;
+      }
+      
+      .line-1, .line-2 { display: inline-block; }
+      @media (min-width: 1024px) {
+        .line-1, .line-2 { white-space: nowrap; }
       }
 
-      /* Hero Section */
-      main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 5%; text-align: center; }
-      .hero { max-width: 800px; margin: 0 auto; }
-      h1 { font-size: 3rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.25rem; }
-      p.subtitle { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.5; }
+      .highlight-blue {
+        color: var(--accent);
+        font-weight: 800;
+      }
+
+      p.subtitle {
+        font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+        color: var(--text-muted); margin-bottom: 2.5rem;
+        line-height: 1.5; max-width: 650px; margin-inline: auto;
+      }
+      
       .cta-btn {
         display: inline-block; background-color: #0F172A; color: #FFF;
-        padding: 1rem 2rem; border-radius: 8px; font-weight: 600;
-        text-decoration: none; transition: background-color 0.2s ease, transform 0.1s ease;
+        padding: 1rem 2.25rem; border-radius: 8px; text-decoration: none;
+        font-weight: 600; font-size: 1.05rem;
+        transition: background-color 0.2s ease, transform 0.1s ease;
       }
       .cta-btn:hover { background-color: #1E293B; transform: translateY(-1px); }
+
+      /* Section Separator */
+      .cta-divider {
+        width: 100%; max-width: 1300px; height: 1px;
+        background-color: #E5E7EB; margin: 2rem auto 4rem;
+      }
+
+      /* How It Works Layout */
+      .how-it-works-section {
+        width: 100%; max-width: 1300px; margin: 0 auto 6rem;
+        padding: 0 5%;
+      }
+      .how-it-works-grid {
+        display: grid; grid-template-columns: 1fr; gap: 3.5rem; align-items: center;
+      }
+      @media (min-width: 900px) {
+        .how-it-works-grid { grid-template-columns: 1.8fr 0.8fr; }
+      }
+
+      .section-tag {
+        font-size: 0.85rem; font-weight: 700; color: var(--accent);
+        letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem;
+      }
+      .section-title {
+        font-size: 2.25rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 2.5rem;
+      }
+      
+      .step-item {
+        display: flex; gap: 2.5rem; align-items: center;
+        padding-top: 1.75rem; padding-bottom: 1.75rem;
+        border-top: 1px solid #E5E7EB; width: 100%;
+      }
+      .step-number {
+        font-size: 1.25rem; font-weight: 800; color: var(--accent);
+        min-width: 2rem;
+      }
+      .step-content { flex: 1; }
+      .step-content h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem; color: #111827; }
+      .step-content p {
+        color: var(--text-muted); font-size: 1rem; line-height: 1.4;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 1100px) {
+        .step-content p { white-space: normal; }
+      }
+
+      /* Video Frame */
+      .video-wrapper {
+        width: 100%; max-width: 380px; margin: 0 auto;
+        aspect-ratio: 9/16; background: #000; border-radius: 16px;
+        overflow: hidden; box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.15);
+      }
+      .video-wrapper video {
+        width: 100%; height: 100%; object-fit: cover; display: block;
+      }
 
       /* Footer */
       footer {
@@ -96,9 +170,60 @@ const base = import.meta.env.BASE_URL;
 
     <main>
       <section class="hero">
-        <h1>High-converting short-form video for modern brands.</h1>
-        <p class="subtitle">We create scroll-stopping Instagram Reels, TikToks, and Shorts that grow your business.</p>
-        <a href={`${base}/contact`} class="cta-btn">Get Started</a>
+        <div class="hero-content">
+          <h1>
+            <span class="line-1">Your Entire Month of Social Media Videos.</span><br />
+            <span class="line-2">Only <span class="highlight-blue">45 Minutes</span> of Your Time.</span>
+          </h1>
+          <p class="subtitle">
+            Video production for brands who'd rather be running their business.
+          </p>
+          <a href={`${base}/contact`} class="cta-btn">Start a Project</a>
+        </div>
+      </section>
+
+      <div class="cta-divider"></div>
+
+      <section class="how-it-works-section">
+        <div class="how-it-works-grid">
+          <div class="steps-column">
+            <p class="section-tag">HOW IT WORKS</p>
+            <h2 class="section-title">Three steps, start to finish.</h2>
+            
+            <div class="step-item">
+              <span class="step-number">01</span>
+              <div class="step-content">
+                <h3>One <span class="highlight-blue">45 Minute</span> call</h3>
+                <p>We talk through your goals and map out your video plan for the month.</p>
+              </div>
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">02</span>
+              <div class="step-content">
+                <h3>You approve the plan</h3>
+                <p>We send over a simple plan. You review the outline, give us the green light, and done.</p>
+              </div>
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">03</span>
+              <div class="step-content">
+                <h3>We handle the rest</h3>
+                <p>Shooting, editing, and final delivery—completely off your plate until next month.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="video-column">
+            <div class="video-wrapper">
+              <video autoplay loop muted playsinline>
+                <source src={`${base}/promo.mp4`} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
