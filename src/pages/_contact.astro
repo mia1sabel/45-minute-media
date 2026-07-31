@@ -1,0 +1,369 @@
+---
+import { Image } from 'astro:assets';
+import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
+import faviconImg from '../assets/Circle Logo transparent.svg';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={faviconImg.src} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>45-Minute Media | Video Content Made Simple</title>
+    <style>
+      :root {
+        --bg-color: #FAFAFA;
+        --text-main: #111827;
+        --text-muted: #6B7280;
+        --accent: #2563EB;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* Header Styling */
+      header {
+        position: sticky;
+        top: 0;
+        background-color: rgba(250, 250, 250, 0.9);
+        backdrop-filter: blur(8px);
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 5%;
+        width: 100%;
+        border-bottom: 1px solid #E5E7EB;
+      }
+
+      .header-inner {
+        max-width: 1400px;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo { display: flex; align-items: center; text-decoration: none; }
+      .logo img { height: 120px; width: auto; object-fit: contain; }
+
+      nav { display: flex; gap: 2.5rem; align-items: center; }
+      nav a {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-weight: 600;
+        font-size: 1.05rem;
+        transition: color 0.2s ease;
+      }
+      nav a:hover { color: var(--text-main); }
+
+      /* Section Layouts */
+      section {
+        width: 100%;
+        padding: 5rem 5%;
+        scroll-margin-top: 100px;
+      }
+
+      .section-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+      }
+      .hero-badge {
+        display: inline-block;
+        background-color: #EFF6FF;
+        color: var(--accent);
+        font-weight: 700;
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        margin-bottom: 1.5rem;
+        color: var(--text-main);
+      }
+      .hero p {
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        max-width: 650px;
+        margin: 0 auto 2.5rem;
+        line-height: 1.6;
+      }
+      .cta-btn {
+        display: inline-block;
+        background-color: #0F172A;
+        color: #FFF;
+        padding: 1rem 2.25rem;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+      }
+      .cta-btn:hover { background-color: #1E293B; transform: translateY(-1px); }
+
+      /* Work Section */
+      #work {
+        border-top: 1px solid #E5E7EB;
+      }
+      .page-header { margin-bottom: 3.5rem; text-align: center; }
+      .page-header h2 { font-size: 2.75rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+      .page-subtitle { color: var(--text-muted); font-size: 1.2rem; font-weight: 500; }
+
+      .grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+      @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+
+      .project-card { display: flex; flex-direction: column; gap: 1rem; }
+      .vertical-placeholder-wrapper {
+        width: 100%; aspect-ratio: 9/16; background-color: #0F172A;
+        border-radius: 16px; border: 2px dashed #334155;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        padding: 2rem; text-align: center; color: #94A3B8;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      }
+      .placeholder-icon {
+        width: 48px; height: 48px; margin-bottom: 1rem; opacity: 0.6; stroke: #94A3B8;
+      }
+      .placeholder-title { font-size: 1.1rem; font-weight: 700; color: #F8FAFC; margin-bottom: 0.25rem; }
+      .placeholder-desc { font-size: 0.9rem; color: #64748B; }
+
+      /* Get Started / Contact Section */
+      #contact {
+        border-top: 1px solid #E5E7EB;
+        display: flex;
+        justify-content: center;
+      }
+      .contact-container { max-width: 900px; width: 100%; margin: 0 auto; }
+
+      /* Offer Banner Card */
+      .offer-banner {
+        background-color: #0F172A; color: #FFF; border-radius: 16px;
+        padding: 2.5rem 3rem; margin-bottom: 2rem; text-align: left;
+        box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.15);
+      }
+      .offer-badge {
+        display: inline-block; background-color: #2563EB; color: #FFF;
+        font-size: 0.8rem; font-weight: 700; padding: 0.35rem 0.75rem;
+        border-radius: 6px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;
+      }
+      .offer-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.6rem; color: #FFF; letter-spacing: -0.01em; }
+      .offer-text { font-size: 1.1rem; color: #94A3B8; line-height: 1.6; }
+
+      /* Form Card */
+      .form-card {
+        background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 16px;
+        padding: 3.5rem 3rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      }
+      .form-card h2 { font-size: 2.25rem; font-weight: 800; margin-bottom: 2.25rem; letter-spacing: -0.02em; color: #111827; }
+
+      .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; text-align: left; }
+      .form-group label { font-size: 0.95rem; font-weight: 600; color: #374151; }
+      .form-group input {
+        padding: 1rem 1.25rem; border: 1px solid #D1D5DB; border-radius: 8px;
+        font-size: 1rem; font-family: inherit; transition: border-color 0.2s, box-shadow 0.2s;
+        outline: none; background-color: #FAFAFA;
+      }
+      .form-group input:focus { border-color: var(--accent); background-color: #FFF; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
+
+      .submit-btn {
+        width: 100%; background-color: #0F172A; color: #FFF; border: none;
+        padding: 1.15rem; border-radius: 8px; font-weight: 600; font-size: 1.05rem;
+        cursor: pointer; transition: background-color 0.2s ease, transform 0.1s ease; margin-top: 0.5rem;
+      }
+      .submit-btn:hover { background-color: #1E293B; transform: translateY(-1px); }
+
+      /* Footer */
+      footer {
+        background-color: #050505; color: #9CA3AF; padding: 4rem 5% 3rem;
+        width: 100%; margin-top: auto;
+      }
+      .footer-inner {
+        max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem;
+      }
+      .footer-brand .footer-logo img { height: 110px; width: auto; display: block; margin-bottom: 1rem; }
+      .footer-tagline { font-size: 1rem; color: #9CA3AF; }
+      .footer-divider { height: 1px; background-color: #1F2937; width: 100%; }
+      .footer-bottom {
+        display: flex; justify-content: space-between; align-items: center;
+        flex-wrap: wrap; gap: 1rem; font-size: 0.95rem;
+      }
+      .footer-nav { display: flex; gap: 2rem; }
+      .footer-nav a { color: #D1D5DB; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+      .footer-nav a:hover { color: #FFF; }
+      .copyright { color: #6B7280; }
+
+      /* Responsive Adjustments */
+      @media (max-width: 640px) {
+        .header-inner {
+          flex-direction: column;
+          gap: 1.25rem;
+        }
+        .logo img { height: 65px; }
+        nav { gap: 1.25rem; }
+        nav a { font-size: 0.95rem; }
+
+        section { padding: 3rem 5%; }
+        .hero { padding-top: 3rem; padding-bottom: 3rem; }
+        .hero h1 { font-size: 2.25rem; }
+        .hero p { font-size: 1.05rem; }
+
+        .page-header { margin-bottom: 2rem; }
+        .page-header h2 { font-size: 2rem; }
+
+        .offer-banner { padding: 1.75rem 1.5rem; }
+        .form-card { padding: 2rem 1.5rem; }
+        .form-card h2 { font-size: 1.75rem; margin-bottom: 1.5rem; }
+
+        .footer-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sticky Header -->
+    <header>
+      <div class="header-inner">
+        <a href="#top" class="logo"><Image src={mainLogo} alt="45-Minute Media" /></a>
+        <nav>
+          <a href="#top">Home</a>
+          <a href="#work">Work</a>
+          <a href="#contact">Get Started</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="section-container">
+          <span class="hero-badge">Short-Form Video Agency</span>
+          <h1>Turn Attention Into Revenue</h1>
+          <p>We craft high-converting vertical videos for Instagram Reels, TikTok, and YouTube Shorts.</p>
+          <a href="#contact" class="cta-btn">Claim Your Free Video</a>
+        </div>
+      </section>
+
+      <!-- Work Section -->
+      <section id="work">
+        <div class="section-container">
+          <div class="page-header">
+            <h2>Exemplary Work</h2>
+            <p class="page-subtitle">Built for Instagram Reels, TikTok, and YouTube Shorts.</p>
+          </div>
+
+          <div class="grid">
+            <div class="project-card">
+              <div class="vertical-placeholder-wrapper">
+                <svg class="placeholder-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5m-3-12h13.5c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125H5.25A1.125 1.125 0 0 1 4.125 18V6c0-.621.504-1.125 1.125-1.125Z" />
+                </svg>
+                <p class="placeholder-title">Video Placeholder 1</p>
+                <p class="placeholder-desc">Add video content here later</p>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="vertical-placeholder-wrapper">
+                <svg class="placeholder-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5m-3-12h13.5c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125H5.25A1.125 1.125 0 0 1 4.125 18V6c0-.621.504-1.125 1.125-1.125Z" />
+                </svg>
+                <p class="placeholder-title">Video Placeholder 2</p>
+                <p class="placeholder-desc">Add video content here later</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Get Started / Contact Section -->
+      <section id="contact">
+        <div class="contact-container">
+          <!-- Offer Banner -->
+          <div class="offer-banner">
+            <span class="offer-badge">LIMITED AVAILABILITY</span>
+            <h3 class="offer-title">Get Your First Video for Free</h3>
+            <p class="offer-text">
+              To give every brand our full attention, we only work with 3 clients at a time. Fill out the form below to lock in your spot.
+            </p>
+          </div>
+
+          <!-- Form Card -->
+          <div class="form-card">
+            <h2>Get Started</h2>
+            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted!');">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required />
+              </div>
+
+              <div class="form-group">
+                <label for="business">Business Name</label>
+                <input type="text" id="business" name="business" placeholder="Acme Inc." required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="john@example.com" required />
+              </div>
+
+              <div class="form-group">
+                <label for="website">Website</label>
+                <input type="url" id="website" name="website" placeholder="https://example.com" />
+              </div>
+
+              <button type="submit" class="submit-btn">Claim Your Free Video</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="#top" class="footer-logo"><Image src={mainLogo} alt="45-Minute Media" /></a>
+          <p class="footer-tagline">Video content for social media, made simple.</p>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">
+          <div class="footer-nav">
+            <a href="#top">Home</a>
+            <a href="#work">Work</a>
+            <a href="#contact">Get Started</a>
+          </div>
+          <p class="copyright">&copy; 2026 45-Minute Media. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
