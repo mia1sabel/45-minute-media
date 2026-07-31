@@ -1,5 +1,7 @@
 ---
 import Layout from '../layout/layout.astro';
+import { Image } from 'astro:assets';
+import mainLogo from '../assets/Circle Logo transparent.svg';
 
 const navLinks = [
   { href: '#home', label: 'Home' },
@@ -82,10 +84,20 @@ const portfolioItems = [
 ];
 ---
 
-<Layout title="45-Minute Media | Video production for brands who'd rather be running their business.
- Production">
+<Layout title="45-Minute Media | Video production for brands who'd rather be running their business. Production">
   <div class="page-wrapper">
-    <header links={navLinks} logoSrc={src/assets/Circle Logo transparent.svg} />
+    <header class="header">
+      <div class="header-container">
+        <a href="#home" class="logo">
+          <Image src={mainLogo} alt="45-Minute Media" />
+        </a>
+        <nav class="nav">
+          {navLinks.map((link) => (
+            <a href={link.href}>{link.label}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
 
     <!-- HERO SECTION -->
     <section id="home" class="hero-section">
@@ -299,6 +311,45 @@ const portfolioItems = [
     color: #F3F4F6;
     min-height: 100vh;
     overflow-x: hidden;
+  }
+
+  /* Header Styles */
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 1.5rem;
+  }
+
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header .logo img {
+    height: 40px;
+    width: auto;
+  }
+
+  .header .nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .header .nav a {
+    color: #9CA3AF;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .header .nav a:hover {
+    color: #FFFFFF;
   }
 
   .section-container {
@@ -718,6 +769,9 @@ const portfolioItems = [
     }
     .hero-cta-wrapper {
       flex-direction: column;
+    }
+    .header .nav {
+      display: none;
     }
   }
 
