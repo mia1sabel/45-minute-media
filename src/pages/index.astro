@@ -113,7 +113,10 @@ const portfolioItems = [
           Turn 45 minutes of filming into a continuous stream of premium, high-converting social media content designed to scale your brand authority.
         </p>
         <div class="hero-cta-wrapper">
-          <PrimaryButton href="#contact" text="Book Your Shoot" icon={true} />
+          <a href="#contact" class="primary-btn">
+            <span>Book Your Shoot</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
           <a href="#work" class="secondary-btn">View Our Work</a>
         </div>
 
@@ -148,28 +151,28 @@ const portfolioItems = [
         <div class="features-grid">
           <div class="feature-card">
             <div class="feature-icon">
-              <StreamlineSVG />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
             </div>
             <h3>Streamlined Workflow</h3>
             <p>Zero scriptwriting needed on your end. We handle research, outline topics, and guide you live during recording.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
-              <DeliverySVG />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             </div>
             <h3>Rapid Delivery</h3>
             <p>Get a complete batch of edited, formatted, and platform-ready videos delivered straight to your drive in days.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
-              <ScalabilitySVG />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
             </div>
             <h3>Scalable Engine</h3>
             <p>Maintain an active, professional presence across Instagram, TikTok, YouTube Shorts, and LinkedIn effortlessly.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
-              <TrustSVG />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <h3>Authority Building</h3>
             <p>Position yourself as an industry leader through crisp audio, professional lighting, and retention-focused editing.</p>
@@ -189,12 +192,13 @@ const portfolioItems = [
 
         <div class="portfolio-grid">
           {portfolioItems.map((item) => (
-            <WorkItem 
-              title={item.title} 
-              category={item.category} 
-              aspect={item.aspect} 
-              videoSrc={item.videoSrc}
-            />
+            <div class={`work-card ${item.aspect}`}>
+              <video src={item.videoSrc} controls preload="metadata"></video>
+              <div class="work-info">
+                <span class="work-category">{item.category}</span>
+                <h3 class="work-title">{item.title}</h3>
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -211,14 +215,22 @@ const portfolioItems = [
 
         <div class="process-grid">
           {processSteps.map((step) => (
-            <ProductCard 
-              step={step.step}
-              title={step.title}
-              desc={step.desc}
-              details={step.details}
-              badge={step.badge}
-              color={step.color}
-            />
+            <div class="process-card" style={`--accent-color: ${step.color}`}>
+              <div class="process-top">
+                <span class="process-step">{step.step}</span>
+                <span class="process-badge">{step.badge}</span>
+              </div>
+              <h3 class="process-title">{step.title}</h3>
+              <p class="process-desc">{step.desc}</p>
+              <ul class="process-details">
+                {step.details.map((detail) => (
+                  <li>
+                    <span class="check-icon">✓</span>
+                    <span>{detail}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       </div>
@@ -234,7 +246,13 @@ const portfolioItems = [
 
         <div class="faq-list">
           {faqs.map((faq) => (
-            <FAQItem question={faq.question} answer={faq.answer} />
+            <details class="faq-card">
+              <summary class="faq-question">
+                <span>{faq.question}</span>
+                <span class="faq-chevron">+</span>
+              </summary>
+              <p class="faq-answer">{faq.answer}</p>
+            </details>
           ))}
         </div>
       </div>
@@ -265,11 +283,30 @@ const portfolioItems = [
           </div>
 
           <form class="contact-form" action="https://formspree.io/f/mqaeednr" method="POST">
-            <FormField label="Full Name" name="name" type="text" placeholder="John Doe" required={true} />
-            <FormField label="Email Address" name="email" type="email" placeholder="john@company.com" required={true} />
-            <FormField label="Company / Brand" name="company" type="text" placeholder="Acme Inc." required={false} />
-            <FormField label="Project Details" name="message" type="textarea" placeholder="Tell us about your brand and goals..." required={true} />
-            <PrimaryButton type="submit" text="Submit Request" icon={true} fullWidth={true} />
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="John Doe" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="john@company.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="company">Company / Brand</label>
+              <input type="text" id="company" name="company" placeholder="Acme Inc." />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Project Details</label>
+              <textarea id="message" name="message" rows="4" placeholder="Tell us about your brand and goals..." required></textarea>
+            </div>
+
+            <button type="submit" class="primary-btn submit-btn">
+              <span>Submit Request</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
           </form>
         </div>
       </div>
@@ -300,8 +337,6 @@ const portfolioItems = [
         </div>
       </div>
     </footer>
-
-    <VideoModal />
   </div>
 </Layout>
 
@@ -399,6 +434,49 @@ const portfolioItems = [
     margin: 0 auto;
   }
 
+  /* BUTTONS */
+  .primary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: 8px;
+    font-weight: 700;
+    color: #0A0A0B;
+    background: #F59E0B;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .primary-btn:hover {
+    background: #FBBF24;
+    transform: translateY(-2px);
+  }
+
+  .submit-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .secondary-btn {
+    padding: 0.875rem 1.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #F3F4F6;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .secondary-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
   /* HERO */
   .hero-section {
     position: relative;
@@ -472,22 +550,6 @@ const portfolioItems = [
     justify-content: center;
     align-items: center;
     margin-bottom: 4rem;
-  }
-
-  .secondary-btn {
-    padding: 0.875rem 1.75rem;
-    border-radius: 8px;
-    font-weight: 600;
-    color: #F3F4F6;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.2s ease;
-    text-decoration: none;
-  }
-
-  .secondary-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
   }
 
   .hero-stats {
@@ -579,8 +641,38 @@ const portfolioItems = [
   /* WORK GRID */
   .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
+  }
+
+  .work-card {
+    background: rgba(18, 18, 20, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .work-card video {
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .work-info {
+    padding: 1.25rem;
+  }
+
+  .work-category {
+    font-size: 0.75rem;
+    color: #F59E0B;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .work-title {
+    font-size: 1.1rem;
+    color: #FFF;
+    margin-top: 0.25rem;
   }
 
   /* PROCESS */
@@ -590,8 +682,68 @@ const portfolioItems = [
 
   .process-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+  }
+
+  .process-card {
+    background: rgba(18, 18, 20, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+
+  .process-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .process-step {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--accent-color);
+  }
+
+  .process-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #9CA3AF;
+  }
+
+  .process-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #FFF;
+    margin-bottom: 0.75rem;
+  }
+
+  .process-desc {
+    color: #9CA3AF;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .process-details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .process-details li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #E5E7EB;
+    font-size: 0.9rem;
   }
 
   /* FAQ */
@@ -599,6 +751,40 @@ const portfolioItems = [
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
+
+  .faq-card {
+    background: rgba(18, 18, 20, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: #FFF;
+    font-size: 1.05rem;
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-chevron {
+    font-size: 1.25rem;
+    color: #F59E0B;
+  }
+
+  .faq-answer {
+    margin-top: 1rem;
+    color: #9CA3AF;
+    line-height: 1.6;
+    font-size: 0.95rem;
   }
 
   /* CONTACT */
@@ -663,6 +849,34 @@ const portfolioItems = [
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #E5E7EB;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    background: rgba(10, 10, 11, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: #FFF;
+    font-family: inherit;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #F59E0B;
   }
 
   /* FOOTER */
