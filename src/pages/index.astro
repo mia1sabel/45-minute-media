@@ -1,17 +1,6 @@
 ---
 import Layout from '../layout/layout.astro';
-import Header from '../components/Header.astro';
-import PrimaryButton from '../components/PrimaryButton.astro';
-import FormField from '../components/FormField.astro';
-import FAQItem from '../components/FAQItem.astro';
-import WorkItem from '../components/WorkItem.astro';
-import ProductCard from '../components/ProductCard.astro';
-import VideoModal from '../components/VideoModal.astro';
-import StreamlineSVG from '../components/StreamlineSVG.astro';
-import DeliverySVG from '../components/DeliverySVG.astro';
-import ScalabilitySVG from '../components/ScalabilitySVG.astro';
-import TrustSVG from '../components/TrustSVG.astro';
-import mainLogo from '../assets/45-minute-media-logo-yellow.png';
+import mainLogo from '../assets/Rectangle Logo JPG.jpg';
 import { Image } from 'astro:assets';
 
 const navLinks = [
@@ -87,17 +76,29 @@ const faqs = [
 ];
 
 const portfolioItems = [
-  { title: "Standard Brand Content", category: "Social Reel", aspect: "aspect-vertical", videoSrc: "/videos/Standard Brand Content.mp4" },
-  { title: "Standard Event Content", category: "Promotional", aspect: "aspect-vertical", videoSrc: "/videos/Standard Event Content.mp4" },
-  { title: "Story Driven", category: "Brand Story", aspect: "aspect-vertical", videoSrc: "/videos/Story Driven.mp4" },
-  { title: "Cinematic Event Coverage", category: "Event Highlight", aspect: "aspect-square", videoSrc: "/videos/Cinematic Event Coverage.mp4" },
-  { title: "Ad Campaign - Client Spotlight", category: "Paid Social", aspect: "aspect-wide", videoSrc: "/videos/Client Showcase.mp4" }
+  { title: "Standard Brand Content", category: "Social Reel", aspect: "aspect-vertical", videoSrc: "/promo.mp4" },
+  { title: "Standard Event Content", category: "Promotional", aspect: "aspect-vertical", videoSrc: "/promo.mp4" },
+  { title: "Story Driven", category: "Brand Story", aspect: "aspect-vertical", videoSrc: "/promo.mp4" }
 ];
 ---
 
 <Layout title="45-Minute Media | Premium Short-Form Video Production">
   <div class="page-wrapper">
-    <Header links={navLinks} logoSrc={mainLogo} />
+    
+    <!-- HEADER -->
+    <header class="main-header">
+      <div class="header-container">
+        <a href="#home" class="logo-link">
+          <Image src={mainLogo} alt="45-Minute Media Logo" class="nav-logo" />
+        </a>
+        <nav class="nav-menu">
+          {navLinks.map((link) => (
+            <a href={link.href} class="nav-link">{link.label}</a>
+          ))}
+        </nav>
+        <a href="#contact" class="btn-primary-sm">Get Started</a>
+      </div>
+    </header>
 
     <!-- HERO SECTION -->
     <section id="home" class="hero-section">
@@ -113,7 +114,7 @@ const portfolioItems = [
           Turn 45 minutes of filming into a continuous stream of premium, high-converting social media content designed to scale your brand authority.
         </p>
         <div class="hero-cta-wrapper">
-          <PrimaryButton href="#contact" text="Book Your Shoot" icon={true} />
+          <a href="#contact" class="btn-primary">Book Your Shoot →</a>
           <a href="#work" class="secondary-btn">View Our Work</a>
         </div>
 
@@ -136,7 +137,7 @@ const portfolioItems = [
       </div>
     </section>
 
-    <!-- VALUE PROPOSITION / FEATURES -->
+    <!-- FEATURES SECTION -->
     <section id="features" class="features-section">
       <div class="section-container">
         <div class="section-header center">
@@ -147,30 +148,18 @@ const portfolioItems = [
 
         <div class="features-grid">
           <div class="feature-card">
-            <div class="feature-icon">
-              <StreamlineSVG />
-            </div>
             <h3>Streamlined Workflow</h3>
             <p>Zero scriptwriting needed on your end. We handle research, outline topics, and guide you live during recording.</p>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">
-              <DeliverySVG />
-            </div>
             <h3>Rapid Delivery</h3>
             <p>Get a complete batch of edited, formatted, and platform-ready videos delivered straight to your drive in days.</p>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">
-              <ScalabilitySVG />
-            </div>
             <h3>Scalable Engine</h3>
             <p>Maintain an active, professional presence across Instagram, TikTok, YouTube Shorts, and LinkedIn effortlessly.</p>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">
-              <TrustSVG />
-            </div>
             <h3>Authority Building</h3>
             <p>Position yourself as an industry leader through crisp audio, professional lighting, and retention-focused editing.</p>
           </div>
@@ -178,23 +167,24 @@ const portfolioItems = [
       </div>
     </section>
 
-    <!-- WORK / PORTFOLIO SECTION -->
+    <!-- WORK SECTION -->
     <section id="work" class="work-section">
       <div class="section-container">
         <div class="section-header">
           <span class="section-tag">OUR WORK</span>
           <h2 class="section-title">Built to Grab Attention</h2>
-          <p class="section-desc">Click any video to preview our editing style, framing, and sound design.</p>
+          <p class="section-desc">Preview our editing style, framing, and sound design.</p>
         </div>
 
         <div class="portfolio-grid">
           {portfolioItems.map((item) => (
-            <WorkItem 
-              title={item.title} 
-              category={item.category} 
-              aspect={item.aspect} 
-              videoSrc={item.videoSrc}
-            />
+            <div class="work-card">
+              <video src={item.videoSrc} controls playsinline class="work-video"></video>
+              <div class="work-info">
+                <span class="work-cat">{item.category}</span>
+                <h4 class="work-title">{item.title}</h4>
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -211,14 +201,15 @@ const portfolioItems = [
 
         <div class="process-grid">
           {processSteps.map((step) => (
-            <ProductCard 
-              step={step.step}
-              title={step.title}
-              desc={step.desc}
-              details={step.details}
-              badge={step.badge}
-              color={step.color}
-            />
+            <div class="product-card">
+              <div class="card-badge" style={`color: ${step.color}; background: ${step.color}15`}>{step.badge}</div>
+              <span class="step-num">{step.step}</span>
+              <h3>{step.title}</h3>
+              <p>{step.desc}</p>
+              <ul class="details-list">
+                {step.details.map((d) => <li>✓ {d}</li>)}
+              </ul>
+            </div>
           ))}
         </div>
       </div>
@@ -234,13 +225,16 @@ const portfolioItems = [
 
         <div class="faq-list">
           {faqs.map((faq) => (
-            <FAQItem question={faq.question} answer={faq.answer} />
+            <div class="faq-item">
+              <h4 class="faq-q">{faq.question}</h4>
+              <p class="faq-a">{faq.answer}</p>
+            </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- CONTACT / GET STARTED SECTION -->
+    <!-- CONTACT SECTION -->
     <section id="contact" class="contact-section">
       <div class="section-container">
         <div class="contact-card">
@@ -249,27 +243,30 @@ const portfolioItems = [
             <h2>Ready for 6 Month’s Worth of Content?</h2>
             <p>Fill out the form to schedule your 45-minute filming session or book a quick intro call with our team.</p>
             <div class="contact-highlights">
-              <div class="highlight-item">
-                <span class="check-icon">✓</span>
-                <span>Fast 5-Day Delivery</span>
-              </div>
-              <div class="highlight-item">
-                <span class="check-icon">✓</span>
-                <span>Full Scripting & Direction</span>
-              </div>
-              <div class="highlight-item">
-                <span class="check-icon">✓</span>
-                <span>Formatted for All Platforms</span>
-              </div>
+              <div class="highlight-item"><span class="check-icon">✓</span> Fast 5-Day Delivery</div>
+              <div class="highlight-item"><span class="check-icon">✓</span> Full Scripting & Direction</div>
+              <div class="highlight-item"><span class="check-icon">✓</span> Formatted for All Platforms</div>
             </div>
           </div>
 
           <form class="contact-form" action="https://formspree.io/f/mqaeednr" method="POST">
-            <FormField label="Full Name" name="name" type="text" placeholder="John Doe" required={true} />
-            <FormField label="Email Address" name="email" type="email" placeholder="john@company.com" required={true} />
-            <FormField label="Company / Brand" name="company" type="text" placeholder="Acme Inc." required={false} />
-            <FormField label="Project Details" name="message" type="textarea" placeholder="Tell us about your brand and goals..." required={true} />
-            <PrimaryButton type="submit" text="Submit Request" icon={true} fullWidth={true} />
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" name="name" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" name="email" placeholder="john@company.com" required />
+            </div>
+            <div class="form-group">
+              <label>Company / Brand</label>
+              <input type="text" name="company" placeholder="Acme Inc." />
+            </div>
+            <div class="form-group">
+              <label>Project Details</label>
+              <textarea name="message" rows="4" placeholder="Tell us about your brand..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary full-width">Submit Request</button>
           </form>
         </div>
       </div>
@@ -280,464 +277,118 @@ const portfolioItems = [
       <div class="footer-inner">
         <div class="footer-brand">
           <a href="#home" class="footer-logo"><Image src={mainLogo} alt="45-Minute Media" /></a>
-          <p class="footer-tagline"> 6 Month’s worth of content for your business. Made simple. </p>
+          <p class="footer-tagline">6 Month’s worth of content for your business. Made simple.</p>
         </div>
         <div class="footer-divider"></div>
         <div class="footer-bottom">
           <p class="copyright">&copy; 2026 45-Minute Media. All rights reserved.</p>
           <div class="social-links">
-            <a href="https://www.instagram.com/45minutemedia?igsh=MWttdHBvemJ3bDJybw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <svg viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
-            </a>
-            <a href="https://www.tiktok.com/@45minute.media?_r=1&_t=ZP-98TqxC5woZT" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-              <svg viewBox="0 0 24 24">
-                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
-              </svg>
-            </a>
+            <a href="https://www.instagram.com/45minutemedia?igsh=MWttdHBvemJ3bDJybw==" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.tiktok.com/@45minute.media?_r=1&_t=ZP-98TqxC5woZT" target="_blank" rel="noopener noreferrer">TikTok</a>
           </div>
         </div>
       </div>
     </footer>
 
-    <VideoModal />
   </div>
 </Layout>
 
 <style>
-  .page-wrapper {
-    background-color: #0A0A0B;
-    color: #F3F4F6;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+  .page-wrapper { background-color: #0A0A0B; color: #F3F4F6; min-height: 100vh; overflow-x: hidden; font-family: sans-serif; }
+  .section-container { max-width: 1200px; margin: 0 auto; padding: 6rem 1.5rem; }
+  .section-container.narrow { max-width: 800px; }
+  .section-header { margin-bottom: 3.5rem; }
+  .section-header.center { text-align: center; }
+  .section-tag { display: inline-block; color: #F59E0B; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .section-title { font-size: 2.5rem; font-weight: 800; color: #FFFFFF; line-height: 1.2; margin-bottom: 1rem; }
+  .section-desc { color: #9CA3AF; font-size: 1.125rem; max-width: 600px; }
+  .section-header.center .section-desc { margin: 0 auto; }
 
-  .section-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 6rem 1.5rem;
-  }
-
-  .section-container.narrow {
-    max-width: 800px;
-  }
-
-  .section-header {
-    margin-bottom: 3.5rem;
-  }
-
-  .section-header.center {
-    text-align: center;
-  }
-
-  .section-tag {
-    display: inline-block;
-    color: #F59E0B;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #FFFFFF;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-  }
-
-  .section-desc {
-    color: #9CA3AF;
-    font-size: 1.125rem;
-    max-width: 600px;
-  }
-
-  .section-header.center .section-desc {
-    margin: 0 auto;
-  }
+  /* HEADER */
+  .main-header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(10, 10, 11, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+  .header-container { max-width: 1200px; margin: 0 auto; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { height: 32px; width: auto; object-fit: contain; }
+  .nav-menu { display: flex; gap: 2rem; }
+  .nav-link { color: #9CA3AF; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+  .nav-link:hover { color: #FFF; }
+  .btn-primary-sm { background: #F59E0B; color: #000; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 0.85rem; }
 
   /* HERO */
-  .hero-section {
-    position: relative;
-    padding: 10rem 1.5rem 6rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-  }
-
-  .glow-backdrop {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, rgba(139, 92, 246, 0.1) 40%, transparent 70%);
-    filter: blur(80px);
-    pointer-events: none;
-  }
-
-  .hero-container {
-    position: relative;
-    z-index: 1;
-    max-width: 900px;
-  }
-
-  .hero-badge-wrapper {
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-badge {
-    background: rgba(245, 158, 11, 0.1);
-    border: 1px solid rgba(245, 158, 11, 0.3);
-    color: #F59E0B;
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-  }
-
-  .hero-title {
-    font-size: 3.75rem;
-    font-weight: 900;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    margin-bottom: 1.5rem;
-    color: #FFFFFF;
-  }
-
-  .gradient-text {
-    background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 50%, #8B5CF6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .hero-subtitle {
-    font-size: 1.25rem;
-    color: #9CA3AF;
-    max-width: 700px;
-    margin: 0 auto 2.5rem;
-    line-height: 1.6;
-  }
-
-  .hero-cta-wrapper {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 4rem;
-  }
-
-  .secondary-btn {
-    padding: 0.875rem 1.75rem;
-    border-radius: 8px;
-    font-weight: 600;
-    color: #F3F4F6;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.2s ease;
-    text-decoration: none;
-  }
-
-  .secondary-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
-  }
-
-  .hero-stats {
-    display: inline-flex;
-    align-items: center;
-    background: rgba(18, 18, 20, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 1.25rem 2.5rem;
-    border-radius: 16px;
-    backdrop-filter: blur(12px);
-  }
-
-  .stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .stat-number {
-    font-size: 1.75rem;
-    font-weight: 800;
-    color: #FFFFFF;
-  }
-
-  .stat-label {
-    font-size: 0.85rem;
-    color: #6B7280;
-    margin-top: 0.25rem;
-  }
-
-  .stat-divider {
-    width: 1px;
-    height: 35px;
-    background: rgba(255, 255, 255, 0.1);
-    margin: 0 2rem;
-  }
+  .hero-section { position: relative; padding: 10rem 1.5rem 6rem; text-align: center; }
+  .glow-backdrop { position: absolute; top: 20%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, rgba(139, 92, 246, 0.1) 40%, transparent 70%); filter: blur(80px); pointer-events: none; }
+  .hero-container { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+  .hero-badge { background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); color: #F59E0B; padding: 0.5rem 1rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 700; }
+  .hero-title { font-size: 3.75rem; font-weight: 900; line-height: 1.1; margin: 1.5rem 0; color: #FFFFFF; }
+  .gradient-text { background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 50%, #8B5CF6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-subtitle { font-size: 1.25rem; color: #9CA3AF; max-width: 700px; margin: 0 auto 2.5rem; line-height: 1.6; }
+  .hero-cta-wrapper { display: flex; gap: 1rem; justify-content: center; margin-bottom: 4rem; }
+  .btn-primary { background: #F59E0B; color: #000; padding: 0.875rem 1.75rem; border-radius: 8px; font-weight: 700; text-decoration: none; border: none; cursor: pointer; }
+  .secondary-btn { padding: 0.875rem 1.75rem; border-radius: 8px; font-weight: 600; color: #F3F4F6; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); text-decoration: none; }
+  .hero-stats { display: inline-flex; align-items: center; background: rgba(18, 18, 20, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); padding: 1.25rem 2.5rem; border-radius: 16px; }
+  .stat-item { display: flex; flex-direction: column; align-items: center; }
+  .stat-number { font-size: 1.75rem; font-weight: 800; color: #FFFFFF; }
+  .stat-label { font-size: 0.85rem; color: #6B7280; margin-top: 0.25rem; }
+  .stat-divider { width: 1px; height: 35px; background: rgba(255, 255, 255, 0.1); margin: 0 2rem; }
 
   /* FEATURES */
-  .features-section {
-    background: #0E0E10;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
+  .features-section { background: #0E0E10; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+  .feature-card { background: rgba(18, 18, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.06); padding: 2rem; border-radius: 12px; }
+  .feature-card h3 { font-size: 1.25rem; font-weight: 700; color: #FFF; margin-bottom: 0.75rem; }
+  .feature-card p { color: #9CA3AF; font-size: 0.95rem; line-height: 1.5; }
 
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .feature-card {
-    background: rgba(18, 18, 20, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    padding: 2rem;
-    border-radius: 12px;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-
-  .feature-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(245, 158, 11, 0.3);
-  }
-
-  .feature-icon {
-    width: 48px;
-    height: 48px;
-    background: rgba(245, 158, 11, 0.1);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #F59E0B;
-    margin-bottom: 1.25rem;
-  }
-
-  .feature-card h3 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #FFF;
-    margin-bottom: 0.75rem;
-  }
-
-  .feature-card p {
-    color: #9CA3AF;
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
-
-  /* WORK GRID */
-  .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 1.5rem;
-  }
+  /* WORK */
+  .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .work-card { background: #121214; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; overflow: hidden; }
+  .work-video { width: 100%; height: 300px; object-fit: cover; background: #000; }
+  .work-info { padding: 1.25rem; }
+  .work-cat { color: #F59E0B; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+  .work-title { font-size: 1.1rem; color: #FFF; margin-top: 0.25rem; }
 
   /* PROCESS */
-  .process-section {
-    background: #0E0E10;
-  }
-
-  .process-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-  }
+  .process-section { background: #0E0E10; }
+  .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .product-card { background: #121214; border: 1px solid rgba(255, 255, 255, 0.08); padding: 2rem; border-radius: 16px; position: relative; }
+  .card-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; margin-bottom: 1rem; }
+  .step-num { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 2rem; font-weight: 900; opacity: 0.2; color: #FFF; }
+  .product-card h3 { color: #FFF; margin-bottom: 0.5rem; }
+  .product-card p { color: #9CA3AF; font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .details-list { list-style: none; padding: 0; color: #D1D5DB; font-size: 0.85rem; display: flex; flex-direction: column; gap: 0.5rem; }
 
   /* FAQ */
-  .faq-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+  .faq-list { display: flex; flex-direction: column; gap: 1rem; }
+  .faq-item { background: #121214; border: 1px solid rgba(255, 255, 255, 0.06); padding: 1.5rem; border-radius: 12px; }
+  .faq-q { color: #FFF; font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .faq-a { color: #9CA3AF; font-size: 0.95rem; line-height: 1.5; }
 
   /* CONTACT */
-  .contact-section {
-    position: relative;
-  }
-
-  .contact-card {
-    background: linear-gradient(135deg, rgba(24, 24, 27, 0.9) 0%, rgba(18, 18, 20, 0.9) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    padding: 3.5rem;
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 3.5rem;
-  }
-
-  .contact-info h2 {
-    font-size: 2.25rem;
-    font-weight: 800;
-    color: #FFF;
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-  }
-
-  .contact-info p {
-    color: #9CA3AF;
-    font-size: 1.05rem;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-  }
-
-  .contact-highlights {
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-  }
-
-  .highlight-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    color: #E5E7EB;
-    font-weight: 500;
-  }
-
-  .check-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 22px;
-    height: 22px;
-    background: rgba(245, 158, 11, 0.2);
-    color: #F59E0B;
-    border-radius: 50%;
-    font-size: 0.75rem;
-    font-weight: 800;
-  }
-
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
+  .contact-card { background: #121214; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .contact-info h2 { font-size: 2rem; color: #FFF; margin: 0.5rem 0 1rem; }
+  .contact-info p { color: #9CA3AF; margin-bottom: 2rem; }
+  .contact-highlights { display: flex; flex-direction: column; gap: 0.75rem; color: #E5E7EB; }
+  .check-icon { color: #F59E0B; font-weight: 800; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.85rem; color: #D1D5DB; font-weight: 600; }
+  .form-group input, .form-group textarea { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.75rem; border-radius: 8px; color: #FFF; }
+  .full-width { width: 100%; margin-top: 0.5rem; }
 
   /* FOOTER */
-  footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    background: #070708;
-    padding: 4rem 1.5rem 2.5rem;
-  }
-
-  .footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .footer-brand {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 2.5rem;
-  }
-
-  .footer-logo {
-    display: inline-block;
-    margin-bottom: 1rem;
-  }
-
-  .footer-logo img {
-    height: 36px;
-    width: auto;
-  }
-
-  .footer-tagline {
-    color: #9CA3AF;
-    max-width: 400px;
-    font-size: 0.95rem;
-  }
-
-  .footer-divider {
-    height: 1px;
-    background: rgba(255, 255, 255, 0.06);
-    margin-bottom: 2rem;
-  }
-
-  .footer-bottom {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center;
-    flex-wrap: wrap; 
-    gap: 1rem; 
-    font-size: 0.95rem;
-  }
-
-  .social-links { 
-    display: flex; 
-    gap: 1.25rem; 
-    align-items: center; 
-  }
-
-  .social-links a {
-    color: #9CA3AF; 
-    transition: color 0.2s ease, transform 0.2s ease;
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-  }
-
-  .social-links a:hover { 
-    color: #FFF; 
-    transform: translateY(-2px); 
-  }
-
-  .social-links svg { 
-    width: 22px; 
-    height: 22px; 
-    fill: currentColor; 
-  }
-
-  .copyright { 
-    color: #6B7280; 
-  }
-
-  /* MEDIA QUERIES */
-  @media (max-width: 992px) {
-    .contact-card {
-      grid-template-columns: 1fr;
-      padding: 2.5rem;
-    }
-  }
+  footer { border-top: 1px solid rgba(255, 255, 255, 0.08); background: #070708; padding: 3rem 1.5rem 2rem; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+  .footer-logo img { height: 32px; width: auto; }
+  .footer-tagline { color: #9CA3AF; margin-top: 0.5rem; font-size: 0.9rem; }
+  .footer-divider { height: 1px; background: rgba(255, 255, 255, 0.06); margin: 2rem 0; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #6B7280; }
+  .social-links { display: flex; gap: 1rem; }
+  .social-links a { color: #9CA3AF; text-decoration: none; }
 
   @media (max-width: 768px) {
-    .hero-title {
-      font-size: 2.5rem;
-    }
-    .hero-stats {
-      flex-direction: column;
-      gap: 1rem;
-      padding: 1.5rem;
-    }
-    .stat-divider {
-      width: 60%;
-      height: 1px;
-      margin: 0;
-    }
-    .hero-cta-wrapper {
-      flex-direction: column;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .footer-bottom {
-      flex-direction: column-reverse;
-      align-items: flex-start;
-      gap: 1.5rem;
-    }
+    .contact-card { grid-template-columns: 1fr; padding: 1.5rem; }
+    .hero-title { font-size: 2.5rem; }
+    .hero-cta-wrapper { flex-direction: column; }
+    .hero-stats { flex-direction: column; gap: 1rem; }
+    .stat-divider { width: 60%; height: 1px; margin: 0; }
+    .nav-menu { display: none; }
   }
 </style>
