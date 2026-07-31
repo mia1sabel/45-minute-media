@@ -231,7 +231,9 @@ const base = import.meta.env.BASE_URL;
         max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem;
       }
       .footer-brand .footer-logo img { height: 110px; width: auto; display: block; margin-bottom: 1rem; }
-      .footer-tagline { font-size: 1rem; color: #9CA3AF; }
+      .footer-tagline { font-size: 1rem; color: #9CA3AF; margin-bottom: 0.5rem; }
+      .footer-email { font-size: 1rem; color: var(--accent); text-decoration: none; font-weight: 500; transition: opacity 0.2s; }
+      .footer-email:hover { opacity: 0.8; }
       .footer-divider { height: 1px; background-color: #1F2937; width: 100%; }
       .footer-bottom {
         display: flex; justify-content: space-between; align-items: center;
@@ -308,7 +310,7 @@ const base = import.meta.env.BASE_URL;
       <section id="home" class="hero">
         <div class="hero-content">
           <h1>
-            <span class="line-1">Your Entire Month of Content.</span><br />
+            <span class="line-1">Your Entire Month of Social Media Videos.</span><br />
             <span class="line-2">Only <span class="highlight-blue">45 Minutes</span> of Your Time.</span>
           </h1>
           <p class="subtitle">
@@ -408,7 +410,11 @@ const base = import.meta.env.BASE_URL;
           <!-- Form Card -->
           <div class="form-card">
             <h2>Get Started</h2>
-            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted!');">
+            <form 
+              action="https://formsubmit.co/45minutemedia@gmail.com" 
+              method="POST" 
+              onsubmit="event.preventDefault(); fetch(this.action, { method: 'POST', body: new FormData(this) }).then(() => { alert('Thank you!'); this.reset(); });"
+            >
               <div class="form-group">
                 <label for="name">Your Name</label>
                 <input type="text" id="name" name="name" placeholder="John Doe" required />
@@ -441,6 +447,7 @@ const base = import.meta.env.BASE_URL;
         <div class="footer-brand">
           <a href="#home" class="footer-logo"><Image src={mainLogo} alt="45-Minute Media" /></a>
           <p class="footer-tagline"> 6 Month’s worth of content for your business. Made simple. </p>
+          <a href="mailto:45minutemedia@gmail.com" class="footer-email">45minutemedia@gmail.com</a>
         </div>
         <div class="footer-divider"></div>
         <div class="footer-bottom">
