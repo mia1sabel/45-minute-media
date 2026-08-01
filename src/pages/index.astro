@@ -325,8 +325,15 @@ const base = import.meta.env.BASE_URL;
           </div>
 
           <div class="video-column">
-           <div class="video-wrapper">
-  <video autoplay loop muted playsinline preload="auto">
+          <div class="video-wrapper">
+  <video 
+    autoplay 
+    loop 
+    muted 
+    playsinline 
+    preload="auto"
+    style="width:100%; height:100%; object-fit:cover;"
+  >
     <source src={`${base}/Website Vid2.mp4`} type="video/mp4" />
     Your browser does not support the video tag.
   </video>
