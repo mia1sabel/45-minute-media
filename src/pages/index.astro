@@ -3,7 +3,8 @@ import { Image } from 'astro:assets';
 import mainLogo from '../assets/Rectangle Logo SVG transparent.svg';
 import faviconImg from '../assets/Circle Logo transparent.svg';
 
-const base = import.meta.env.BASE_URL;
+// Clean trailing slash to prevent broken paths like //website-vid.mp4
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <html lang="en">
