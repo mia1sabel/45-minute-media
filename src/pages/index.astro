@@ -36,7 +36,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       * { box-sizing: border-box; margin: 0; padding: 0; }
       body {
-        font-family: 'Instrument Serif', 'Playfair Display', Georgia, serif;
+        font-family: 'Le Jour Serif', 'Playfair Display', Georgia, serif;
         background-color: var(--bg-color);
         color: var(--text-main);
         -webkit-font-smoothing: antialiased;
@@ -82,6 +82,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         font-family: system-ui, -apple-system, sans-serif;
         color: var(--text-muted); margin-bottom: 2.5rem;
         line-height: 1.6; max-width: 700px; margin-inline: auto; font-weight: 300;
+      }
+
+      p.subtitle em {
+        font-style: italic;
       }
       
       .cta-btn {
@@ -253,7 +257,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <span class="line-1">Get More Clients By Just Being You.</span>
           </h1>
           <p class="subtitle">
-            For Atlanta businesses that know having an audience, is the marketing.
+            For Atlanta businesses that know having an audience, <em>is</em> the marketing.
           </p>
           <a href="#contact" class="cta-btn">See If You Qualify</a>
         </div>
