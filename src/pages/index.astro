@@ -51,16 +51,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         display: flex; flex-direction: column; min-height: 100vh;
       }
       
-      /* Static Header with Prominent Logo */
+      /* Header with tight padding for large logo */
       header {
         position: relative;
         background-color: transparent;
         display: flex; justify-content: space-between; align-items: center;
-        padding: 1.5rem 5%; width: 100%; max-width: 1400px; margin: 0 auto;
+        padding: 0.5rem 5%; width: 100%; max-width: 1400px; margin: 0 auto;
         border-bottom: 1px solid var(--border-color);
       }
       .logo { display: flex; align-items: center; text-decoration: none; }
-      .logo img { height: 180px; width: auto; object-fit: contain; } /* Massively increased size */
+      .logo img { height: 280px; width: auto; object-fit: contain; } /* Massively increased visual size */
 
       nav { display: flex; gap: 2rem; align-items: center; font-family: system-ui, -apple-system, sans-serif; }
       nav a {
@@ -71,7 +71,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       /* Hero Section */
       .hero {
-        padding: 5rem 5% 4rem; text-align: center;
+        padding: 4rem 5% 3.5rem; text-align: center;
         display: flex; flex-direction: column; align-items: center;
         scroll-margin-top: 20px;
       }
@@ -171,7 +171,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.15);
       }
       .offer-badge {
-        display: inline-link; background-color: var(--bg-color); color: var(--text-main);
+        display: inline-block; background-color: var(--bg-color); color: var(--text-main);
         font-size: 0.75rem; font-family: system-ui, -apple-system, sans-serif; font-weight: 600; padding: 0.35rem 0.75rem;
         border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem;
       }
@@ -210,7 +210,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       .footer-inner {
         max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem;
       }
-      .footer-brand .footer-logo img { height: 140px; width: auto; display: block; margin-bottom: 1rem; filter: invert(1); } /* Larger footer logo */
+      .footer-brand .footer-logo img { height: 220px; width: auto; display: block; margin-bottom: 1rem; filter: invert(1); } /* Large footer logo */
       .footer-tagline { font-size: 1rem; color: #AAAAAA; margin-bottom: 0.5rem; font-weight: 300; }
       .footer-email { font-size: 1rem; color: #FFFFFF; text-decoration: none; font-weight: 400; transition: opacity 0.2s; }
       .footer-email:hover { opacity: 0.8; }
@@ -232,7 +232,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           gap: 1rem;
           padding: 1rem 5%;
         }
-        .logo img { height: 140px; }
+        .logo img { height: 180px; }
         .hero {
           padding: 3rem 5% 2.5rem;
         }
