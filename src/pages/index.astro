@@ -10,22 +10,24 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="Circle Logo transparent.svg" href={Circle Logo transparent.svg} />
+    <link rel="icon" type="image/svg+xml" href={faviconImg.src} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>45-Minute Media | 45-Minute Media</title>
+    <title>Founder Frame | Get More Clients By Just Being You</title>
 
     <!-- Canonical & Social Metadata -->
-    <link rel="canonical" href="https://45minutemedia.com" />
-    <meta property="og:url" content="https://45minutemedia.com" />
-    <meta property="og:title" content="45-Minute Media | 45-Minute Media" />
-    <meta property="og:description" content="Your Entire Month of Social Media Videos. Only 45 Minutes of Your Time." />
+    <link rel="canonical" href="https://founderframe.com" />
+    <meta property="og:url" content="https://founderframe.com" />
+    <meta property="og:title" content="Founder Frame | Get More Clients By Just Being You" />
+    <meta property="og:description" content="For Atlanta businesses that know having an audience, is the marketing." />
 
     <style>
       :root {
-        --bg-color: #FAFAFA;
-        --text-main: #111827;
-        --text-muted: #6B7280;
-        --accent: #2563EB;
+        --bg-color: #F8F3E9;
+        --surface-color: #FFFFFF;
+        --text-main: #000000;
+        --text-muted: #555555;
+        --accent: #000000;
+        --border-color: #E2DBD0;
       }
 
       html {
@@ -34,7 +36,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       * { box-sizing: border-box; margin: 0; padding: 0; }
       body {
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-family: 'Instrument Serif', 'Playfair Display', Georgia, serif;
         background-color: var(--bg-color);
         color: var(--text-main);
         -webkit-font-smoothing: antialiased;
@@ -43,64 +45,58 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       
       /* Static Header with Prominent Logo */
       header {
-        position: relative; /* Static, non-sticky */
+        position: relative;
         background-color: transparent;
         display: flex; justify-content: space-between; align-items: center;
-        padding: 0.5rem 5%; width: 100%; max-width: 1400px; margin: 0 auto;
-        border-bottom: 1px solid #E5E7EB;
+        padding: 1rem 5%; width: 100%; max-width: 1400px; margin: 0 auto;
+        border-bottom: 1px solid var(--border-color);
       }
       .logo { display: flex; align-items: center; text-decoration: none; }
-      .logo img { height: 110px; width: auto; object-fit: contain; } /* Significantly larger on Desktop */
+      .logo img { height: 60px; width: auto; object-fit: contain; }
 
-      nav { display: flex; gap: 2rem; align-items: center; }
+      nav { display: flex; gap: 2rem; align-items: center; font-family: system-ui, -apple-system, sans-serif; }
       nav a {
-        text-decoration: none; color: var(--text-muted); font-weight: 600;
-        font-size: 1.05rem; transition: color 0.2s ease;
+        text-decoration: none; color: var(--text-muted); font-weight: 500;
+        font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.2s ease;
       }
       nav a:hover { color: var(--text-main); }
 
       /* Hero Section */
       .hero {
-        padding: 4rem 5% 3.5rem; text-align: center;
+        padding: 5rem 5% 4rem; text-align: center;
         display: flex; flex-direction: column; align-items: center;
         scroll-margin-top: 20px;
       }
-      .hero-content { max-width: 1300px; width: 100%; }
+      .hero-content { max-width: 1100px; width: 100%; }
       
       h1 {
-        font-size: clamp(2rem, 3.6vw, 3.2rem);
-        font-weight: 800; line-height: 1.25;
-        letter-spacing: -0.03em; margin-bottom: 1.25rem; color: #000;
+        font-size: clamp(2.5rem, 4.5vw, 4.2rem);
+        font-weight: 400; line-height: 1.15;
+        letter-spacing: -0.01em; margin-bottom: 1.5rem; color: var(--text-main);
       }
       
-      .line-1, .line-2 { display: inline-block; }
-      @media (min-width: 1024px) {
-        .line-1, .line-2 { white-space: nowrap; }
-      }
-
-      .highlight-blue {
-        color: var(--accent);
-        font-weight: 800;
-      }
+      .line-1, .line-2 { display: block; }
 
       p.subtitle {
-        font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+        font-size: clamp(1.15rem, 2vw, 1.4rem);
+        font-family: system-ui, -apple-system, sans-serif;
         color: var(--text-muted); margin-bottom: 2.5rem;
-        line-height: 1.5; max-width: 650px; margin-inline: auto;
+        line-height: 1.6; max-width: 700px; margin-inline: auto; font-weight: 300;
       }
       
       .cta-btn {
-        display: inline-block; background-color: #0F172A; color: #FFF;
-        padding: 1rem 2.25rem; border-radius: 8px; text-decoration: none;
-        font-weight: 600; font-size: 1.05rem;
-        transition: background-color 0.2s ease, transform 0.1s ease;
+        display: inline-block; background-color: var(--text-main); color: var(--bg-color);
+        padding: 1rem 2.5rem; border-radius: 4px; text-decoration: none;
+        font-family: system-ui, -apple-system, sans-serif;
+        font-weight: 500; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em;
+        transition: opacity 0.2s ease, transform 0.1s ease;
       }
-      .cta-btn:hover { background-color: #1E293B; transform: translateY(-1px); }
+      .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
 
       /* Section Separator */
       .cta-divider {
         width: 100%; max-width: 1300px; height: 1px;
-        background-color: #E5E7EB; margin: 2rem auto 4rem;
+        background-color: var(--border-color); margin: 2rem auto 4rem;
       }
 
       /* How It Works Layout */
@@ -116,38 +112,34 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       }
 
       .section-tag {
-        font-size: 0.85rem; font-weight: 700; color: var(--accent);
-        letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem;
+        font-size: 0.85rem; font-family: system-ui, -apple-system, sans-serif; font-weight: 600; color: var(--text-muted);
+        letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem;
       }
       .section-title {
-        font-size: 2.25rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 2.5rem;
+        font-size: 2.75rem; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 2.5rem;
       }
       
       .step-item {
-        display: flex; gap: 2.5rem; align-items: center;
+        display: flex; gap: 2rem; align-items: flex-start;
         padding-top: 1.75rem; padding-bottom: 1.75rem;
-        border-top: 1px solid #E5E7EB; width: 100%;
+        border-top: 1px solid var(--border-color); width: 100%;
       }
       .step-number {
-        font-size: 1.25rem; font-weight: 800; color: var(--accent);
+        font-size: 1.25rem; font-family: system-ui, -apple-system, sans-serif; font-weight: 400; color: var(--text-muted);
         min-width: 2rem;
       }
       .step-content { flex: 1; }
-      .step-content h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem; color: #111827; }
+      .step-content h3 { font-size: 1.5rem; font-weight: 400; margin-bottom: 0.35rem; color: var(--text-main); }
       .step-content p {
-        color: var(--text-muted); font-size: 1rem; line-height: 1.4;
-        white-space: nowrap;
-      }
-
-      @media (max-width: 1100px) {
-        .step-content p { white-space: normal; }
+        color: var(--text-muted); font-family: system-ui, -apple-system, sans-serif; font-size: 1.05rem; line-height: 1.5;
+        font-weight: 300;
       }
 
       /* Video Frame */
       .video-wrapper {
         width: 100%; max-width: 380px; margin: 0 auto;
-        aspect-ratio: 9/16; background: #000; border-radius: 16px;
-        overflow: hidden; box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.15);
+        aspect-ratio: 9/16; background: #000; border-radius: 12px;
+        overflow: hidden; box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.1);
       }
       .video-wrapper video {
         width: 100%; height: 100%; object-fit: cover; display: block;
@@ -155,121 +147,98 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       /* Contact / Get Started Section */
       .contact-section {
-        border-top: 1px solid #E5E7EB;
+        border-top: 1px solid var(--border-color);
         padding: 6rem 5%;
         display: flex;
         justify-content: center;
         scroll-margin-top: 20px;
+        background-color: rgba(255, 255, 255, 0.4);
       }
-      .container { max-width: 900px; width: 100%; }
+      .container { max-width: 800px; width: 100%; }
 
       /* Banner Card */
       .offer-banner {
-        background-color: #0F172A; color: #FFF; border-radius: 16px;
-        padding: 2.5rem 3rem; margin-bottom: 2rem; text-align: left;
-        box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.15);
+        background-color: var(--text-main); color: var(--bg-color); border-radius: 12px;
+        padding: 3rem; margin-bottom: 2.5rem; text-align: left;
+        box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.15);
       }
       .offer-badge {
-        display: inline-block; background-color: #2563EB; color: #FFF;
-        font-size: 0.8rem; font-weight: 700; padding: 0.35rem 0.75rem;
-        border-radius: 6px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;
+        display: inline-block; background-color: var(--bg-color); color: var(--text-main);
+        font-size: 0.75rem; font-family: system-ui, -apple-system, sans-serif; font-weight: 600; padding: 0.35rem 0.75rem;
+        border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem;
       }
-      .offer-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.6rem; color: #FFF; letter-spacing: -0.01em; }
-      .offer-text { font-size: 1.1rem; color: #94A3B8; line-height: 1.6; }
+      .offer-title { font-size: 2.25rem; font-weight: 400; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
+      .offer-text { font-size: 1.1rem; font-family: system-ui, -apple-system, sans-serif; color: #CCCCCC; line-height: 1.6; font-weight: 300; }
 
       /* Form Card */
       .form-card {
-        background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 16px;
-        padding: 3.5rem 3rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 12px;
+        padding: 3.5rem 3rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03);
       }
-      .form-card h2 { font-size: 2.25rem; font-weight: 800; margin-bottom: 2.25rem; letter-spacing: -0.02em; color: #111827; }
+      .form-card h2 { font-size: 2.5rem; font-weight: 400; margin-bottom: 2.25rem; letter-spacing: -0.01em; color: var(--text-main); }
 
       .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; text-align: left; }
-      .form-group label { font-size: 0.95rem; font-weight: 600; color: #374151; }
+      .form-group label { font-size: 0.9rem; font-family: system-ui, -apple-system, sans-serif; font-weight: 500; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.05em; }
       .form-group input {
-        padding: 1rem 1.25rem; border: 1px solid #D1D5DB; border-radius: 8px;
-        font-size: 1rem; font-family: inherit; transition: border-color 0.2s, box-shadow 0.2s;
-        outline: none; background-color: #FAFAFA;
+        padding: 1rem 1.25rem; border: 1px solid var(--border-color); border-radius: 6px;
+        font-size: 1rem; font-family: system-ui, -apple-system, sans-serif; transition: border-color 0.2s, box-shadow 0.2s;
+        outline: none; background-color: var(--bg-color);
       }
-      .form-group input:focus { border-color: var(--accent); background-color: #FFF; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
+      .form-group input:focus { border-color: var(--text-main); background-color: #FFF; }
 
       .submit-btn {
-        width: 100%; background-color: #0F172A; color: #FFF; border: none;
-        padding: 1.15rem; border-radius: 8px; font-weight: 600; font-size: 1.05rem;
-        cursor: pointer; transition: background-color 0.2s ease, transform 0.1s ease; margin-top: 0.5rem;
+        width: 100%; background-color: var(--text-main); color: var(--bg-color); border: none;
+        padding: 1.15rem; border-radius: 6px; font-family: system-ui, -apple-system, sans-serif;
+        font-weight: 500; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em;
+        cursor: pointer; transition: opacity 0.2s ease, transform 0.1s ease; margin-top: 0.5rem;
       }
-      .submit-btn:hover { background-color: #1E293B; transform: translateY(-1px); }
+      .submit-btn:hover { opacity: 0.9; transform: translateY(-1px); }
 
       /* Footer */
       footer {
-        background-color: #050505; color: #9CA3AF; padding: 4rem 5% 3rem;
-        width: 100%; margin-top: auto;
+        background-color: var(--text-main); color: #888888; padding: 4rem 5% 3rem;
+        width: 100%; margin-top: auto; font-family: system-ui, -apple-system, sans-serif;
       }
       .footer-inner {
         max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem;
       }
-      .footer-brand .footer-logo img { height: 110px; width: auto; display: block; margin-bottom: 1rem; }
-      .footer-tagline { font-size: 1rem; color: #9CA3AF; margin-bottom: 0.5rem; }
-      .footer-email { font-size: 1rem; color: var(--accent); text-decoration: none; font-weight: 500; transition: opacity 0.2s; }
+      .footer-brand .footer-logo img { height: 50px; width: auto; display: block; margin-bottom: 1rem; filter: invert(1); }
+      .footer-tagline { font-size: 1rem; color: #AAAAAA; margin-bottom: 0.5rem; font-weight: 300; }
+      .footer-email { font-size: 1rem; color: #FFFFFF; text-decoration: none; font-weight: 400; transition: opacity 0.2s; }
       .footer-email:hover { opacity: 0.8; }
-      .footer-divider { height: 1px; background-color: #1F2937; width: 100%; }
+      .footer-divider { height: 1px; background-color: #222222; width: 100%; }
       .footer-bottom {
         display: flex; justify-content: space-between; align-items: center;
-        flex-wrap: wrap; gap: 1rem; font-size: 0.95rem;
+        flex-wrap: wrap; gap: 1rem; font-size: 0.9rem;
       }
       .footer-socials { display: flex; gap: 1.25rem; align-items: center; }
-      .footer-socials a { color: #9CA3AF; transition: color 0.2s ease; display: flex; align-items: center; }
+      .footer-socials a { color: #AAAAAA; transition: color 0.2s ease; display: flex; align-items: center; }
       .footer-socials a:hover { color: #FFF; }
-      .footer-socials svg { width: 22px; height: 22px; fill: currentColor; }
-      .copyright { color: #6B7280; }
+      .footer-socials svg { width: 20px; height: 20px; fill: currentColor; }
+      .copyright { color: #777777; }
 
       /* Mobile Fixes */
       @media (max-width: 640px) {
         header {
           flex-direction: column;
           gap: 1rem;
-          padding: 0.5rem 5%;
-        }
-        .logo img {
-          height: 160px; /* Larger logo on Mobile */
-        }
-        nav {
-          gap: 1.5rem;
-        }
-        nav a {
-          font-size: 0.95rem;
+          padding: 1rem 5%;
         }
         .hero {
-          padding: 2.5rem 5% 2rem;
-        }
-        .step-item {
-          gap: 1.25rem;
-        }
-        .contact-section {
-          padding: 3rem 5%;
+          padding: 3rem 5% 2.5rem;
         }
         .offer-banner {
-          padding: 1.75rem 1.5rem;
+          padding: 2rem 1.5rem;
         }
         .form-card {
           padding: 2rem 1.5rem;
-        }
-        .form-card h2 {
-          font-size: 1.75rem;
-          margin-bottom: 1.5rem;
-        }
-        .footer-bottom {
-          flex-direction: row;
-          justify-content: space-between;
-          align-items: center;
-          gap: 1rem;
         }
       }
     </style>
   </head>
   <body>
     <header>
-      <a href="#home" class="logo"><Image src={mainLogo} alt="45-Minute Media" /></a>
+      <a href="#home" class="logo"><Image src={mainLogo} alt="Founder Frame" /></a>
       <nav>
         <a href="#home">Home</a>
         <a href="#contact">Get Started</a>
@@ -281,13 +250,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <section id="home" class="hero">
         <div class="hero-content">
           <h1>
-            <span class="line-1">Your Entire Month of Social Media Videos.</span><br />
-            <span class="line-2">Only <span class="highlight-blue">45 Minutes</span> of Your Time.</span>
+            <span class="line-1">Get More Clients By Just Being You.</span>
           </h1>
           <p class="subtitle">
-            Video production for brands who'd rather be running their business.
+            For Atlanta businesses that know having an audience, is the marketing.
           </p>
-          <a href="#contact" class="cta-btn">Start a Project</a>
+          <a href="#contact" class="cta-btn">See If You Qualify</a>
         </div>
       </section>
 
@@ -298,21 +266,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <div class="how-it-works-grid">
           <div class="steps-column">
             <p class="section-tag">HOW IT WORKS</p>
-            <h2 class="section-title">Three steps, start to finish.</h2>
+            <h2 class="section-title">Premium Scripting. Premium Editing. Premium Results.</h2>
             
             <div class="step-item">
               <span class="step-number">01</span>
               <div class="step-content">
-                <h3>The strategy</h3>
-                <p>We map out your entire month of video content together.</p>
+                <h3>The strategy & setup</h3>
+                <p>We film with you once and set up your phone so shooting is easy.</p>
               </div>
             </div>
 
             <div class="step-item">
               <span class="step-number">02</span>
               <div class="step-content">
-                <h3>One <span class="highlight-blue">45 Minute</span> shoot</h3>
-                <p>We capture all your content in one focused session.</p>
+                <h3>Record on your time</h3>
+                <p>You press record on your own time using the scripts we write for you.</p>
               </div>
             </div>
 
@@ -320,7 +288,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               <span class="step-number">03</span>
               <div class="step-content">
                 <h3>We handle the rest</h3>
-                <p>Premium editing, vfx, and final delivery—completely off your plate until next month.</p>
+                <p>We do all the hard work—writing, editing, and posting every single video for you.</p>
               </div>
             </div>
           </div>
@@ -348,18 +316,18 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <div class="container">
           <!-- Offer Banner -->
           <div class="offer-banner">
-            <span class="offer-badge">LIMITED AVAILABILITY</span>
-            <h3 class="offer-title">Get Your First Video for Free</h3>
+            <span class="offer-badge">Limited Availability</span>
+            <h3 class="offer-title">Get Your Free Blueprint</h3>
             <p class="offer-text">
-              To give every brand our full attention, we only work with 4 clients at a time. Fill out the form below to lock in your spot.
+              To give every brand our full attention, we only work with 4 clients at a time. Fill out the form to get your free blueprint.
             </p>
           </div>
 
           <!-- Form Card -->
           <div class="form-card">
-            <h2>Get Started</h2>
+            <h2>Start Your Personal Brand</h2>
             <form 
-              action="https://formsubmit.co/45minutemedia@gmail.com" 
+              action="https://formsubmit.co/founderframemedia@gmail.com" 
               method="POST" 
               onsubmit="event.preventDefault(); fetch(this.action, { method: 'POST', body: new FormData(this) }).then(() => { alert('Thank you!'); this.reset(); });"
             >
@@ -383,7 +351,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
                 <input type="url" id="website" name="website" placeholder="https://example.com" />
               </div>
 
-              <button type="submit" class="submit-btn">Claim Your Free Video</button>
+              <button type="submit" class="submit-btn">Start Your Personal Brand</button>
             </form>
           </div>
         </div>
@@ -393,18 +361,18 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <footer>
       <div class="footer-inner">
         <div class="footer-brand">
-          <a href="#home" class="footer-logo"><Image src={mainLogo} alt="45-Minute Media" /></a>
-          <p class="footer-tagline"> 6 Month’s worth of content for your business. Made simple. </p>
-          <a href="mailto:45minutemedia@gmail.com" class="footer-email">45minutemedia@gmail.com</a>
+          <a href="#home" class="footer-logo"><Image src={mainLogo} alt="Founder Frame" /></a>
+          <p class="footer-tagline">We plan, shoot, edit, and post all your content.</p>
+          <a href="mailto:founderframemedia@gmail.com" class="footer-email">founderframemedia@gmail.com</a>
         </div>
         <div class="footer-divider"></div>
         <div class="footer-bottom">
-          <p class="copyright">&copy; 2026 45-Minute Media. All rights reserved.</p>
+          <p class="copyright">&copy; 2026 Founder Frame. All rights reserved.</p>
           <div class="footer-socials">
-            <a href="https://www.instagram.com/45minutemedia?igsh=MWttdHBvemJ3bDJybw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
-            <a href="https://www.tiktok.com/@45minute.media?_r=1&_t=ZP-98TqxC5woZT" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
               <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.68 6.34 6.34 0 0 0 9.34 22a6.34 6.34 0 0 0 6.34-6.34V9.05a8.16 8.16 0 0 0 4.91 1.61V7.22a4.85 4.85 0 0 1-1-.53z"/></svg>
             </a>
           </div>
