@@ -51,16 +51,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         display: flex; flex-direction: column; min-height: 100vh;
       }
       
-      /* Header with tight padding for large logo */
+      /* Header with tight padding and negative margins to offset file whitespace */
       header {
         position: relative;
         background-color: transparent;
         display: flex; justify-content: space-between; align-items: center;
-        padding: 0.5rem 5%; width: 100%; max-width: 1400px; margin: 0 auto;
+        padding: 0.25rem 3%; width: 100%; max-width: 1400px; margin: 0 auto;
         border-bottom: 1px solid var(--border-color);
       }
-      .logo { display: flex; align-items: center; text-decoration: none; }
-      .logo img { height: 280px; width: auto; object-fit: contain; } /* Massively increased visual size */
+      .logo { display: flex; align-items: center; text-decoration: none; margin-left: -1rem; }
+      .logo img { height: 160px; width: auto; object-fit: contain; }
 
       nav { display: flex; gap: 2rem; align-items: center; font-family: system-ui, -apple-system, sans-serif; }
       nav a {
@@ -210,7 +210,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       .footer-inner {
         max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem;
       }
-      .footer-brand .footer-logo img { height: 220px; width: auto; display: block; margin-bottom: 1rem; filter: invert(1); } /* Large footer logo */
+      .footer-brand .footer-logo { margin-left: -1rem; display: inline-block; }
+      .footer-brand .footer-logo img { height: 160px; width: auto; display: block; margin-bottom: 1rem; filter: invert(1); }
       .footer-tagline { font-size: 1rem; color: #AAAAAA; margin-bottom: 0.5rem; font-weight: 300; }
       .footer-email { font-size: 1rem; color: #FFFFFF; text-decoration: none; font-weight: 400; transition: opacity 0.2s; }
       .footer-email:hover { opacity: 0.8; }
@@ -232,7 +233,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           gap: 1rem;
           padding: 1rem 5%;
         }
-        .logo img { height: 180px; }
+        .logo img { height: 140px; }
         .hero {
           padding: 3rem 5% 2.5rem;
         }
