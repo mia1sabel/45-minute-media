@@ -35,7 +35,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         --text-main: #000000;
         --text-muted: #555555;
         --accent: #000000;
-        --border-color: #EBE5DC; /* Ultra-subtle, thin line color */
+        --border-color: #BEB3A3; /* Thicker, noticeable subtle divider */
       }
 
       html {
@@ -57,7 +57,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         background-color: transparent;
         display: flex; justify-content: space-between; align-items: center;
         padding: 1rem 2rem 1rem 0; width: 100%;
-        border-bottom: 0.5px solid var(--border-color);
+        border-bottom: 1.5px solid var(--border-color);
       }
       .logo { display: flex; align-items: center; text-decoration: none; margin-left: 0; }
       .logo img { height: 90px; width: auto; object-fit: contain; display: block; }
@@ -102,21 +102,29 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       }
       .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
 
-      /* Ultra-Thin, Subtle Section Divider */
+      /* Noticeable Section Divider */
       .cta-divider {
-        width: 100%; max-width: 1400px; height: 0.5px;
+        width: 100%; max-width: 1400px; height: 1.5px;
         background-color: var(--border-color); margin: 3rem auto 4rem;
       }
 
-      /* How It Works Section */
+      /* How It Works Section inside Dark Box */
       .how-it-works-section {
-        width: 100%; max-width: 1400px; margin: 0 auto 6rem;
-        padding: 0 4rem;
+        width: 100%; max-width: 1300px; margin: 0 auto 6rem;
+        padding: 0 2rem;
       }
 
-      .section-tag {
-        font-size: 0.85rem; font-family: system-ui, -apple-system, sans-serif; font-weight: 600; color: var(--text-muted);
-        letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem;
+      .how-it-works-box {
+        background-color: var(--text-main);
+        color: var(--bg-color);
+        border-radius: 12px;
+        padding: 4rem 3.5rem;
+        box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.15);
+      }
+
+      .how-it-works-box .section-tag {
+        font-size: 0.85rem; font-family: system-ui, -apple-system, sans-serif; font-weight: 600; color: #AAAAAA;
+        letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 2rem;
       }
 
       .how-it-works-grid {
@@ -124,7 +132,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         grid-template-columns: 1fr;
         gap: 4rem;
         align-items: center;
-        max-width: 1200px;
+        max-width: 1100px;
         margin: 0 auto;
       }
       @media (min-width: 900px) {
@@ -140,30 +148,28 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       .step-item {
         display: flex; gap: 2rem; align-items: flex-start;
         padding-top: 1.5rem; padding-bottom: 1.5rem;
-        border-top: 0.5px solid var(--border-color); width: 100%;
+        border-top: 1.5px solid #333333; width: 100%;
       }
       .step-item:last-child {
-        border-bottom: 0.5px solid var(--border-color);
+        border-bottom: 1.5px solid #333333;
       }
       .step-number {
-        font-size: 1.25rem; font-family: system-ui, -apple-system, sans-serif; font-weight: 400; color: var(--text-muted);
+        font-size: 1.25rem; font-family: system-ui, -apple-system, sans-serif; font-weight: 400; color: #888888;
         min-width: 2rem;
       }
       .step-content { flex: 1; }
       
-      /* Header phrase sitting on top */
       .step-content h3 {
         font-family: 'Le Jour Serif', Georgia, serif;
         font-size: 1.4rem;
         font-weight: normal;
-        color: var(--text-main);
-        margin-bottom: 0.35rem;
+        color: #FFFFFF;
+        margin-bottom: 0.6rem;
         letter-spacing: -0.01em;
       }
       
-      /* Description phrase sitting underneath */
       .step-content p {
-        color: var(--text-muted);
+        color: #CCCCCC;
         font-family: system-ui, -apple-system, sans-serif;
         font-size: 1.05rem;
         line-height: 1.5;
@@ -176,7 +182,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       .how-it-works-placeholder {
         width: 100%; max-width: 280px; aspect-ratio: 9/16;
         background: #111; border-radius: 8px; overflow: hidden;
-        box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.3);
       }
 
       /* Bold, Standout Video Showcase Section */
@@ -232,7 +238,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       /* Contact / Get Started Section */
       .contact-section {
-        border-top: 0.5px solid var(--border-color);
+        border-top: 1.5px solid var(--border-color);
         padding: 6rem 5%;
         display: flex;
         justify-content: center;
@@ -257,7 +263,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       /* Form Card */
       .form-card {
-        background: var(--surface-color); border: 0.5px solid var(--border-color); border-radius: 12px;
+        background: var(--surface-color); border: 1.5px solid var(--border-color); border-radius: 12px;
         padding: 3.5rem 3rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03);
       }
       .form-card h2 { font-size: 2.5rem; font-weight: 400; margin-bottom: 2.25rem; letter-spacing: -0.01em; color: var(--text-main); }
@@ -265,7 +271,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; text-align: left; }
       .form-group label { font-size: 0.9rem; font-family: system-ui, -apple-system, sans-serif; font-weight: 500; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.05em; }
       .form-group input {
-        padding: 1rem 1.25rem; border: 0.5px solid var(--border-color); border-radius: 6px;
+        padding: 1rem 1.25rem; border: 1.5px solid var(--border-color); border-radius: 6px;
         font-size: 1rem; font-family: system-ui, -apple-system, sans-serif; transition: border-color 0.2s, box-shadow 0.2s;
         outline: none; background-color: var(--bg-color);
       }
@@ -283,7 +289,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       footer {
         background-color: var(--text-main); color: #888888; padding: 4rem 2rem 3rem 0;
         width: 100%; margin-top: auto; font-family: system-ui, -apple-system, sans-serif;
-        border-top: 0.5px solid #222222;
+        border-top: 1.5px solid #222222;
       }
       .footer-inner {
         max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem; padding-left: 0;
@@ -293,7 +299,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       .footer-tagline { font-size: 1rem; color: #AAAAAA; margin-bottom: 0.5rem; font-weight: 300; margin-left: 1.5rem; }
       .footer-email { font-size: 1rem; color: #FFFFFF; text-decoration: none; font-weight: 400; transition: opacity 0.2s; display: inline-block; margin-left: 1.5rem; }
       .footer-email:hover { opacity: 0.8; }
-      .footer-divider { height: 0.5px; background-color: #333333; width: 100%; }
+      .footer-divider { height: 1.5px; background-color: #333333; width: 100%; }
       .footer-bottom {
         display: flex; justify-content: space-between; align-items: center;
         flex-wrap: wrap; gap: 1rem; font-size: 0.9rem; padding-left: 0;
@@ -319,7 +325,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         .hero {
           padding: 3rem 5% 2.5rem;
         }
-        .offer-banner {
+        .offer-banner, .how-it-works-box {
           padding: 2rem 1.5rem;
         }
         .form-card {
@@ -351,45 +357,47 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         </div>
       </section>
 
-      <!-- Ultra-Subtle Section Separator -->
+      <!-- Section Separator -->
       <div class="cta-divider"></div>
 
-      <!-- How It Works Section -->
+      <!-- How It Works Section inside Dark Box -->
       <section class="how-it-works-section">
-        <div class="how-it-works-grid">
-          <div class="steps-container">
-            <p class="section-tag">HOW IT WORKS</p>
+        <div class="how-it-works-box">
+          <p class="section-tag">HOW IT WORKS</p>
 
-            <div class="step-item">
-              <span class="step-number">01</span>
-              <div class="step-content">
-                <h3>We film with you once</h3>
-                <p>And set up your phone so shooting is easy.</p>
+          <div class="how-it-works-grid">
+            <div class="steps-container">
+              <div class="step-item">
+                <span class="step-number">01</span>
+                <div class="step-content">
+                  <h3>We film with you once</h3>
+                  <p>And set up your phone so shooting is easy.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <span class="step-number">02</span>
+                <div class="step-content">
+                  <h3>You press record</h3>
+                  <p>On your own time using the scripts we write for you.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <span class="step-number">03</span>
+                <div class="step-content">
+                  <h3>We do all the hard work</h3>
+                  <p>Writing, editing, and posting every single video for you.</p>
+                </div>
               </div>
             </div>
 
-            <div class="step-item">
-              <span class="step-number">02</span>
-              <div class="step-content">
-                <h3>You press record</h3>
-                <p>On your own time using the scripts we write for you.</p>
+            <div class="how-it-works-image-wrapper">
+              <div class="how-it-works-placeholder">
+                <video autoplay loop muted playsinline preload="auto" style="width:100%; height:100%; object-fit:cover;">
+                  <source src={`${base}/website-vid.mp4`} type="video/mp4" />
+                </video>
               </div>
-            </div>
-
-            <div class="step-item">
-              <span class="step-number">03</span>
-              <div class="step-content">
-                <h3>We do all the hard work</h3>
-                <p>Writing, editing, and posting every single video for you.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="how-it-works-image-wrapper">
-            <div class="how-it-works-placeholder">
-              <video autoplay loop muted playsinline preload="auto" style="width:100%; height:100%; object-fit:cover;">
-                <source src={`${base}/website-vid.mp4`} type="video/mp4" />
-              </video>
             </div>
           </div>
         </div>
