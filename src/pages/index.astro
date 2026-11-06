@@ -23,7 +23,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <style>
       @font-face {
         font-family: 'Le Jour Serif';
-        src: url('/fonts/Le%20Jour%20Serif.otf') format('opentype');
+        src: url('/fonts/le-jour.otf') format('opentype');
         font-weight: normal;
         font-style: normal;
         font-display: swap;
@@ -69,21 +69,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       }
       nav a:hover { color: var(--text-main); }
 
-      /* Hero Section - Reduced bottom padding to remove gap */
+      /* Hero Section */
       .hero {
-        padding: 4.5rem 5% 1rem; text-align: center;
+        padding: 4.5rem 5% 4rem; text-align: center;
         display: flex; flex-direction: column; align-items: center;
         scroll-margin-top: 20px;
       }
-      .hero-content { max-width: 1100px; width: 100%; }
+      .hero-content { max-width: 1300px; width: 100%; }
       
       h1 {
-        font-size: clamp(2.5rem, 4.5vw, 4.2rem);
+        font-size: clamp(2rem, 3.6vw, 3.8rem);
         font-weight: 400; line-height: 1.15;
         letter-spacing: -0.01em; margin-bottom: 1.5rem; color: var(--text-main);
+        white-space: nowrap; /* Keeps title on one single line */
+        text-align: center;
+        width: 100%;
       }
-      
-      .line-1, .line-2 { display: block; }
 
       p.subtitle {
         font-size: clamp(1.15rem, 2vw, 1.4rem);
@@ -101,28 +102,28 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       }
       .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
 
-      /* Section Separator */
+      /* Distinct Section Separator */
       .cta-divider {
-        width: 100%; max-width: 1400px; height: 2px;
-        background-color: var(--border-color); margin: 3rem auto;
+        width: 100%; max-width: 1400px; height: 3px;
+        background-color: var(--border-color); margin: 3rem auto 4rem;
       }
 
-      /* How It Works Layout (Side-by-Side Grid, Pulled Up Tight) */
+      /* How It Works Layout */
       .how-it-works-section {
-        width: 100%; max-width: 1250px; margin: 1rem auto 5rem;
+        width: 100%; max-width: 1250px; margin: 0 auto 6rem;
         padding: 0 3rem;
       }
 
       .section-tag {
         font-size: 0.85rem; font-family: system-ui, -apple-system, sans-serif; font-weight: 600; color: var(--text-muted);
-        letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.25rem;
+        letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem;
       }
 
       .how-it-works-grid {
         display: grid;
         grid-template-columns: 1fr;
         gap: 3rem;
-        align-items: center;
+        align-items: flex-start;
       }
       @media (min-width: 900px) {
         .how-it-works-grid {
@@ -159,7 +160,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       .how-it-works-placeholder {
         width: 100%; max-width: 280px; aspect-ratio: 9/16;
         background: #111; border-radius: 8px; overflow: hidden;
-        box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.15);
       }
 
       /* Bold, Standout Video Showcase Section */
@@ -289,7 +290,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       /* Mobile Fixes */
       @media (max-width: 1200px) {
-        .showcase-main-title { white-space: normal; }
+        .showcase-main-title, h1 { white-space: normal; }
       }
       @media (max-width: 640px) {
         header {
@@ -334,6 +335,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         </div>
       </section>
 
+      <!-- Distinct Section Separator -->
+      <div class="cta-divider"></div>
+
       <!-- How It Works (Side-by-Side Grid) -->
       <section class="how-it-works-section">
         <p class="section-tag">HOW IT WORKS</p>
@@ -343,7 +347,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <div class="step-item">
               <span class="step-number">01</span>
               <div class="step-content">
-                <h3>The strategy & setup</h3>
+                <h3>Strategy & setup</h3>
                 <p>We film with you once and set up your phone so shooting is easy.</p>
               </div>
             </div>
