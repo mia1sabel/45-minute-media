@@ -1,0 +1,76 @@
+---
+import { Image } from 'astro:assets';
+import mainLogo from '../assets/1.png';
+import faviconImg from '../assets/3.svg';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={faviconImg.src} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You | Founder Frame</title>
+    <style>
+      @font-face {
+        font-family: 'Le Jour Serif';
+        src: url('/fonts/le-jour.otf') format('opentype');
+        font-weight: normal; font-style: normal; font-display: swap;
+      }
+      :root {
+        --bg-color: #F8F3E9;
+        --surface-color: #FFFFFF;
+        --text-main: #000000;
+        --text-muted: #555555;
+        --border-color: #BEB3A3;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: 'Le Jour Serif', Georgia, serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        display: flex; flex-direction: column; min-height: 100vh;
+        text-align: center;
+      }
+      header {
+        padding: 1rem 2rem; border-bottom: 1.5px solid var(--border-color); display: flex; justify-content: flex-start;
+      }
+      .logo img { height: 90px; width: auto; object-fit: contain; }
+      .main-content {
+        flex: 1; display: flex; justify-content: center; align-items: center; padding: 4rem 2rem;
+      }
+      .thank-you-box {
+        background-color: var(--text-main); color: var(--bg-color);
+        border-radius: 12px; padding: 4rem 3rem; max-width: 700px; width: 100%;
+        box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.15);
+        display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+      }
+      h1 { font-size: 2.5rem; font-weight: 400; letter-spacing: -0.01em; }
+      p { font-family: system-ui, -apple-system, sans-serif; color: #CCCCCC; font-size: 1.1rem; line-height: 1.6; font-weight: 300; max-width: 500px; }
+      p strong { color: #FFFFFF; font-weight: 500; }
+      .download-btn {
+        display: inline-block; background-color: var(--bg-color); color: var(--text-main);
+        padding: 1.15rem 3rem; border-radius: 4px; text-decoration: none;
+        font-family: system-ui, -apple-system, sans-serif; font-weight: 500;
+        font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em;
+        transition: opacity 0.2s ease, transform 0.1s ease; margin-top: 1rem;
+      }
+      .download-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href={`${base}/`} class="logo"><Image src={mainLogo} alt="Founder Frame" /></a>
+    </header>
+
+    <main class="main-content">
+      <div class="thank-you-box">
+        <h1>Thank You</h1>
+        <p>Your responses have been submitted successfully to our team.</p>
+        <p><strong>Download your free blueprint.</strong></p>
+        <a href={`${base}/founder-frame-blueprint.pdf`} download class="download-btn">Download Your Free Blueprint (PDF)</a>
+      </div>
+    </main>
+  </body>
+</html>

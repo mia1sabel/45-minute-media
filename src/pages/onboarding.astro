@@ -1,0 +1,203 @@
+---
+import { Image } from 'astro:assets';
+import mainLogo from '../assets/1.png';
+import faviconImg from '../assets/3.svg';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const thankYouUrl = `${base}/onboarding/thank-you`;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={faviconImg.src} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Onboarding Questionnaire | Founder Frame</title>
+
+    <style>
+      @font-face {
+        font-family: 'Le Jour Serif';
+        src: url('/fonts/le-jour.otf') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      :root {
+        --bg-color: #F8F3E9;
+        --surface-color: #FFFFFF;
+        --text-main: #000000;
+        --text-muted: #555555;
+        --border-color: #BEB3A3;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: 'Le Jour Serif', Georgia, serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        -webkit-font-smoothing: antialiased;
+        display: flex; flex-direction: column; min-height: 100vh;
+      }
+
+      header {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 1rem 2rem 1rem 0; width: 100%;
+        border-bottom: 1.5px solid var(--border-color);
+      }
+      .logo { display: flex; align-items: center; text-decoration: none; margin-left: 0; }
+      .logo img { height: 90px; width: auto; object-fit: contain; display: block; }
+      
+      nav { display: flex; gap: 2rem; align-items: center; font-family: system-ui, -apple-system, sans-serif; }
+      nav a {
+        text-decoration: none; color: var(--text-muted); font-weight: 500;
+        font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.2s ease;
+      }
+      nav a:hover { color: var(--text-main); }
+
+      .container {
+        max-width: 800px; width: 100%; margin: 4rem auto; padding: 0 2rem;
+      }
+
+      .form-card {
+        background: var(--surface-color); border: 1.5px solid var(--border-color); border-radius: 12px;
+        padding: 4rem 3.5rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03);
+      }
+
+      h1 {
+        font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 400; margin-bottom: 0.75rem; letter-spacing: -0.01em; color: var(--text-main); text-align: center;
+      }
+      .form-subtitle {
+        font-family: system-ui, -apple-system, sans-serif; color: var(--text-muted); text-align: center; font-weight: 300; margin-bottom: 3rem; font-size: 1.1rem;
+      }
+
+      .section-title {
+        font-size: 1.3rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1.25rem;
+        padding-bottom: 0.5rem; border-bottom: 1.5px solid var(--border-color); color: var(--text-main);
+      }
+
+      .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; text-align: left; }
+      .form-group label { font-size: 0.9rem; font-family: system-ui, -apple-system, sans-serif; font-weight: 500; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.05em; }
+      .form-group input, .form-group textarea {
+        padding: 1rem 1.25rem; border: 1.5px solid var(--border-color); border-radius: 6px;
+        font-size: 1rem; font-family: system-ui, -apple-system, sans-serif; transition: border-color 0.2s, box-shadow 0.2s;
+        outline: none; background-color: var(--bg-color); color: var(--text-main);
+      }
+      .form-group textarea { resize: vertical; min-height: 100px; }
+      .form-group input:focus, .form-group textarea:focus { border-color: var(--text-main); background-color: #FFF; }
+
+      .submit-btn {
+        width: 100%; background-color: var(--text-main); color: var(--bg-color); border: none;
+        padding: 1.15rem; border-radius: 6px; font-family: system-ui, -apple-system, sans-serif;
+        font-weight: 500; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em;
+        cursor: pointer; transition: opacity 0.2s ease, transform 0.1s ease; margin-top: 2rem;
+      }
+      .submit-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+      footer {
+        background-color: var(--text-main); color: #888888; padding: 4rem 2rem 3rem 0;
+        width: 100%; margin-top: auto; font-family: system-ui, -apple-system, sans-serif;
+        border-top: 1.5px solid #222222;
+      }
+      .footer-inner { max-width: 1400px; margin: 0 auto; padding-left: 1.5rem; }
+      .copyright { color: #777777; font-size: 0.9rem; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href={`${base}/`} class="logo"><Image src={mainLogo} alt="Founder Frame" /></a>
+      <nav>
+        <a href={`${base}/`}>Home</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="form-card">
+        <h1>Client Onboarding Questionnaire</h1>
+        <p class="form-subtitle">Tell us about your brand so we can craft your custom strategy.</p>
+
+        <form action="https://formsubmit.co/45minutemedia@gmail.com" method="POST">
+          <!-- FormSubmit Configuration -->
+          <input type="hidden" name="_subject" value="New Client Onboarding Questionnaire Submission!" />
+          <input type="hidden" name="_next" value={thankYouUrl} />
+          <input type="hidden" name="_captcha" value="false" />
+
+          <!-- Contact Details (Required for follow-up) -->
+          <div class="section-title">Contact & Brand Info</div>
+          <div class="form-group">
+            <label for="fullName">Your Full Name</label>
+            <input type="text" id="fullName" name="Full Name" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="Email Address" placeholder="john@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="businessName">Business / Brand Name</label>
+            <input type="text" id="businessName" name="Business Name" placeholder="Business Inc." required />
+          </div>
+
+          <!-- SECTION 1 -->
+          <div class="section-title">Section 1: Core Positioning & Offers</div>
+          <div class="form-group">
+            <label for="q1">What is the primary product or service you sell?</label>
+            <textarea id="q1" name="1. Primary Product or Service" placeholder="Describe what you sell..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="q2">What are some strong beliefs you hold about yourself and your industry?</label>
+            <textarea id="q2" name="2. Industry Beliefs" placeholder="Share your core philosophies..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="q3">What topics or personal details are off-limits for you on camera?</label>
+            <textarea id="q3" name="3. Off-Limits Topics" placeholder="Boundaries or topics to avoid..."></textarea>
+          </div>
+
+          <!-- SECTION 2 -->
+          <div class="section-title">Section 2: Target Audience & Leads</div>
+          <div class="form-group">
+            <label for="q4">What is the biggest problem your ideal client is facing right now?</label>
+            <textarea id="q4" name="4. Ideal Client Problem" placeholder="Pain points..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="q5">What specific questions or objections do clients ask you on sales calls?</label>
+            <textarea id="q5" name="5. Sales Call Objections" placeholder="Common questions..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="q6">Where do you want viewers to go when they are ready to buy or reach out?</label>
+            <input type="text" id="q6" name="6. Call to Action Destination" placeholder="Website link, calendar link, DM, etc." />
+          </div>
+
+          <!-- SECTION 3 -->
+          <div class="section-title">Section 3: Current Social Media Links</div>
+          <div class="form-group">
+            <label for="q7">Please link all of your current social media profiles:</label>
+            <textarea id="q7" name="7. Social Media Links" placeholder="Instagram, TikTok, LinkedIn, YouTube, X, etc."></textarea>
+          </div>
+
+          <!-- SECTION 4 -->
+          <div class="section-title">Section 4: iPhone Setup & Production Realities</div>
+          <div class="form-group">
+            <label for="q8">Which iPhone model will you be using for your content?</label>
+            <input type="text" id="q8" name="8. iPhone Model" placeholder="e.g. iPhone 15 Pro" />
+          </div>
+          <div class="form-group">
+            <label for="q9">Where in your home or office can you consistently shoot with good natural light?</label>
+            <textarea id="q9" name="9. Shooting Location" placeholder="Describe the spot..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="q10">Do you currently own a lapel mic, tripod, or lighting setup?</label>
+            <textarea id="q10" name="10. Current Equipment" placeholder="If yes, please list what you have..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Get Blueprint</button>
+        </form>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <p class="copyright">&copy; 2026 Founder Frame. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
