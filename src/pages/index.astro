@@ -5,6 +5,8 @@ import faviconImg from '../assets/3.svg';
 
 // Clean trailing slash to prevent broken paths like //website-vid.mp4
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+// Form URL for separate tab redirection
+const formUrl = "https://formsubmit.co/founderframemedia@gmail.com"; 
 ---
 
 <html lang="en">
@@ -241,47 +243,28 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         display: flex;
         justify-content: center;
         scroll-margin-top: 20px;
-        background-color: rgba(255, 255, 255, 0.4);
+        background-color: var(--bg-color);
       }
       .container { max-width: 800px; width: 100%; }
 
-      /* Banner Card */
+      /* Centered Blueprint Banner Card */
       .offer-banner {
         background-color: var(--text-main); color: var(--bg-color); border-radius: 12px;
-        padding: 3rem; margin-bottom: 2.5rem; text-align: left;
+        padding: 3.5rem 3rem; text-align: center;
         box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.15);
+        display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
       }
-      .offer-badge {
+      .offer-title { font-size: 2.25rem; font-weight: 400; letter-spacing: -0.01em; }
+      .offer-text { font-size: 1.1rem; font-family: system-ui, -apple-system, sans-serif; color: #CCCCCC; line-height: 1.6; font-weight: 300; max-width: 600px; }
+
+      .banner-cta-btn {
         display: inline-block; background-color: var(--bg-color); color: var(--text-main);
-        font-size: 0.75rem; font-family: system-ui, -apple-system, sans-serif; font-weight: 600; padding: 0.35rem 0.75rem;
-        border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem;
-      }
-      .offer-title { font-size: 2.25rem; font-weight: 400; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
-      .offer-text { font-size: 1.1rem; font-family: system-ui, -apple-system, sans-serif; color: #CCCCCC; line-height: 1.6; font-weight: 300; }
-
-      /* Form Card */
-      .form-card {
-        background: var(--surface-color); border: 1.5px solid var(--border-color); border-radius: 12px;
-        padding: 3.5rem 3rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03);
-      }
-      .form-card h2 { font-size: 2.5rem; font-weight: 400; margin-bottom: 2.25rem; letter-spacing: -0.01em; color: var(--text-main); }
-
-      .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; text-align: left; }
-      .form-group label { font-size: 0.9rem; font-family: system-ui, -apple-system, sans-serif; font-weight: 500; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.05em; }
-      .form-group input {
-        padding: 1rem 1.25rem; border: 1.5px solid var(--border-color); border-radius: 6px;
-        font-size: 1rem; font-family: system-ui, -apple-system, sans-serif; transition: border-color 0.2s, box-shadow 0.2s;
-        outline: none; background-color: var(--bg-color);
-      }
-      .form-group input:focus { border-color: var(--text-main); background-color: #FFF; }
-
-      .submit-btn {
-        width: 100%; background-color: var(--text-main); color: var(--bg-color); border: none;
-        padding: 1.15rem; border-radius: 6px; font-family: system-ui, -apple-system, sans-serif;
+        padding: 1rem 2.5rem; border-radius: 4px; text-decoration: none;
+        font-family: system-ui, -apple-system, sans-serif;
         font-weight: 500; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em;
-        cursor: pointer; transition: opacity 0.2s ease, transform 0.1s ease; margin-top: 0.5rem;
+        transition: opacity 0.2s ease, transform 0.1s ease;
       }
-      .submit-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+      .banner-cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
 
       /* Footer */
       footer {
@@ -326,9 +309,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         .offer-banner, .steps-container {
           padding: 2rem 1.5rem;
         }
-        .form-card {
-          padding: 2rem 1.5rem;
-        }
       }
     </style>
   </head>
@@ -351,7 +331,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <p class="subtitle">
             For Atlanta businesses that know having an audience, is the marketing.
           </p>
-          <a href="#contact" class="cta-btn">See If You Qualify</a>
+          <a href={formUrl} target="_blank" rel="noopener noreferrer" class="cta-btn">See If You Qualify</a>
         </div>
       </section>
 
@@ -446,45 +426,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <!-- Section 2: Get Started / Contact -->
       <section id="contact" class="contact-section">
         <div class="container">
-          <!-- Offer Banner -->
+          <!-- Centered Offer Banner Card -->
           <div class="offer-banner">
-            <span class="offer-badge">Limited Availability</span>
             <h3 class="offer-title">Get Your Free Blueprint</h3>
+            <a href={formUrl} target="_blank" rel="noopener noreferrer" class="banner-cta-btn">Start Your Personal Brand</a>
             <p class="offer-text">
               To give every brand our full attention, we only work with 4 clients at a time. Fill out the form to get your free blueprint.
             </p>
-          </div>
-
-          <!-- Form Card -->
-          <div class="form-card">
-            <h2>Start Your Personal Brand</h2>
-            <form 
-              action="https://formsubmit.co/founderframemedia@gmail.com" 
-              method="POST" 
-              onsubmit="event.preventDefault(); fetch(this.action, { method: 'POST', body: new FormData(this) }).then(() => { alert('Thank you!'); this.reset(); });"
-            >
-              <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" placeholder="John Doe" required />
-              </div>
-
-              <div class="form-group">
-                <label for="business">Business Name</label>
-                <input type="text" id="business" name="business" placeholder="Business Inc." required />
-              </div>
-
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="john@example.com" required />
-              </div>
-
-              <div class="form-group">
-                <label for="website">Website</label>
-                <input type="url" id="website" name="website" placeholder="https://example.com" />
-              </div>
-
-              <button type="submit" class="submit-btn">Start Your Personal Brand</button>
-            </form>
           </div>
         </div>
       </section>
