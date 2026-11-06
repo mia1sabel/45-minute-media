@@ -5,8 +5,7 @@ import faviconImg from '../assets/3.svg';
 
 // Clean trailing slash to prevent broken paths like //website-vid.mp4
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-// Form URL for separate tab redirection
-const formUrl = "https://formsubmit.co/founderframemedia@gmail.com"; 
+const onboardingUrl = `${base}/onboarding`; 
 ---
 
 <html lang="en">
@@ -256,6 +255,7 @@ const formUrl = "https://formsubmit.co/founderframemedia@gmail.com";
       }
       .offer-title { font-size: 2.25rem; font-weight: 400; letter-spacing: -0.01em; }
       .offer-text { font-size: 1.1rem; font-family: system-ui, -apple-system, sans-serif; color: #CCCCCC; line-height: 1.6; font-weight: 300; max-width: 600px; }
+      .offer-text strong { color: #FFFFFF; font-weight: 500; }
 
       .banner-cta-btn {
         display: inline-block; background-color: var(--bg-color); color: var(--text-main);
@@ -316,8 +316,7 @@ const formUrl = "https://formsubmit.co/founderframemedia@gmail.com";
     <header>
       <a href="#home" class="logo"><Image src={mainLogo} alt="Founder Frame" /></a>
       <nav>
-        <a href="#home">Home</a>
-        <a href="#contact">Get Started</a>
+        <a href={onboardingUrl} target="_blank" rel="noopener noreferrer">Get Started</a>
       </nav>
     </header>
 
@@ -331,7 +330,7 @@ const formUrl = "https://formsubmit.co/founderframemedia@gmail.com";
           <p class="subtitle">
             For Atlanta businesses that know having an audience, is the marketing.
           </p>
-          <a href={formUrl} target="_blank" rel="noopener noreferrer" class="cta-btn">See If You Qualify</a>
+          <a href={onboardingUrl} target="_blank" rel="noopener noreferrer" class="cta-btn">See If You Qualify</a>
         </div>
       </section>
 
@@ -429,9 +428,9 @@ const formUrl = "https://formsubmit.co/founderframemedia@gmail.com";
           <!-- Centered Offer Banner Card -->
           <div class="offer-banner">
             <h3 class="offer-title">Get Your Free Blueprint</h3>
-            <a href={formUrl} target="_blank" rel="noopener noreferrer" class="banner-cta-btn">Start Your Personal Brand</a>
+            <a href={onboardingUrl} target="_blank" rel="noopener noreferrer" class="banner-cta-btn">Start Your Personal Brand</a>
             <p class="offer-text">
-              To give every brand our full attention, we only work with 4 clients at a time. Fill out the form to get your free blueprint.
+              To give every brand our full attention, we only work with 4 clients at a time. <strong>Fill out the form to get your free blueprint.</strong>
             </p>
           </div>
         </div>
