@@ -3,7 +3,6 @@ import { Image } from 'astro:assets';
 import mainLogo from '../assets/1.png';
 import faviconImg from '../assets/3.svg';
 
-// Clean trailing slash to prevent broken paths like //website-vid.mp4
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const onboardingUrl = `${base}/onboarding`; 
 ---
@@ -15,299 +14,425 @@ const onboardingUrl = `${base}/onboarding`;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Founder Frame | Get More Clients By Just Being You</title>
 
-    <!-- Canonical & Social Metadata -->
     <link rel="canonical" href="https://founderframe.com" />
     <meta property="og:url" content="https://founderframe.com" />
     <meta property="og:title" content="Founder Frame | Get More Clients By Just Being You" />
     <meta property="og:description" content="For Atlanta businesses that know having an audience, is the marketing." />
 
-    <style>
-      @font-face {
-        font-family: 'Le Jour Serif';
-        src: url('/fonts/le-jour.otf') format('opentype');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-      }
+    <!-- Google Fonts: Playfair Display & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
 
+    <style>
       :root {
         --bg-color: #F8F3E9;
-        --surface-color: #FFFFFF;
         --text-main: #000000;
         --text-muted: #555555;
-        --accent: #000000;
-        --border-color: #BEB3A3;
+        --grid-line-light: rgba(0, 0, 0, 0.15);
       }
 
-      html {
-        scroll-behavior: smooth;
-      }
+      html { scroll-behavior: smooth; }
+      
+      /* Sharp edges site-wide */
+      * { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; box-shadow: none !important; }
 
-      * { box-sizing: border-box; margin: 0; padding: 0; }
       body {
-        font-family: 'Le Jour Serif', Georgia, serif;
+        font-family: 'Inter', sans-serif;
         background-color: var(--bg-color);
         color: var(--text-main);
         -webkit-font-smoothing: antialiased;
         display: flex; flex-direction: column; min-height: 100vh;
       }
-      
-      /* Header completely flush left */
+
       header {
         position: relative;
         background-color: transparent;
         display: flex; justify-content: space-between; align-items: center;
-        padding: 1rem 2rem 1rem 0; width: 100%;
-        border-bottom: 1.5px solid var(--border-color);
+        padding: 1.25rem 3rem; width: 100%;
+        border-bottom: 2px solid var(--grid-line-light);
       }
       .logo { display: flex; align-items: center; text-decoration: none; margin-left: 0; }
-      .logo img { height: 90px; width: auto; object-fit: contain; display: block; }
+      .logo img { height: 75px; width: auto; object-fit: contain; display: block; }
 
-      nav { display: flex; gap: 2rem; align-items: center; font-family: system-ui, -apple-system, sans-serif; }
+      nav { display: flex; gap: 2rem; align-items: center; font-family: 'Inter', sans-serif; }
       nav a {
-        text-decoration: none; color: var(--text-muted); font-weight: 500;
+        text-decoration: none; color: #555555; font-weight: 500;
         font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.2s ease;
       }
       nav a:hover { color: var(--text-main); }
 
-      /* Hero Section */
-      .hero {
-        padding: 4.5rem 5% 4rem; text-align: center;
-        display: flex; flex-direction: column; align-items: center;
-        scroll-margin-top: 20px;
+      /* FADE-IN & SLIDE UP ANIMATION CLASSES (BIDIRECTIONAL) */
+      .fade-slide-in {
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
       }
-      .hero-content { max-width: 100%; width: 100%; }
+      .fade-slide-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* HERO SECTION (WARM CREAM, SINGLE LINE) */
+      .hero {
+        padding: 6.5rem 5% 6rem; text-align: center;
+        display: flex; flex-direction: column; align-items: center;
+        position: relative;
+        border-bottom: 2px solid var(--grid-line-light);
+      }
+
+      .hero-content { max-width: 1200px; width: 100%; margin: 0 auto; }
       
       h1 {
-        font-size: clamp(1.7rem, 2.7vw, 3.2rem);
-        font-weight: 400; line-height: 1.15;
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2rem, 3.2vw, 3.5rem);
+        font-weight: 500; line-height: 1.15;
         letter-spacing: -0.01em; margin-bottom: 1.5rem; color: var(--text-main);
-        white-space: nowrap;
-        text-align: center;
-        width: 100%;
+        text-align: center; width: 100%;
+      }
+      h1 em {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-weight: 400;
       }
 
       p.subtitle {
-        font-size: clamp(1.15rem, 2vw, 1.4rem);
-        font-family: system-ui, -apple-system, sans-serif;
-        color: var(--text-muted); margin-bottom: 2rem;
-        line-height: 1.6; max-width: 700px; margin-inline: auto; font-weight: 300;
+        font-size: clamp(1rem, 1.6vw, 1.25rem);
+        color: #555555; margin-bottom: 2.5rem;
+        line-height: 1.6; max-width: none; margin-inline: auto; font-weight: 300;
       }
       
       .cta-btn {
-        display: inline-block; background-color: var(--text-main); color: var(--bg-color);
-        padding: 1rem 2.5rem; border-radius: 4px; text-decoration: none;
-        font-family: system-ui, -apple-system, sans-serif;
-        font-weight: 500; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em;
-        transition: opacity 0.2s ease, transform 0.1s ease;
+        display: inline-flex; align-items: center; justify-content: center;
+        background-color: var(--text-main); color: var(--bg-color);
+        padding: 1.25rem 3.25rem; text-decoration: none;
+        font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.12em;
+        transition: all 0.2s ease;
       }
-      .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-
-      /* Section Divider */
-      .cta-divider {
-        width: 100%; max-width: 1400px; height: 1.5px;
-        background-color: var(--border-color); margin: 3rem auto 4rem;
+      .cta-btn:hover {
+        background-color: #333333; color: #FFFFFF;
       }
 
-      /* How It Works Section */
-      .how-it-works-section {
-        width: 100%; max-width: 1300px; margin: 0 auto 4rem;
-        padding: 0 2rem;
-      }
-
-      .how-it-works-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        align-items: center;
-        max-width: 1100px;
+      /* SHARED SECTION INNER WRAPPER FOR CENTERING & PADDING */
+      .section-inner {
+        max-width: 1200px;
+        width: 100%;
         margin: 0 auto;
       }
-      @media (min-width: 900px) {
-        .how-it-works-grid {
-          grid-template-columns: 1.3fr 0.7fr;
+
+      /* ABOUT OUR AGENCY SECTION (WIDER SPREAD, CLOSER TO EDGES) */
+      .about-agency-section {
+        background-color: #000000;
+        color: #F8F3E9;
+        padding: 6rem 2.5rem;
+        width: 100%;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .about-agency-grid {
+        width: 100%;
+        max-width: 1450px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 5rem;
+        align-items: center;
+      }
+      @media (min-width: 1024px) {
+        .about-agency-grid {
+          grid-template-columns: 1fr 1.35fr;
         }
       }
 
-      /* Black box wrapping only the text side */
+      .about-agency-left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 1rem;
+        padding-left: 1rem;
+      }
+
+      .about-agency-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.75rem, 2.5vw, 2.3rem);
+        font-weight: 500;
+        color: #F8F3E9;
+        line-height: 1.2;
+      }
+      .about-agency-title em {
+        font-style: italic;
+        font-weight: 400;
+      }
+
+      .about-agency-desc {
+        font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+        color: #E5E2D9;
+        font-weight: 300;
+        line-height: 1.6;
+      }
+
+      /* 3-COLUMN TICKER ROW (PULLED CLOSER TO THE RIGHT EDGE) */
+      .about-ticker-right {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px !important;
+        padding: 2.25rem 2.5rem;
+        margin-right: 1rem;
+      }
+      @media (min-width: 768px) {
+        .about-ticker-right {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.75rem;
+        }
+      }
+
+      .ticker-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+
+      .ticker-number {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2rem, 2.3vw, 2.5rem);
+        font-weight: 500;
+        color: #F8F3E9;
+        line-height: 1;
+      }
+
+      .ticker-text {
+        font-size: 0.85rem;
+        color: #AAAAAA;
+        font-weight: 300;
+        line-height: 1.4;
+      }
+
+      /* WARM CREAM MIDDLE SECTION */
+      .middle-cream-section {
+        background-color: var(--bg-color);
+        color: #000000;
+        padding: 8rem 3rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8rem;
+        border-bottom: 2px solid var(--grid-line-light);
+        position: relative;
+      }
+
+      .how-it-works-grid {
+        display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center;
+        width: 100%;
+      }
+      @media (min-width: 900px) {
+        .how-it-works-grid { grid-template-columns: 1.2fr 0.8fr; }
+      }
+
+      /* HOW IT WORKS CONTAINER WITH BLACK BORDER & BLACK TEXT */
       .steps-container {
         display: flex; flex-direction: column; width: 100%;
-        background-color: var(--text-main);
-        color: var(--bg-color);
-        border-radius: 12px;
-        padding: 3rem 3.5rem;
-        box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.15);
+        background: transparent;
+        color: #000000;
+        padding: 3.5rem 3rem;
+        border: 2px solid #000000;
       }
 
       .section-tag {
-        font-size: 0.85rem; font-family: system-ui, -apple-system, sans-serif; font-weight: 600; color: var(--bg-color);
-        letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem;
+        font-size: 0.85rem; font-weight: 600; color: #000000;
+        letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1.5rem;
       }
       
       .step-item {
         display: flex; gap: 2rem; align-items: flex-start;
-        padding-top: 1.25rem; padding-bottom: 1.25rem;
-        border-top: 1.5px solid #333333; width: 100%;
+        padding-top: 1.5rem; padding-bottom: 1.5rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.15); width: 100%;
       }
-      .step-item:last-child {
-        border-bottom: 1.5px solid #333333;
-      }
+      .step-item:last-child { border-bottom: 1px solid rgba(0, 0, 0, 0.15); }
+      
       .step-number {
-        font-size: 1.25rem; font-family: system-ui, -apple-system, sans-serif; font-weight: 400; color: var(--bg-color);
-        min-width: 2rem;
+        font-size: 1.25rem; font-weight: 600; color: #000000; min-width: 2rem;
       }
-      .step-content { flex: 1; }
       
       .step-content h3 {
-        font-family: 'Le Jour Serif', Georgia, serif;
-        font-size: 1.4rem;
-        font-weight: normal;
-        color: var(--bg-color);
-        margin-bottom: 0.5rem;
-        letter-spacing: -0.01em;
+        font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 500;
+        color: #000000; margin-bottom: 0.4rem;
       }
       
       .step-content p {
-        color: var(--bg-color);
-        font-family: system-ui, -apple-system, sans-serif;
-        font-size: 1.05rem;
-        line-height: 1.5;
-        font-weight: 300;
+        color: #444444; font-size: 1.02rem; line-height: 1.5; font-weight: 300;
       }
 
-      .how-it-works-image-wrapper {
-        display: flex; justify-content: center; align-items: center; width: 100%;
-      }
-      .how-it-works-placeholder {
-        width: 100%; max-width: 280px; aspect-ratio: 9/16;
-        background: #111; border-radius: 8px; overflow: hidden;
-        box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.15);
+      /* 3D TILT EFFECT CONTAINERS */
+      .iphone-wrapper {
+        position: relative; display: flex; justify-content: center; align-items: center; width: 100%;
+        perspective: 1000px;
       }
 
-      /* Bold, Standout Video Showcase Section */
+      .iphone-frame {
+        position: relative; width: 100%; max-width: 290px; aspect-ratio: 9 / 19.5;
+        background: #000000;
+        border: 8px solid #1c1c1e;
+        border-radius: 40px !important;
+        overflow: hidden; display: flex; flex-direction: column;
+        z-index: 1;
+        transform-style: preserve-3d;
+        will-change: transform;
+        transition: transform 0.1s ease-out;
+      }
+
+      .iphone-notch {
+        position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+        width: 75px; height: 18px; background-color: #1c1c1e;
+        border-radius: 16px !important;
+        z-index: 10;
+      }
+
+      .iphone-screen {
+        position: relative; width: 100%; height: 100%; overflow: hidden; background: #000;
+      }
+      .iphone-screen video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+      .iphone-ui-hint {
+        position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+        width: 85%; display: flex; flex-direction: column; gap: 8px; z-index: 5; pointer-events: none;
+      }
+      .progress-bar-container {
+        width: 100%; height: 3px; background: rgba(255, 255, 255, 0.3); overflow: hidden;
+      }
+      .progress-bar-active {
+        width: 45%; height: 100%; background: #FFFFFF;
+      }
+      .ui-play-icon {
+        width: 14px; height: 14px; fill: #FFFFFF; opacity: 0.8; align-self: flex-start;
+      }
+
+      /* VIDEO SHOWCASE GRID */
       .video-showcase-section {
-        width: 100%; max-width: 100%; margin: 0 auto 4rem;
-        padding: 0 2rem; text-align: center;
+        width: 100%;
+        text-align: center;
+        padding: 0 1.5rem;
       }
 
-      .section-heading-group {
-        margin-bottom: 3.5rem; text-align: center; width: 100%;
-      }
       .showcase-main-title {
-        font-family: 'Le Jour Serif', Georgia, serif;
-        font-size: clamp(2rem, 3.2vw, 3.6rem);
+        font-family: 'Playfair Display', serif;
         font-weight: 400;
-        line-height: 1.15;
-        color: var(--text-main);
+        font-size: clamp(1.5rem, 2.3vw, 3.1rem); 
+        line-height: 1.25;
         letter-spacing: -0.01em;
-        margin-bottom: 1.5rem;
-        white-space: nowrap;
+        color: #000000;
+        margin-bottom: 1rem;
         text-align: center;
         width: 100%;
       }
+      .showcase-main-title em {
+        font-style: italic;
+        font-weight: 400;
+      }
+
       .showcase-main-desc {
-        font-size: clamp(1.15rem, 2vw, 1.4rem);
-        font-family: system-ui, -apple-system, sans-serif;
-        color: var(--text-muted);
-        font-weight: 300;
+        font-size: clamp(1.1rem, 1.8vw, 1.3rem); color: #444444; font-weight: 400; margin-bottom: 3.5rem;
         text-align: center;
       }
 
       .video-showcase-grid {
-        display: grid; grid-template-columns: 1fr; gap: 2rem; justify-items: center; max-width: 1300px; margin: 0 auto;
+        display: grid; grid-template-columns: 1fr; gap: 2.5rem; justify-items: center; width: 100%;
       }
       @media (min-width: 768px) {
         .video-showcase-grid { grid-template-columns: repeat(3, 1fr); }
       }
-      
-      .video-showcase-card {
-        display: flex; flex-direction: column; align-items: center; gap: 0.75rem; width: 100%;
-      }
 
-      .video-placeholder {
-        width: 100%; max-width: 280px; aspect-ratio: 9/16;
-        background: #111; border-radius: 8px; overflow: hidden;
-        box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.15);
+      .video-showcase-card {
+        display: flex; flex-direction: column; align-items: center; gap: 1.25rem; width: 100%;
       }
 
       .video-card-caption {
-        font-size: 0.75rem; font-family: system-ui, -apple-system, sans-serif;
-        color: var(--text-muted); font-weight: 300; line-height: 1.4; max-width: 240px; text-align: center;
+        font-size: 0.9rem; color: #000000; font-weight: 500; max-width: 240px; text-align: center;
       }
 
-      /* Contact / Get Started Section */
-      .contact-section {
-        padding: 4rem 5% 6rem;
-        display: flex;
-        justify-content: center;
-        scroll-margin-top: 20px;
+      /* WARM CREAM CTA SECTION WITH THICK BLACK FRAME */
+      .cream-cta-section {
         background-color: var(--bg-color);
+        padding: 8rem 3rem;
+        width: 100%;
+        display: flex; justify-content: center; align-items: center;
       }
-      .container { max-width: 800px; width: 100%; }
 
-      /* Centered Blueprint Banner Card */
       .offer-banner {
-        background-color: var(--text-main); color: var(--bg-color); border-radius: 12px;
-        padding: 3.5rem 3rem; text-align: center;
-        box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.15);
-        display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+        background: transparent;
+        color: var(--text-main);
+        text-align: center;
+        display: flex; flex-direction: column; align-items: center; gap: 1.75rem;
+        width: 100%;
+        max-width: 1000px;
+        padding: 4.5rem 3.5rem;
+        border: 3px solid #000000;
       }
-      .offer-title { font-size: 2.25rem; font-weight: 400; letter-spacing: -0.01em; }
-      .offer-text { font-size: 1.1rem; font-family: system-ui, -apple-system, sans-serif; color: #CCCCCC; line-height: 1.6; font-weight: 300; max-width: 600px; }
-      .offer-text strong { color: #FFFFFF; font-weight: 500; }
+      .offer-title {
+        font-family: 'Playfair Display', serif; 
+        font-size: clamp(2.5rem, 4vw, 3.5rem); 
+        font-weight: 500; 
+        color: var(--text-main);
+        line-height: 1.15;
+      }
+      
+      .offer-text-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+        width: 100%;
+      }
+      
+      .offer-line { 
+        font-size: 1.05rem; 
+        color: #444444; 
+        line-height: 1.4; 
+        font-weight: 300; 
+      }
+      .offer-line strong { color: var(--text-main); font-weight: 600; }
 
       .banner-cta-btn {
-        display: inline-block; background-color: var(--bg-color); color: var(--text-main);
-        padding: 1rem 2.5rem; border-radius: 4px; text-decoration: none;
-        font-family: system-ui, -apple-system, sans-serif;
-        font-weight: 500; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em;
-        transition: opacity 0.2s ease, transform 0.1s ease;
+        display: inline-flex; align-items: center; justify-content: center;
+        background-color: var(--text-main); color: var(--bg-color);
+        padding: 1.25rem 3.25rem; text-decoration: none;
+        font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.12em;
+        transition: all 0.2s ease;
       }
-      .banner-cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+      .banner-cta-btn:hover {
+        background-color: #333333; color: #FFFFFF;
+      }
 
-      /* Footer */
       footer {
-        background-color: var(--text-main); color: #888888; padding: 4rem 2rem 3rem 0;
-        width: 100%; margin-top: auto; font-family: system-ui, -apple-system, sans-serif;
-        border-top: 1.5px solid #222222;
+        background-color: #0A0A0A; color: #888888; padding: 4rem 3rem 3rem;
+        width: 100%; border-top: 2px solid rgba(255, 255, 255, 0.15);
       }
-      .footer-inner {
-        max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem; padding-left: 0;
-      }
-      .footer-brand { padding-left: 0; }
-      .footer-brand .footer-logo img { height: 90px; width: auto; display: block; margin-bottom: 1.25rem; filter: invert(1); }
+      .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 2.5rem; }
+      .footer-brand .footer-logo img { height: 75px; width: auto; display: block; margin-bottom: 1.25rem; filter: invert(1); }
       .footer-tagline { font-size: 1rem; color: #AAAAAA; margin-bottom: 0.5rem; font-weight: 300; margin-left: 1.5rem; }
-      .footer-email { font-size: 1rem; color: #FFFFFF; text-decoration: none; font-weight: 400; transition: opacity 0.2s; display: inline-block; margin-left: 1.5rem; }
-      .footer-email:hover { opacity: 0.8; }
-      .footer-divider { height: 1.5px; background-color: #333333; width: 100%; }
-      .footer-bottom {
-        display: flex; justify-content: space-between; align-items: center;
-        flex-wrap: wrap; gap: 1rem; font-size: 0.9rem; padding-left: 0;
-      }
+      .footer-email { font-size: 1rem; color: #FFFFFF; text-decoration: none; font-weight: 400; transition: color 0.2s; margin-left: 1.5rem; }
+      .footer-email:hover { color: #CCCCCC; }
+      .footer-divider { height: 1px; background-color: #222222; width: 100%; }
+      .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.9rem; }
       .footer-socials { display: flex; gap: 1.25rem; align-items: center; }
-      .footer-socials a { color: #AAAAAA; transition: color 0.2s ease; display: flex; align-items: center; }
-      .footer-socials a:hover { color: #FFF; }
+      .footer-socials a { color: #AAAAAA; transition: color 0.2s ease; }
+      .footer-socials a:hover { color: #FFFFFF; }
       .footer-socials svg { width: 20px; height: 20px; fill: currentColor; }
       .copyright { color: #777777; margin-left: 1.5rem; }
 
-      /* Mobile Fixes */
-      @media (max-width: 1200px) {
-        .showcase-main-title, h1 { white-space: normal; }
-      }
       @media (max-width: 640px) {
-        header {
-          flex-direction: column;
-          gap: 1rem;
-          padding: 1rem 2%;
-        }
+        header { flex-direction: column; gap: 1rem; padding: 1.25rem 5%; }
         .logo img { height: 60px; }
         .footer-tagline, .footer-email, .copyright { margin-left: 0; }
-        .hero {
-          padding: 3rem 5% 2.5rem;
-        }
-        .offer-banner, .steps-container {
-          padding: 2rem 1.5rem;
-        }
+        .hero { padding: 4rem 5% 3.5rem; }
+        .about-agency-section { padding: 4rem 1.5rem; }
+        .middle-cream-section { padding: 4.5rem 1.5rem; gap: 5rem; }
+        .cream-cta-section { padding: 5rem 1.5rem; }
+        .offer-banner { padding: 3rem 1.5rem; }
+        .steps-container { padding: 3rem 1.75rem; }
       }
     </style>
   </head>
@@ -320,28 +445,48 @@ const onboardingUrl = `${base}/onboarding`;
     </header>
 
     <main>
-      <!-- Section 1: Home / Hero -->
-      <section id="home" class="hero">
+      <!-- HERO SECTION -->
+      <section id="home" class="hero fade-slide-in">
         <div class="hero-content">
-          <h1>
-            <span class="line-1">Get More Clients By Just Being You.</span>
-          </h1>
-          <p class="subtitle">
-            For Atlanta businesses that know having an audience, is the marketing.
-          </p>
+          <h1>Get More Clients By Just <em>Being You.</em></h1>
+          <p class="subtitle">For Atlanta businesses that know having an audience, is the marketing.</p>
           <a href={onboardingUrl} target="_blank" rel="noopener noreferrer" class="cta-btn">See If You Qualify</a>
         </div>
       </section>
 
-      <!-- Section Separator -->
-      <div class="cta-divider"></div>
+      <!-- ABOUT OUR AGENCY SECTION -->
+      <section class="about-agency-section fade-slide-in">
+        <div class="about-agency-grid">
+          <div class="about-agency-left">
+            <h2 class="about-agency-title">About Our <em>Agency</em></h2>
+            <p class="about-agency-desc">
+              Founder Frame is an Atlanta-based personal branding agency.<br />
+              We help business owners turn their personal brand into an automated lead pipeline.
+            </p>
+          </div>
+          <div class="about-ticker-right">
+            <div class="ticker-item">
+              <span class="ticker-number">04</span>
+              <p class="ticker-text">Max active clients at a time</p>
+            </div>
+            <div class="ticker-item">
+              <span class="ticker-number">1-Day</span>
+              <p class="ticker-text">On-site iPhone shoot in Atlanta</p>
+            </div>
+            <div class="ticker-item">
+              <span class="ticker-number">100%</span>
+              <p class="ticker-text">Done-for-you scripting & editing</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <!-- How It Works Section -->
-      <section class="how-it-works-section">
-        <div class="how-it-works-grid">
+      <!-- WARM CREAM MIDDLE SECTION -->
+      <div class="middle-cream-section">
+        <!-- HOW IT WORKS -->
+        <section class="how-it-works-grid section-inner fade-slide-in">
           <div class="steps-container">
             <p class="section-tag">HOW IT WORKS</p>
-
             <div class="step-item">
               <span class="step-number">01</span>
               <div class="step-content">
@@ -349,7 +494,6 @@ const onboardingUrl = `${base}/onboarding`;
                 <p>And set up your phone so shooting is easy.</p>
               </div>
             </div>
-
             <div class="step-item">
               <span class="step-number">02</span>
               <div class="step-content">
@@ -357,7 +501,6 @@ const onboardingUrl = `${base}/onboarding`;
                 <p>On your own time using the scripts we write for you.</p>
               </div>
             </div>
-
             <div class="step-item">
               <span class="step-number">03</span>
               <div class="step-content">
@@ -367,68 +510,95 @@ const onboardingUrl = `${base}/onboarding`;
             </div>
           </div>
 
-          <div class="how-it-works-image-wrapper">
-            <div class="how-it-works-placeholder">
-              <video autoplay loop muted playsinline preload="auto" style="width:100%; height:100%; object-fit:cover;">
-                <source src={`${base}/website-vid.mp4`} type="video/mp4" />
-              </video>
+          <div class="iphone-wrapper">
+            <div class="iphone-frame tilt-card">
+              <div class="iphone-notch"></div>
+              <div class="iphone-screen">
+                <video autoplay loop muted playsinline preload="auto">
+                  <source src={`${base}/website-vid.mp4`} type="video/mp4" />
+                </video>
+                <div class="iphone-ui-hint">
+                  <svg class="ui-play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <div class="progress-bar-container"><div class="progress-bar-active"></div></div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- 3 Small Video Placeholders Section (Divider removed above) -->
-      <section class="video-showcase-section">
-        <div class="section-heading-group">
-          <h2 class="showcase-main-title">
-            Premium Scripting. Premium Editing. Premium Results.
-          </h2>
+        <!-- 3 VIDEO SHOWCASE -->
+        <section class="video-showcase-section fade-slide-in">
+          <h2 class="showcase-main-title">Premium <em>scripting</em>. &nbsp; Premium <em>editing</em>. &nbsp; Premium <em>results</em>.</h2>
           <p class="showcase-main-desc">We plan, edit, and post all your content.</p>
-        </div>
 
-        <div class="video-showcase-grid">
-          <!-- Video Card 1 -->
-          <div class="video-showcase-card">
-            <div class="video-placeholder">
-              <video autoplay loop muted playsinline preload="auto" style="width:100%; height:100%; object-fit:cover;">
-                <source src={`${base}/website-vid.mp4`} type="video/mp4" />
-              </video>
+          <div class="video-showcase-grid section-inner">
+            <div class="video-showcase-card">
+              <div class="iphone-wrapper">
+                <div class="iphone-frame tilt-card">
+                  <div class="iphone-notch"></div>
+                  <div class="iphone-screen">
+                    <video autoplay loop muted playsinline preload="auto">
+                      <source src={`${base}/website-vid.mp4`} type="video/mp4" />
+                    </video>
+                    <div class="iphone-ui-hint">
+                      <svg class="ui-play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                      <div class="progress-bar-container"><div class="progress-bar-active"></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="video-card-caption">Hook & Narrative Strategy</p>
             </div>
-            <p class="video-card-caption">Sample video caption or project detail 01</p>
-          </div>
 
-          <!-- Video Card 2 -->
-          <div class="video-showcase-card">
-            <div class="video-placeholder">
-              <video autoplay loop muted playsinline preload="auto" style="width:100%; height:100%; object-fit:cover;">
-                <source src={`${base}/website-vid.mp4`} type="video/mp4" />
-              </video>
+            <div class="video-showcase-card">
+              <div class="iphone-wrapper">
+                <div class="iphone-frame tilt-card">
+                  <div class="iphone-notch"></div>
+                  <div class="iphone-screen">
+                    <video autoplay loop muted playsinline preload="auto">
+                      <source src={`${base}/website-vid.mp4`} type="video/mp4" />
+                    </video>
+                    <div class="iphone-ui-hint">
+                      <svg class="ui-play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                      <div class="progress-bar-container"><div class="progress-bar-active"></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="video-card-caption">Lead Conversion Framework</p>
             </div>
-            <p class="video-card-caption">Sample video caption or project detail 02</p>
-          </div>
 
-          <!-- Video Card 3 -->
-          <div class="video-showcase-card">
-            <div class="video-placeholder">
-              <video autoplay loop muted playsinline preload="auto" style="width:100%; height:100%; object-fit:cover;">
-                <source src={`${base}/website-vid.mp4`} type="video/mp4" />
-              </video>
+            <div class="video-showcase-card">
+              <div class="iphone-wrapper">
+                <div class="iphone-frame tilt-card">
+                  <div class="iphone-notch"></div>
+                  <div class="iphone-screen">
+                    <video autoplay loop muted playsinline preload="auto">
+                      <source src={`${base}/website-vid.mp4`} type="video/mp4" />
+                    </video>
+                    <div class="iphone-ui-hint">
+                      <svg class="ui-play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                      <div class="progress-bar-container"><div class="progress-bar-active"></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="video-card-caption">Authority Positioning Setup</p>
             </div>
-            <p class="video-card-caption">Sample video caption or project detail 03</p>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
-      <!-- Section 2: Get Started / Contact (Divider removed above) -->
-      <section id="contact" class="contact-section">
-        <div class="container">
-          <!-- Centered Offer Banner Card -->
+      <!-- WARM CREAM CTA SECTION -->
+      <section id="contact" class="cream-cta-section fade-slide-in">
+        <div class="container" style="display: flex; justify-content: center; width: 100%;">
           <div class="offer-banner">
             <h3 class="offer-title">Get Your Free Blueprint</h3>
             <a href={onboardingUrl} target="_blank" rel="noopener noreferrer" class="banner-cta-btn">Start Your Personal Brand</a>
-            <p class="offer-text">
-              To give every brand our full attention, we only work with 4 clients at a time. <strong>Fill out the form to get your free blueprint.</strong>
-            </p>
+            <div class="offer-text-container">
+              <p class="offer-line">To give every brand our full attention, we only work with 4 clients at a time.</p>
+              <p class="offer-line"><strong>Fill out the form to get your free blueprint.</strong></p>
+            </div>
           </div>
         </div>
       </section>
@@ -455,5 +625,48 @@ const onboardingUrl = `${base}/onboarding`;
         </div>
       </div>
     </footer>
+
+    <!-- INTERACTIVE 3D TILT & BIDIRECTIONAL SCROLL OBSERVER SCRIPT -->
+    <script>
+      // 3D Mouse Tilt Effect for Phone Mockups
+      const cards = document.querySelectorAll('.tilt-card');
+      cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -10;
+          const rotateY = ((x - centerX) / centerX) * 10;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        });
+      });
+
+      // Bidirectional Scroll Observer for Fade-in & Slide Up/Down Animation
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-slide-in').forEach(section => {
+        observer.observe(section);
+      });
+    </script>
   </body>
 </html>
