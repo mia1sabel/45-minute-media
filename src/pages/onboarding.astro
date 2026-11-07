@@ -14,28 +14,24 @@ const thankYouUrl = `${base}/thank-you`;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Client Onboarding Questionnaire | Founder Frame</title>
 
-    <style>
-      @font-face {
-        font-family: 'Le Jour Serif';
-        src: url('/fonts/le-jour.otf') format('opentype');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-      }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
+    <style>
       :root {
         --bg-color: #F8F3E9;
-        --surface-color: #000000;
+        --surface-color: #0F0F0F;
         --text-main: #000000;
         --text-light: #FFFFFF;
         --text-muted: #AAAAAA;
-        --border-color: #333333;
-        --accent-gold: #BEB3A3;
+        --accent-gray: #CCCCCC;
+        --border-dark: rgba(255, 255, 255, 0.08);
       }
 
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+      * { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; }
       body {
-        font-family: 'Le Jour Serif', Georgia, serif;
+        font-family: 'Inter', sans-serif;
         background-color: var(--bg-color);
         color: var(--text-main);
         -webkit-font-smoothing: antialiased;
@@ -44,102 +40,124 @@ const thankYouUrl = `${base}/thank-you`;
 
       header {
         display: flex; justify-content: space-between; align-items: center;
-        padding: 1rem 2rem 1rem 0; width: 100%;
-        border-bottom: 1.5px solid #BEB3A3;
+        padding: 1.25rem 2.5rem; width: 100%;
+        border-bottom: 1.5px solid #E5E2D9;
+        background-color: var(--bg-color);
       }
       .logo { display: flex; align-items: center; text-decoration: none; margin-left: 0; }
-      .logo img { height: 90px; width: auto; object-fit: contain; display: block; }
+      .logo img { height: 75px; width: auto; object-fit: contain; display: block; }
 
       .container {
-        max-width: 800px; width: 100%; margin: 3rem auto; padding: 0 1.5rem;
+        max-width: 760px; width: 100%; margin: 4rem auto; padding: 0 1.5rem;
       }
 
       .form-card {
-        background: var(--surface-color); color: var(--text-light);
-        border-radius: 12px; padding: 3rem 2.5rem;
-        box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.15);
+        background: linear-gradient(145deg, rgba(20, 20, 20, 0.96), rgba(10, 10, 10, 0.99));
+        backdrop-filter: blur(12px);
+        color: var(--text-light);
+        padding: 3.5rem;
+        border: 1px solid var(--border-dark);
+        /* Rich, layered multi-stage shadow for realistic physical depth */
+        box-shadow: 
+          0 10px 30px -5px rgba(0, 0, 0, 0.15),
+          0 20px 50px -10px rgba(0, 0, 0, 0.25),
+          0 30px 90px 0px rgba(0, 0, 0, 0.3), 
+          inset 0 1px 1px rgba(255,255,255,0.1) !important;
       }
 
-      .progress-header {
-        margin-bottom: 2.5rem;
-      }
+      .progress-header { margin-bottom: 2.5rem; }
 
       .progress-bar-bg {
-        width: 100%; height: 6px; background-color: #222222; border-radius: 999px; overflow: hidden;
+        width: 100%; height: 4px; background-color: rgba(255, 255, 255, 0.08); overflow: hidden;
       }
 
       .progress-bar-fill {
-        height: 100%; width: 20%; background-color: var(--bg-color);
-        transition: width 0.3s ease; border-radius: 999px;
+        height: 100%; width: 20%; background-color: var(--accent-gray);
+        transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       h1 {
-        font-size: clamp(1.4rem, 2.5vw, 2.2rem); font-weight: 400; margin-bottom: 0.5rem;
-        letter-spacing: -0.01em; color: var(--text-light); text-align: center;
-        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2rem, 3vw, 2.6rem); font-weight: 500; margin-bottom: 0.75rem;
+        letter-spacing: -0.01em; color: var(--text-light); text-align: center; line-height: 1.2;
       }
 
       .form-subtitle {
-        font-family: system-ui, -apple-system, sans-serif; color: var(--text-muted);
-        text-align: center; font-weight: 300; margin-bottom: 2.5rem; font-size: 1rem;
+        color: var(--text-muted); text-align: center; font-weight: 300; margin-bottom: 3rem; font-size: 1.05rem;
       }
 
       .section-title {
-        font-size: 1.2rem; font-weight: 400; margin-bottom: 1.5rem;
-        padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-color); color: var(--text-light);
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem; font-weight: 500; margin-bottom: 1.75rem;
+        padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-dark); color: var(--accent-gray);
       }
 
       .form-step { display: none; }
       .form-step.active { display: block; }
 
-      .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; text-align: left; }
+      .form-group { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.75rem; text-align: left; }
       .form-group label {
-        font-size: 0.85rem; font-family: system-ui, -apple-system, sans-serif;
-        font-weight: 500; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em;
+        font-size: 0.8rem; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.08em;
       }
+      
+      /* Custom dark input surface & fine border */
       .form-group input, .form-group textarea {
-        padding: 1rem 1.25rem; border: 1.5px solid var(--border-color); border-radius: 6px;
-        font-size: 1rem; font-family: system-ui, -apple-system, sans-serif; transition: border-color 0.2s, background-color 0.2s;
-        outline: none; background-color: #111111; color: var(--text-light);
+        padding: 1.1rem 1.25rem; border: 1px solid rgba(255, 255, 255, 0.12);
+        font-size: 1rem; font-family: 'Inter', sans-serif; transition: all 0.25s ease;
+        outline: none; background-color: rgba(255, 255, 255, 0.04); color: var(--text-light);
       }
       .form-group textarea { resize: vertical; min-height: 110px; }
-      .form-group input:focus, .form-group textarea:focus { border-color: var(--bg-color); background-color: #1a1a1a; }
+      
+      /* Soft interactive focus glow for inputs and buttons */
+      .form-group input:focus, .form-group textarea:focus,
+      .btn-next:focus, .btn-submit:focus, .btn-back:focus { 
+        border-color: rgba(255, 255, 255, 0.6); 
+        background-color: rgba(255, 255, 255, 0.06);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.15) !important;
+      }
 
       .nav-buttons {
-        display: flex; justify-content: space-between; align-items: center; margin-top: 2.5rem; gap: 1rem;
+        display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; gap: 1rem;
       }
 
       .btn-back {
         background: transparent; color: var(--text-muted); border: none;
-        font-family: system-ui, -apple-system, sans-serif; font-size: 0.95rem; font-weight: 500;
-        cursor: pointer; padding: 0.75rem 1rem; transition: color 0.2s ease;
+        font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 500;
+        cursor: pointer; padding: 0.75rem 1rem; transition: all 0.25s ease;
       }
       .btn-back:hover { color: var(--text-light); }
 
       .btn-next {
         background-color: var(--bg-color); color: var(--text-main); border: none;
-        padding: 1rem 2.5rem; border-radius: 6px; font-family: system-ui, -apple-system, sans-serif;
-        font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em;
-        cursor: pointer; transition: opacity 0.2s ease, transform 0.1s ease; margin-left: auto;
+        padding: 1rem 2.5rem; font-family: 'Inter', sans-serif;
+        font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em;
+        cursor: pointer; transition: all 0.25s ease; margin-left: auto;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       }
-      .btn-next:hover { opacity: 0.9; transform: translateY(-1px); }
+      .btn-next:hover { 
+        background-color: #E5E5E5; color: #000; transform: translateY(-2px);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.25) !important;
+      }
 
       .btn-submit {
         background-color: var(--bg-color); color: var(--text-main); border: none;
-        padding: 1.25rem 3rem; border-radius: 6px; font-family: system-ui, -apple-system, sans-serif;
-        font-weight: 700; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.1em;
-        cursor: pointer; transition: all 0.2s ease; width: 100%; box-shadow: 0 4px 14px rgba(248, 243, 233, 0.15);
+        padding: 1.2rem 3rem; font-family: 'Inter', sans-serif;
+        font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.12em;
+        cursor: pointer; transition: all 0.25s ease; width: 100%; 
+        box-shadow: 0 8px 30px rgba(248, 243, 233, 0.2);
       }
-      .btn-submit:hover { opacity: 0.95; transform: translateY(-1px); }
-      .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+      .btn-submit:hover { 
+        background-color: #E5E5E5; transform: translateY(-2px);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.25) !important;
+      }
+      .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
 
       footer {
-        background-color: var(--text-main); color: #888888; padding: 4rem 2rem 3rem 0;
-        width: 100%; margin-top: auto; font-family: system-ui, -apple-system, sans-serif;
-        border-top: 1.5px solid #222222;
+        background-color: var(--surface-color); color: #888888; padding: 4rem 2.5rem 3rem;
+        width: 100%; margin-top: auto; border-top: 1px solid var(--border-dark);
       }
-      .footer-inner { max-width: 1400px; margin: 0 auto; padding-left: 1.5rem; }
-      .copyright { color: #777777; font-size: 0.9rem; }
+      .footer-inner { max-width: 1400px; margin: 0 auto; }
+      .copyright { color: #777777; font-size: 0.9rem; font-weight: 300; }
     </style>
   </head>
   <body>
@@ -155,7 +173,6 @@ const thankYouUrl = `${base}/thank-you`;
           </div>
         </div>
 
-        <h1>Client Onboarding Questionnaire</h1>
         <p class="form-subtitle">Tell us about your brand so we can craft your custom strategy.</p>
 
         <form id="onboarding-form">
