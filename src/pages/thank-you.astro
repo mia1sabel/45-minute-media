@@ -3,6 +3,9 @@ import { Image } from 'astro:assets';
 import mainLogo from '../assets/1.png';
 import faviconImg from '../assets/3.svg';
 
+// Import the PDF directly so Vite includes it in the production build bundle
+import blueprintPdf from '../assets/Founder-Frame-Blueprint.pdf';
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
@@ -67,7 +70,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="thank-you-box">
         <h1>Thank You</h1>
         <p>Your responses have been submitted successfully to our team.</p>
-        <a href="/founder-frame-blueprint.pdf" download class="download-btn">Download your free blueprint.</a>
+        <!-- Uses the imported Vite asset URL -->
+        <a href={blueprintPdf} download class="download-btn">Download your free blueprint.</a>
       </div>
     </main>
   </body>
