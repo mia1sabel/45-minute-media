@@ -42,13 +42,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       }
       .thank-you-box {
         background-color: var(--text-main); color: var(--bg-color);
-        border-radius: 12px; padding: 4rem 3rem; max-width: 700px; width: 100%;
+        border-radius: 12px; padding: 4rem 3.5rem; max-width: 700px; width: 100%;
         box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.15);
         display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
       }
       h1 { font-size: 2.5rem; font-weight: 400; letter-spacing: -0.01em; }
       p { font-family: system-ui, -apple-system, sans-serif; color: #CCCCCC; font-size: 1.1rem; line-height: 1.6; font-weight: 300; max-width: 500px; }
-      p strong { color: #FFFFFF; font-weight: 500; }
       .download-btn {
         display: inline-block; background-color: var(--bg-color); color: var(--text-main);
         padding: 1.15rem 3rem; border-radius: 4px; text-decoration: none;
@@ -68,8 +67,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="thank-you-box">
         <h1>Thank You</h1>
         <p>Your responses have been submitted successfully to our team.</p>
-        <p><strong>Download your free blueprint.</strong></p>
-        <a href={`${base}/founder-frame-blueprint.pdf`} download class="download-btn">CROSSWIRE.pdf</a>
+        <a href="/founder-frame-blueprint.pdf" download class="download-btn">Download your free blueprint.</a>
       </div>
     </main>
   </body>

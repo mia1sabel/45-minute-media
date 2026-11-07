@@ -25,10 +25,11 @@ const thankYouUrl = `${base}/thank-you`;
 
       :root {
         --bg-color: #F8F3E9;
-        --surface-color: #FFFFFF;
+        --surface-color: #000000;
         --text-main: #000000;
-        --text-muted: #555555;
-        --border-color: #BEB3A3;
+        --text-light: #FFFFFF;
+        --text-muted: #AAAAAA;
+        --border-color: #333333;
       }
 
       * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -43,51 +44,50 @@ const thankYouUrl = `${base}/thank-you`;
       header {
         display: flex; justify-content: space-between; align-items: center;
         padding: 1rem 2rem 1rem 0; width: 100%;
-        border-bottom: 1.5px solid var(--border-color);
+        border-bottom: 1.5px solid #BEB3A3;
       }
       .logo { display: flex; align-items: center; text-decoration: none; margin-left: 0; }
       .logo img { height: 90px; width: auto; object-fit: contain; display: block; }
-      
-      nav { display: flex; gap: 2rem; align-items: center; font-family: system-ui, -apple-system, sans-serif; }
-      nav a {
-        text-decoration: none; color: var(--text-muted); font-weight: 500;
-        font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.2s ease;
-      }
-      nav a:hover { color: var(--text-main); }
 
       .container {
         max-width: 800px; width: 100%; margin: 4rem auto; padding: 0 2rem;
       }
 
       .form-card {
-        background: var(--surface-color); border: 1.5px solid var(--border-color); border-radius: 12px;
-        padding: 4rem 3.5rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03);
+        background: var(--surface-color); color: var(--text-light);
+        border-radius: 12px; padding: 4rem 3.5rem;
+        box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.15);
       }
 
       h1 {
-        font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 400; margin-bottom: 0.75rem; letter-spacing: -0.01em; color: var(--text-main); text-align: center;
+        font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 400; margin-bottom: 0.75rem;
+        letter-spacing: -0.01em; color: var(--text-light); text-align: center;
       }
       .form-subtitle {
-        font-family: system-ui, -apple-system, sans-serif; color: var(--text-muted); text-align: center; font-weight: 300; margin-bottom: 3rem; font-size: 1.1rem;
+        font-family: system-ui, -apple-system, sans-serif; color: var(--text-muted);
+        text-align: center; font-weight: 300; margin-bottom: 3rem; font-size: 1.1rem;
       }
 
       .section-title {
         font-size: 1.3rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1.25rem;
-        padding-bottom: 0.5rem; border-bottom: 1.5px solid var(--border-color); color: var(--text-main);
+        padding-bottom: 0.5rem; border-bottom: 1.5px solid var(--border-color); color: var(--text-light);
       }
 
       .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; text-align: left; }
-      .form-group label { font-size: 0.9rem; font-family: system-ui, -apple-system, sans-serif; font-weight: 500; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.05em; }
+      .form-group label {
+        font-size: 0.9rem; font-family: system-ui, -apple-system, sans-serif;
+        font-weight: 500; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em;
+      }
       .form-group input, .form-group textarea {
         padding: 1rem 1.25rem; border: 1.5px solid var(--border-color); border-radius: 6px;
-        font-size: 1rem; font-family: system-ui, -apple-system, sans-serif; transition: border-color 0.2s, box-shadow 0.2s;
-        outline: none; background-color: var(--bg-color); color: var(--text-main);
+        font-size: 1rem; font-family: system-ui, -apple-system, sans-serif; transition: border-color 0.2s, background-color 0.2s;
+        outline: none; background-color: #111111; color: var(--text-light);
       }
       .form-group textarea { resize: vertical; min-height: 100px; }
-      .form-group input:focus, .form-group textarea:focus { border-color: var(--text-main); background-color: #FFF; }
+      .form-group input:focus, .form-group textarea:focus { border-color: var(--bg-color); background-color: #1a1a1a; }
 
       .submit-btn {
-        width: 100%; background-color: var(--text-main); color: var(--bg-color); border: none;
+        width: 100%; background-color: var(--bg-color); color: var(--text-main); border: none;
         padding: 1.15rem; border-radius: 6px; font-family: system-ui, -apple-system, sans-serif;
         font-weight: 500; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em;
         cursor: pointer; transition: opacity 0.2s ease, transform 0.1s ease; margin-top: 2rem;
@@ -115,12 +115,10 @@ const thankYouUrl = `${base}/thank-you`;
         <p class="form-subtitle">Tell us about your brand so we can craft your custom strategy.</p>
 
         <form id="onboarding-form">
-          <!-- Web3Forms Configuration -->
           <input type="hidden" name="access_key" value="942bdab6-88a9-40af-81e6-36e56933ddf7" />
           <input type="hidden" name="subject" value="New Client Onboarding Questionnaire Submission!" />
           <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
-          <!-- Contact Details (Required for follow-up) -->
           <div class="section-title">Contact & Brand Info</div>
           <div class="form-group">
             <label for="fullName">Your Full Name</label>
@@ -135,7 +133,6 @@ const thankYouUrl = `${base}/thank-you`;
             <input type="text" id="businessName" name="Business Name" placeholder="Business Inc." required />
           </div>
 
-          <!-- SECTION 1 -->
           <div class="section-title">Section 1: Core Positioning & Offers</div>
           <div class="form-group">
             <label for="q1">What is the primary product or service you sell?</label>
@@ -150,7 +147,6 @@ const thankYouUrl = `${base}/thank-you`;
             <textarea id="q3" name="3. Off-Limits Topics" placeholder="Boundaries or topics to avoid..."></textarea>
           </div>
 
-          <!-- SECTION 2 -->
           <div class="section-title">Section 2: Target Audience & Leads</div>
           <div class="form-group">
             <label for="q4">What is the biggest problem your ideal client is facing right now?</label>
@@ -165,14 +161,12 @@ const thankYouUrl = `${base}/thank-you`;
             <input type="text" id="q6" name="6. Call to Action Destination" placeholder="Website link, calendar link, DM, etc." />
           </div>
 
-          <!-- SECTION 3 -->
           <div class="section-title">Section 3: Current Social Media Links</div>
           <div class="form-group">
             <label for="q7">Please link all of your current social media profiles:</label>
             <textarea id="q7" name="7. Social Media Links" placeholder="Instagram, TikTok, LinkedIn, YouTube, X, etc."></textarea>
           </div>
 
-          <!-- SECTION 4 -->
           <div class="section-title">Section 4: iPhone Setup & Production Realities</div>
           <div class="form-group">
             <label for="q8">Which iPhone model will you be using for your content?</label>
