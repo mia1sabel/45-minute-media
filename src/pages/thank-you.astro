@@ -60,7 +60,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         width: 100%;
         max-width: 680px;
         padding: 3.5rem;
-        /* Exact card styling & multi-stage shadow matching the onboarding form */
         border: 1px solid rgba(255, 255, 255, 0.08);
         box-shadow: 
           0 10px 30px -5px rgba(0, 0, 0, 0.15),
@@ -104,43 +103,58 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         margin-top: 0.5rem;
       }
 
-      /* SOFT INTERACTIVE FOCUS GLOW RING & BUTTONS */
-      .blueprint-btn, .home-btn {
+      /* BUTTON STYLING MATCHED TO ONBOARDING QUESTIONNAIRE */
+      .blueprint-btn {
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        border: none;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 1.1rem 2rem;
+        padding: 1.2rem 3rem;
         text-decoration: none;
         font-weight: 700;
-        font-size: 0.85rem;
+        font-size: 0.95rem;
         text-transform: uppercase;
         letter-spacing: 0.12em;
+        cursor: pointer;
         transition: all 0.25s ease;
+        box-shadow: 0 8px 30px rgba(248, 243, 233, 0.2);
       }
 
-      .blueprint-btn {
-        background-color: #F8F3E9;
-        color: #000000;
-      }
-
-      .blueprint-btn:hover,
-      .blueprint-btn:focus {
-        background-color: #FFFFFF;
-        outline: none;
-        border-color: rgba(255, 255, 255, 0.6);
+      .blueprint-btn:hover {
+        background-color: #E5E5E5;
+        transform: translateY(-2px);
         box-shadow: 0 0 15px rgba(255, 255, 255, 0.25) !important;
       }
 
-      .home-btn {
-        background-color: transparent;
-        color: #B3B0A7;
-        border: 1px solid rgba(255, 255, 255, 0.15);
+      .blueprint-btn:focus {
+        border-color: rgba(255, 255, 255, 0.6);
+        outline: none;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.15) !important;
       }
 
-      .home-btn:hover,
-      .home-btn:focus {
+      .home-btn {
+        background: transparent;
+        color: #AAAAAA;
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1rem;
+        text-decoration: none;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.25s ease;
+      }
+
+      .home-btn:hover {
         color: #FFFFFF;
-        border-color: rgba(255, 255, 255, 0.4);
+      }
+
+      .home-btn:focus {
         outline: none;
         box-shadow: 0 0 15px rgba(255, 255, 255, 0.15) !important;
       }
@@ -166,7 +180,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         </p>
         <div class="action-buttons">
           <a href={`${base}/founder-frame-blueprint.pdf`} download="founder-frame-blueprint.pdf" class="blueprint-btn">Download The Blueprint</a>
-          <a href={`${base}/`} class="home-btn">Return Home</a>
+          <a href={`${base}/`} class="home-btn">&larr; Return Home</a>
         </div>
       </div>
     </main>
