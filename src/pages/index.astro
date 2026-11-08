@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import mainLogo from '../assets/1.png';
-import faviconImg from '../assets/3.svg';
+import faviconImg from '../assets/4.svg';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const onboardingUrl = `${base}/onboarding`; 
@@ -25,10 +25,11 @@ const onboardingUrl = `${base}/onboarding`;
 
     <title>Founder Frame | Get More Clients By Just Being You</title>
 
-    <link rel="canonical" href="https://founderframe.com" />
-    <meta property="og:url" content="https://founderframe.com" />
-    <meta property="og:title" content="Founder Frame | Get More Clients By Just Being You" />
+    <link rel="canonical" href="https://fndrframe.com" />
+    <meta property="og:url" content="https://fndrframe.com" />
+    <meta property="og:title" content="Founder Frame" />
     <meta property="og:description" content="For Atlanta businesses that know having an audience, is the marketing." />
+    <meta property="og:image" content={faviconImg.src} />
 
     <!-- Google Fonts: Playfair Display & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -348,13 +349,20 @@ const onboardingUrl = `${base}/onboarding`;
       .showcase-main-title {
         font-family: 'Playfair Display', serif;
         font-weight: 400;
-        font-size: clamp(1.5rem, 2.3vw, 3.1rem); 
+        font-size: clamp(1.2rem, 2.3vw, 3.1rem); 
         line-height: 1.25;
         letter-spacing: -0.01em;
         color: #000000;
         margin-bottom: 1rem;
         text-align: center;
         width: 100%;
+        white-space: nowrap;
+        overflow-x: auto;
+        padding-bottom: 0.25rem;
+        scrollbar-width: none; /* Firefox */
+      }
+      .showcase-main-title::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
       }
       .showcase-main-title em {
         font-style: italic;
