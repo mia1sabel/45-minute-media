@@ -25,11 +25,12 @@ const onboardingUrl = `${base}/onboarding`;
 
     <title>Founder Frame | Get More Clients By Just Being You</title>
 
-    <link rel="canonical" href="https://fndrframe.com" />
-    <meta property="og:url" content="https://fndrframe.com" />
+    <link rel="canonical" href="https://fnderframe.com" />
+    <meta property="og:url" content="https://fnderframe.com" />
     <meta property="og:title" content="Founder Frame" />
     <meta property="og:description" content="For Atlanta businesses that know having an audience, is the marketing." />
-    <meta property="og:image" content={faviconImg.src} />
+    <meta property="og:image" content={`https://fnderframe.com${faviconImg.src}`} />
+    <meta property="og:image:type" content="image/svg+xml" />
 
     <!-- Google Fonts: Playfair Display & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -356,13 +357,6 @@ const onboardingUrl = `${base}/onboarding`;
         margin-bottom: 1rem;
         text-align: center;
         width: 100%;
-        white-space: nowrap;
-        overflow-x: auto;
-        padding-bottom: 0.25rem;
-        scrollbar-width: none; /* Firefox */
-      }
-      .showcase-main-title::-webkit-scrollbar {
-        display: none; /* Chrome/Safari */
       }
       .showcase-main-title em {
         font-style: italic;
@@ -485,6 +479,12 @@ const onboardingUrl = `${base}/onboarding`;
         .cream-cta-section { padding: 5rem 1.5rem; }
         .offer-banner { padding: 3rem 1.5rem; }
         .steps-container { padding: 3rem 1.75rem; }
+        .showcase-main-title {
+          font-size: clamp(0.72rem, 3.2vw, 1.1rem);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: clip;
+        }
       }
     </style>
   </head>
