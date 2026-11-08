@@ -12,6 +12,17 @@ const onboardingUrl = `${base}/onboarding`;
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href={faviconImg.src} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZSMYG4C65"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GZSMYG4C65');
+    </script>
+
     <title>Founder Frame | Get More Clients By Just Being You</title>
 
     <link rel="canonical" href="https://founderframe.com" />
@@ -58,9 +69,15 @@ const onboardingUrl = `${base}/onboarding`;
       nav { display: flex; gap: 2rem; align-items: center; font-family: 'Inter', sans-serif; }
       nav a {
         text-decoration: none; color: #555555; font-weight: 500;
-        font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.2s ease;
+        font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.25s ease;
+        padding: 0.5rem 1rem;
       }
       nav a:hover { color: var(--text-main); }
+      nav a:focus {
+        outline: none;
+        border-color: rgba(255, 255, 255, 0.6);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.15) !important;
+      }
 
       /* FADE-IN & SLIDE UP ANIMATION CLASSES (BIDIRECTIONAL) */
       .fade-slide-in {
@@ -102,15 +119,26 @@ const onboardingUrl = `${base}/onboarding`;
         line-height: 1.6; max-width: none; margin-inline: auto; font-weight: 300;
       }
       
+      /* CTA BUTTONS MATCHED TO ONBOARDING QUESTIONNAIRE */
       .cta-btn {
         display: inline-flex; align-items: center; justify-content: center;
         background-color: var(--text-main); color: var(--bg-color);
+        border: none;
         padding: 1.25rem 3.25rem; text-decoration: none;
         font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.12em;
-        transition: all 0.2s ease;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
       }
       .cta-btn:hover {
-        background-color: #333333; color: #FFFFFF;
+        background-color: #1A1A1A; color: #FFFFFF;
+        transform: translateY(-2px);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.25) !important;
+      }
+      .cta-btn:focus {
+        outline: none;
+        border-color: rgba(255, 255, 255, 0.6);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.15) !important;
       }
 
       /* SHARED SECTION INNER WRAPPER FOR CENTERING & PADDING */
@@ -398,12 +426,22 @@ const onboardingUrl = `${base}/onboarding`;
       .banner-cta-btn {
         display: inline-flex; align-items: center; justify-content: center;
         background-color: var(--text-main); color: var(--bg-color);
+        border: none;
         padding: 1.25rem 3.25rem; text-decoration: none;
         font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.12em;
-        transition: all 0.2s ease;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
       }
       .banner-cta-btn:hover {
-        background-color: #333333; color: #FFFFFF;
+        background-color: #1A1A1A; color: #FFFFFF;
+        transform: translateY(-2px);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.25) !important;
+      }
+      .banner-cta-btn:focus {
+        outline: none;
+        border-color: rgba(255, 255, 255, 0.6);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.15) !important;
       }
 
       footer {
@@ -418,9 +456,15 @@ const onboardingUrl = `${base}/onboarding`;
       .footer-divider { height: 1px; background-color: #222222; width: 100%; }
       .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.9rem; }
       .footer-socials { display: flex; gap: 1.25rem; align-items: center; }
-      .footer-socials a { color: #AAAAAA; transition: color 0.2s ease; }
-      .footer-socials a:hover { color: #FFFFFF; }
-      .footer-socials svg { width: 20px; height: 20px; fill: currentColor; }
+      .footer-socials a { color: #AAAAAA; transition: color 0.25s ease; padding: 0.2rem; }
+      .footer-socials a:hover {
+        color: #FFFFFF;
+      }
+      .footer-socials a:focus {
+        outline: none;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.15) !important;
+      }
+      .footer-socials svg { width: 20px; height: 20px; fill: currentColor; display: block; }
       .copyright { color: #777777; margin-left: 1.5rem; }
 
       @media (max-width: 640px) {
@@ -450,7 +494,7 @@ const onboardingUrl = `${base}/onboarding`;
         <div class="hero-content">
           <h1>Get More Clients By Just <em>Being You.</em></h1>
           <p class="subtitle">For Atlanta businesses that know having an audience, is the marketing.</p>
-          <a href={onboardingUrl} target="_blank" rel="noopener noreferrer" class="cta-btn">See If You Qualify</a>
+          <a href={onboardingUrl} target="_blank" rel="noopener noreferrer" class="cta-btn">See If You Qualify &rarr;</a>
         </div>
       </section>
 
@@ -594,7 +638,7 @@ const onboardingUrl = `${base}/onboarding`;
         <div class="container" style="display: flex; justify-content: center; width: 100%;">
           <div class="offer-banner">
             <h3 class="offer-title">Get Your <em>Free</em> Blueprint</h3>
-            <a href={onboardingUrl} target="_blank" rel="noopener noreferrer" class="banner-cta-btn">Start Your Personal Brand</a>
+            <a href={onboardingUrl} target="_blank" rel="noopener noreferrer" class="banner-cta-btn">Start Your Personal Brand &rarr;</a>
             <div class="offer-text-container">
               <p class="offer-line">To give every brand our full attention, we only work with 4 clients at a time.</p>
               <p class="offer-line"><strong>Fill out the form to get your free blueprint.</strong></p>
