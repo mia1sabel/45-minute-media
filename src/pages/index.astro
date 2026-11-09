@@ -1,11 +1,12 @@
 ---
 import { Image } from 'astro:assets';
 import mainLogo from '../assets/1.png';
-import faviconImg from '../assets/4.svg';
+import faviconImg from '../assets/2.svg';
 import ogImage from '../assets/Founder Frame Logo.jpg';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const onboardingUrl = `${base}/onboarding`; 
+const blueprintPdfUrl = `${base}/blueprint.pdf`;
 ---
 
 <html lang="en">
@@ -642,10 +643,10 @@ const onboardingUrl = `${base}/onboarding`;
         <div class="container" style="display: flex; justify-content: center; width: 100%;">
           <div class="offer-banner">
             <h3 class="offer-title">Get Your <em>Free</em> Blueprint</h3>
-            <a href={onboardingUrl} target="_blank" rel="noopener noreferrer" class="banner-cta-btn">Start Your Personal Brand &rarr;</a>
+            <a href={blueprintPdfUrl} download="blueprint.pdf" class="banner-cta-btn">Download Blueprint PDF &rarr;</a>
             <div class="offer-text-container">
               <p class="offer-line">To give every brand our full attention, we only work with 4 clients at a time.</p>
-              <p class="offer-line"><strong>Fill out the form to get your free blueprint.</strong></p>
+              <p class="offer-line"><strong>Click above to download your free blueprint instantly.</strong></p>
             </div>
           </div>
         </div>
