@@ -210,16 +210,16 @@ const thankYouUrl = `${base}/thank-you`;
           <div class="form-step" data-step="2">
             <div class="section-title">Section 1: Core Positioning & Offers</div>
             <div class="form-group">
-              <label for="q1">What is the primary product or service you sell?</label>
-              <textarea id="q1" name="1. Primary Product or Service" placeholder="Describe what you sell..."></textarea>
+              <label for="q1">What is the primary product or service you sell? *</label>
+              <textarea id="q1" name="1. Primary Product or Service" placeholder="Describe what you sell..." required></textarea>
             </div>
             <div class="form-group">
-              <label for="q2">What are some strong beliefs you hold about yourself and your industry?</label>
-              <textarea id="q2" name="2. Industry Beliefs" placeholder="Share your core philosophies..."></textarea>
+              <label for="q2">What are some strong beliefs you hold about yourself and your industry? *</label>
+              <textarea id="q2" name="2. Industry Beliefs" placeholder="Share your core philosophies..." required></textarea>
             </div>
             <div class="form-group">
-              <label for="q3">What topics or personal details are off-limits for you on camera?</label>
-              <textarea id="q3" name="3. Off-Limits Topics" placeholder="Boundaries or topics to avoid..."></textarea>
+              <label for="q3">What topics or personal details are off-limits for you on camera? *</label>
+              <textarea id="q3" name="3. Off-Limits Topics" placeholder="Boundaries or topics to avoid..." required></textarea>
             </div>
             <div class="nav-buttons">
               <button type="button" class="btn-back" onclick="prevStep(2)">&larr; Back</button>
@@ -231,16 +231,16 @@ const thankYouUrl = `${base}/thank-you`;
           <div class="form-step" data-step="3">
             <div class="section-title">Section 2: Target Audience & Leads</div>
             <div class="form-group">
-              <label for="q4">What is the biggest problem your ideal client is facing right now?</label>
-              <textarea id="q4" name="4. Ideal Client Problem" placeholder="Pain points..."></textarea>
+              <label for="q4">What is the biggest problem your ideal client is facing right now? *</label>
+              <textarea id="q4" name="4. Ideal Client Problem" placeholder="Pain points..." required></textarea>
             </div>
             <div class="form-group">
-              <label for="q5">What specific questions or objections do clients ask you on sales calls?</label>
-              <textarea id="q5" name="5. Sales Call Objections" placeholder="Common questions..."></textarea>
+              <label for="q5">What specific questions or objections do clients ask you on sales calls? *</label>
+              <textarea id="q5" name="5. Sales Call Objections" placeholder="Common questions..." required></textarea>
             </div>
             <div class="form-group">
-              <label for="q6">Where do you want viewers to go when they are ready to buy or reach out?</label>
-              <input type="text" id="q6" name="6. Call to Action Destination" placeholder="Website link, calendar link, DM, etc." />
+              <label for="q6">Where do you want viewers to go when they are ready to buy or reach out? *</label>
+              <input type="text" id="q6" name="6. Call to Action Destination" placeholder="Website link, calendar link, DM, etc." required />
             </div>
             <div class="nav-buttons">
               <button type="button" class="btn-back" onclick="prevStep(3)">&larr; Back</button>
@@ -252,8 +252,8 @@ const thankYouUrl = `${base}/thank-you`;
           <div class="form-step" data-step="4">
             <div class="section-title">Section 3: Current Social Media Links</div>
             <div class="form-group">
-              <label for="q7">Please link all of your current social media profiles:</label>
-              <textarea id="q7" name="7. Social Media Links" placeholder="Instagram, TikTok, LinkedIn, YouTube, X, etc."></textarea>
+              <label for="q7">Please link all of your current social media profiles: *</label>
+              <textarea id="q7" name="7. Social Media Links" placeholder="Instagram, TikTok, LinkedIn, YouTube, X, etc." required></textarea>
             </div>
             <div class="nav-buttons">
               <button type="button" class="btn-back" onclick="prevStep(4)">&larr; Back</button>
@@ -265,16 +265,16 @@ const thankYouUrl = `${base}/thank-you`;
           <div class="form-step" data-step="5">
             <div class="section-title">Section 4: iPhone Setup & Production Realities</div>
             <div class="form-group">
-              <label for="q8">Which iPhone model will you be using for your content?</label>
-              <input type="text" id="q8" name="8. iPhone Model" placeholder="e.g. iPhone 15 Pro" />
+              <label for="q8">Which iPhone model will you be using for your content? *</label>
+              <input type="text" id="q8" name="8. iPhone Model" placeholder="e.g. iPhone 15 Pro" required />
             </div>
             <div class="form-group">
-              <label for="q9">Where in your home or office can you consistently shoot with good natural light?</label>
-              <textarea id="q9" name="9. Shooting Location" placeholder="Describe the spot..."></textarea>
+              <label for="q9">Where in your home or office can you consistently shoot with good natural light? *</label>
+              <textarea id="q9" name="9. Shooting Location" placeholder="Describe the spot..." required></textarea>
             </div>
             <div class="form-group">
-              <label for="q10">Do you currently own a lapel mic, tripod, or lighting setup?</label>
-              <textarea id="q10" name="10. Current Equipment" placeholder="If yes, please list what you have..."></textarea>
+              <label for="q10">Do you currently own a lapel mic, tripod, or lighting setup? *</label>
+              <textarea id="q10" name="10. Current Equipment" placeholder="If yes, please list what you have..." required></textarea>
             </div>
             <div class="form-group">
               <label for="heardAboutUs">How did you hear about us? *</label>
@@ -312,23 +312,27 @@ const thankYouUrl = `${base}/thank-you`;
       }
 
       window.nextStep = function(step) {
-        if (step === 1) {
-          const name = document.getElementById('fullName').value.trim();
-          const email = document.getElementById('email').value.trim();
-          const business = document.getElementById('businessName').value.trim();
-
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-          if (!name || !email || !business) {
-            alert('Please fill in your name, email, and business name to proceed.');
-            return;
-          }
-
-          if (!emailRegex.test(email)) {
-            alert('Please enter a valid email address.');
+        const activeStepElement = document.querySelector(`.form-step[data-step="${step}"]`);
+        const inputs = activeStepElement.querySelectorAll('input[required], textarea[required]');
+        
+        for (let input of inputs) {
+          if (!input.value.trim()) {
+            alert('Please answer all required questions on this page before moving forward.');
+            input.focus();
             return;
           }
         }
+
+        if (step === 1) {
+          const email = document.getElementById('email').value.trim();
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address.');
+            document.getElementById('email').focus();
+            return;
+          }
+        }
+
         if (currentStep < totalSteps) {
           currentStep++;
           updateUI();
@@ -348,12 +352,16 @@ const thankYouUrl = `${base}/thank-you`;
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // Validate the required "How did you hear about us?" field before final submit
-        const heardAboutUs = document.getElementById('heardAboutUs').value.trim();
-        if (!heardAboutUs) {
-          alert('Please let us know how you heard about us before submitting.');
-          document.getElementById('heardAboutUs').focus();
-          return;
+        // Validate final step required inputs before submission
+        const activeStepElement = document.querySelector(`.form-step[data-step="5"]`);
+        const inputs = activeStepElement.querySelectorAll('input[required], textarea[required]');
+        
+        for (let input of inputs) {
+          if (!input.value.trim()) {
+            alert('Please answer all required questions before submitting.');
+            input.focus();
+            return;
+          }
         }
 
         submitBtn.textContent = 'Submitting...';
