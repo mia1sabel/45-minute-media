@@ -312,8 +312,16 @@ const thankYouUrl = `${base}/thank-you`;
           const name = document.getElementById('fullName').value.trim();
           const email = document.getElementById('email').value.trim();
           const business = document.getElementById('businessName').value.trim();
+
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
           if (!name || !email || !business) {
             alert('Please fill in your name, email, and business name to proceed.');
+            return;
+          }
+
+          if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address.');
             return;
           }
         }
